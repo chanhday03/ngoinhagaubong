@@ -6,7 +6,7 @@
 <section class="main">
     <div class="attendance">
         <div class="attendance-list">
-            <h1>Cập nhật sản phẩm</h1>
+            <h1>Cập nhật danh mục</h1>
         </div>
         <div class="table">
             <form action="index.php?act=updatedm" method="post" onsubmit="return checkUpdate()">
