@@ -1,14 +1,14 @@
 <?php 
-    // if(is_array($product)){
-    //  extract($product);
-    // }
+// if(is_array($product)){
+// extract($product);
+// }
 
-    // $hinhpath="../upload/".$productImage;
-    //                 if(is_file($hinhpath)){
-    //                     $hinh = "<img src=' ".$hinhpath." ' height='80' > " ;
-    //                 }else{
-    //                     $hinh = 'No photo';
-    //                 }
+// $hinhpath="../upload/".$productImage;
+// if(is_file($hinhpath)){
+// $hinh = "<img src=' ".$hinhpath." ' height='80'> " ;
+// }else{
+// $hinh = 'No photo';
+// }
 ?>
 <div class="row">
     <div class="row formtitle">
@@ -23,7 +23,8 @@
                     <?php foreach ($listcategory as $category) {
 					extract($category);
 					 ?>
-                    <option value="<?= $id ?>">
+                    <option value="<?= $id ?>" <?php if($category['id'] == $product['category_id']):?> selected
+                        <?php endif?>>
                         <?= $categoryName ?>
                     </option>
                     <?php } ?>
@@ -43,31 +44,31 @@
             <div class="row mb10">Hình ảnh<br>
                 <input type="file" name="hinh">
             </div>
-            <div class="row mb10">Số lượng<br>
-                <input type="text" name="soluongsp" id="product-count" value="<?= $productCount	 ?>">
-            </div>
-            <div class="row mb10">Giá<br>
-                <input type="text" name="giasp" id="product-price" value="<?= $productPrice ?>">
-            </div>
-            <div class="row mb10">Size<br>
-                <input type="text" name="sizesp" id="product-size" value="<?= $productSize ?>">
-            </div>
+            <input type="hidden" name="oldImage" value="<?= $productImage?>">
+            <input type="text" name="soluongsp" id="product-count" value="<?= $productCount?>">
+    </div>
+    <div class="row mb10">Giá<br>
+        <input type="text" name="giasp" id="product-price" value="<?= $productPrice ?>">
+    </div>
+    <div class="row mb10">Size<br>
+        <input type="text" name="sizesp" id="product-size" value="<?= $productSize ?>">
+    </div>
 
 
-            <div class="row mb10">
-                <input type="hidden" name="id" value="<?=$id?>">
-                <input type="submit" name="capnhat" value="Cập Nhật" class="btn1">
-                <input type="reset" value="Nhập Lại" class="btn1">
-                <a href="index.php?act=listsp">
-                    <input type="button" value="Danh Sách" class="btn1">
-                </a>
-            </div>
-            <?php
+    <div class="row mb10">
+        <input type="hidden" name="id" value="<?=$id?>">
+        <input type="submit" name="capnhat" value="Cập Nhật" class="btn1">
+        <input type="reset" value="Nhập Lại" class="btn1">
+        <a href="index.php?act=listsp">
+            <input type="button" value="Danh Sách" class="btn1">
+        </a>
+    </div>
+    <?php
                  if(isset($thongbao) && ($thongbao!= "" )) 
                   echo $thongbao;       
              ?>
-        </form>
-    </div>
+    </form>
+</div>
 </div>
 </div>
 </div>

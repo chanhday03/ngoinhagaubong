@@ -105,14 +105,14 @@ if (isset($_GET['act'])) {
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
                 $hinh = $_FILES['hinh']['name'];
-                $target_dir = "../upload/";
-                $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                    // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                } else {
-                    // echo "Sorry, there was an error uploading your file.";
+                if($hinh) {
+                    $target_dir = "../upload/";
+                $target_file = $target_dir . $_FILES["hinh"]["name"];
+                move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file);
+                }else {
+                    $hinh = $_POST['oldImage'];
                 }
-                update_product($id, $iddm, $tensp, $motasp, $hinh, $soluongsp, $giasp, $sizesp);
+                update_product($id, $iddm, $tensp, $motasp, $soluongsp, $giasp, $sizesp, $hinh);
                 $thongbao = 'Thêm thành công';
             }
             $listcategory = loadall_category();
