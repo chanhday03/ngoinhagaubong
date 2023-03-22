@@ -1,6 +1,127 @@
+<section class="about" id="about">
+    <img src="https://i.pinimg.com/564x/93/b5/10/93b510a30b653ad2a059012e2a6e1f88.jpg" alt="" />
+    <div class="about-text">
+        <span>About Us</span>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
+            deserunt fugiat est in laudantium nostrum tempora omnis quo suscipit
+            quidem accusantium, numquam aspernatur architecto hic eius! Ipsum quis
+            hic maxime?
+        </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <a href="#" class="btn">
+            Learn more<i class="fa-solid fa-circle-right"></i></a>
+    </div>
+</section>
+<section class="customers" id="customers">
+    <h2>Why Customer's Love Us?</h2>
+    <div class="customers-container">
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-quote-left"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- footer -->
 <footer class="footer" id="footer">
     <div class="footer-box">
-        <img src="./images/logo.jpg" alt="" />
+        <img src="https://img.freepik.com/premium-vector/cute-teddy-bear-logo-template_83738-274.jpg?w=2000" alt="" />
         <p>Address : so 1 Trinh Van Bo , Nam Tu Liem , Ha Noi</p>
         <div class="social">
             <a href=""><i class="fa-brands fa-facebook"></i></a>
@@ -39,7 +160,61 @@
     <p>Copyright @ChanhDay</p>
 </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="./main.js"></script>
+
+</html>
+<script src="https://kit.fontawesome.com/62fe7548c5.js" crossorigin="anonymous"></script>
+<script>
+var swiper = new Swiper(".home-slider", {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    loop: true,
+});
+
+let prev = document.getElementById("prev");
+let next = document.getElementById("next");
+let image = document.querySelector(".images");
+let items = document.querySelectorAll(".images .item");
+let contents = document.querySelectorAll(".content .item");
+
+let rotate = 0;
+let active = 0;
+let countItem = items.length;
+let rotateAdd = 360 / countItem;
+
+function nextSlider() {
+    active = active + 1 > countItem - 1 ? 0 : active + 1;
+    rotate = rotate + rotateAdd;
+    show();
+}
+
+function prevSlider() {
+    active = active - 1 < 0 ? countItem - 1 : active - 1;
+    rotate = rotate - rotateAdd;
+    show();
+}
+
+function show() {
+    image.style.setProperty("--rotate", rotate + "deg");
+    image.style.setProperty("--rotate", rotate + "deg");
+    contents.forEach((content, key) => {
+        if (key == active) {
+            content.classList.add("active");
+        } else {
+            content.classList.remove("active");
+        }
+    });
+}
+next.onclick = nextSlider;
+prev.onclick = prevSlider;
+const autoNext = setInterval(nextSlider, 3000);
+</script>
 
 </html>

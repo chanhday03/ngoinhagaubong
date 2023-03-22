@@ -46,7 +46,7 @@ header {
   justify-content: space-between;
   background-color: #fbfdfc;
   box-shadow: 0 8px 11px rgba(14 55 54 / 15%);
-  padding: 20px 100px;
+  padding: 20px 10px;
   transition: 0.5s;
   font-family: Pacifico;
 }
@@ -104,7 +104,7 @@ header form i {
   color: var(--brown-color);
   padding: 14px 16px;
   margin: 0;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   font-family: Pacifico;
 }
 .navbar a:hover, .dropdown:hover .dropbtn {
@@ -245,7 +245,10 @@ form #search-icon:hover{
   color: #1a2428;
   font-weight: bold;
 }
-
+/* danhmuc */
+.danhmuc{
+  max-width: 1248px;
+}
 /* categories
  */
 .heading {
