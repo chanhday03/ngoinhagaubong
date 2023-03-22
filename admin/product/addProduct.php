@@ -27,7 +27,7 @@
         const productPrice = getElement("#product-price")
         const productSize = getElement("#product-size")
         const productImage = getElement('input[type=file]');
-    
+
         const a = checkIsNotEmpty(productName, 'Ten sản phẩm không được để trống');
         const b = checkIsNotEmpty(productDesc, 'Mô tả sản phẩm không được để trống');
         const c = checkIsNotEmpty(productPrice, 'Giá sản phẩm không được để trống');

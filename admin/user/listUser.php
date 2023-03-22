@@ -16,7 +16,7 @@
                 <th>Điện thoại</th>
                 <th>Vai trò</th>
                 <th>Action</th>
-                
+
             </tr>
             <?php 
                    foreach ($listuser as $user) {
@@ -53,19 +53,20 @@
 
 <body>
     <style>
-    .fa-trash {
-        color: red;
-        font-size: 30px;
-    }
+        .fa-trash {
+            color: red;
+            font-size: 30px;
+        }
 
-    .fa-pen {
-        color: greenyellow;
-        font-size: 30px;
-        margin-right: 30px;
-    }
-    .listuser{
-        max-width: 250px;
-        word-wrap: break-word;
-    }
+        .fa-pen {
+            color: greenyellow;
+            font-size: 30px;
+            margin-right: 30px;
+        }
+
+        .listuser {
+            max-width: 250px;
+            word-wrap: break-word;
+        }
     </style>
 </body>

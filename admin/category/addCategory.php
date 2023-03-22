@@ -1,12 +1,12 @@
 <script>
     function check() {
-    let category = document.querySelector("#ten-loai");
-    if (category.value.trim() === "") {
-      alert("Bạn cần điền đầy đủ thông tin !");
-      return false;
+        let category = document.querySelector("#ten-loai");
+        if (category.value.trim() === "") {
+            alert("Bạn cần điền đầy đủ thông tin !");
+            return false;
+        }
+        return true;
     }
-    return true;
-  }
 </script>
 <section class="main">
     <div class="attendance">
