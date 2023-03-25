@@ -43,7 +43,7 @@
             <input type="text" name="sizesp" id="product-size" value="<?= $productSize ?>">
         </div>
         <div class="row mb10">Khuyến mãi<br>
-        <input type="text" name="khuyenmai" id="product-count" value="<?= $productCount?>">
+        <input type="text" name="khuyenmai" id="product-promotion" value="<?= $productPromotion?>">
         </div>
 
         <div class="row mb10">

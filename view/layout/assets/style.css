@@ -55,9 +55,10 @@ header {
   height: 80px;
 }
 header form input {
-  background-color: transparent;
-  border: none;
-  outline: none;
+  /* background-color: transparent; */
+  
+  border-bottom: 1px solid #ccc ;
+  outline: none; 
   margin-left: 10px;
 }
 header form i {
@@ -65,25 +66,29 @@ header form i {
   color: var(--light-brown-color);
   cursor: pointer;
 }
-.profile {
+.profile{
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 5px;
   cursor: pointer;
 }
-.profile img {
+ .profile  .navlogin ul{
+  display:flex ;
+  gap: 20px;
+}
+/* .profile img {
   width: 40px;
   height: 40px;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
   overflow: hidden;
-}
-.profile span {
+} */
+/* .profile span {
   font-size: 13px;
   font-weight: 500;
-}
+} */
 .navbar {
   font-family: Pacifico;
   display: flex;
@@ -173,7 +178,7 @@ form #search-icon:hover{
   bottom: 0px !important;
 }
 .btn {
-  margin-top: 10px;
+  margin-top: 20px;
   display: inline-block;
   font-size: 15px;
   background-color: var(--light-brown-color);
@@ -248,6 +253,7 @@ form #search-icon:hover{
 /* danhmuc */
 .danhmuc{
   max-width: 1248px;
+  margin: 0 auto;
 }
 /* categories
  */
@@ -426,6 +432,7 @@ form #search-icon:hover{
 .products-container .box:hover {
   box-shadow: 0 0 0 2px rgb(224, 178, 121);
   transform: rotate(6deg);
+  transition: .3s ;
 }
 .products-container .box img {
   width: 100%;
@@ -706,7 +713,7 @@ font-size: 16px;
 margin-right: 10px;
 margin-top: 10px;
 }
-.btn{
+.prodetails .btn{
   margin-top: 20px;
   background-color: #23e172 ;
   display: inline;

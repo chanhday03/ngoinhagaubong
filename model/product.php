@@ -8,7 +8,7 @@ function delete_product($id){
     pdo_execute($sql);
 }
 function loadall_product_home(){
-    $sql = "SELECT * FROM product WHERE 1 ORDER BY id DESC LIMIT 0,9" ; 
+    $sql = "SELECT * FROM product WHERE 1 ORDER BY id DESC LIMIT 0,15" ; 
     $listproduct =  pdo_query($sql);
     return $listproduct;
 }
