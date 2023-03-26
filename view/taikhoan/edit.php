@@ -58,7 +58,7 @@ $user = getUserById($_SESSION['id'], $conn);
           </div>
           <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="text" 
+            <input type="email" 
                    class="form-control"
                    name="email"
                    value="<?php echo $user['email']?>" >

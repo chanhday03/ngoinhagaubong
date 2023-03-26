@@ -160,6 +160,8 @@ header form i {
 form #search-icon{
   color: #a68567;
   font-size: 20px;
+  border: none;
+  background-color: transparent;
 }
 form #search-icon:hover{
   color: #a68567;

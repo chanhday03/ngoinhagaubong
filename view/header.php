@@ -8,6 +8,7 @@ include 'model/taikhoan/User.php';
 $user = getUserById($_SESSION['id'], $conn);
 }
  ?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,7 +16,12 @@ $user = getUserById($_SESSION['id'], $conn);
     <title>Ngôi nhà gấu bông</title>
     <link rel="stylesheet" href="view/layout/assets/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script
+      src="https://kit.fontawesome.com/62fe7548c5.js"
+      crossorigin="anonymous"
+    ></script>
 </head>
+
 <body>
     <!-- header -->
     <header>
@@ -43,9 +49,9 @@ $user = getUserById($_SESSION['id'], $conn);
             <a href="#" class="fa-solid fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
         </div>
-        <form action="">
-            <input type="email" name="" id="" placeholder="Search ... " />
-            <a class="fa-solid fa-magnifying-glass" id="search-icon"></a>
+        <form action="index.php?act=timkiem" method="POST">
+            <input type="text" name="keyword" id="" placeholder="Search ... " required=""/>
+            <button type="submit" name="timkiem" class="btn_search" id="search-icon"><i class="fas fa-search"></i></button>
         </form>
         <div class="profile">
 
@@ -84,4 +90,3 @@ $user = getUserById($_SESSION['id'], $conn);
         </div>
 
     </header>
-   
