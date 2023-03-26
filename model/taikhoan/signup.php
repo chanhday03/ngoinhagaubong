@@ -14,15 +14,15 @@ if(isset($_POST['fname']) &&
     
     if (empty($fname)) {
     	$em = "Full name is required";
-    	header("Location: ../index.php?error=$em&$data");
+    	header("Location: ../signup.php?error=$em&$data");
 	    exit;
     }else if(empty($uname)){
     	$em = "User name is required";
-    	header("Location: ../index.php?error=$em&$data");
+    	header("Location: ../signup.php?error=$em&$data");
 	    exit;
     }else if(empty($pass)){
     	$em = "Password is required";
-    	header("Location: ../index.php?error=$em&$data");
+    	header("Location: ../signup.php?error=$em&$data");
 	    exit;
     }else {
       // hashing the password
@@ -51,16 +51,16 @@ if(isset($_POST['fname']) &&
                $stmt = $conn->prepare($sql);
                $stmt->execute([$fname, $uname, $pass, $new_img_name]);
 
-               header("Location: ../../view/taikhoan/index.php?success=Your account has been created successfully");
+               header("Location: ../../view/taikhoan/signup.php?success=Your account has been created successfully");
                 exit;
             }else {
                $em = "You can't upload files of this type";
-               header("Location: ../../view/taikhoan/index.php?error=$em&$data");
+               header("Location: ../../view/taikhoan/signup.php?error=$em&$data");
                exit;
             }
          }else {
             $em = "unknown error occurred!";
-            header("Location: ../../view/taikhoan/index.php?error=$em&$data");
+            header("Location: ../../view/taikhoan/signup.php?error=$em&$data");
             exit;
          }
 
@@ -71,13 +71,13 @@ if(isset($_POST['fname']) &&
        	$stmt = $conn->prepare($sql);
        	$stmt->execute([$fname, $uname, $pass]);
 
-       	header("Location: ../../view/taikhoan/index.php?success=Your account has been created successfully");
+       	header("Location: ../../view/taikhoan/signup.php?success=Your account has been created successfully");
    	    exit;
       }
     }
 
 
 }else {
-	header("Location: ../../view/taikhoan/index.php?error=error");
+	header("Location: ../../view/taikhoan/signup.php?error=error");
 	exit;
 }

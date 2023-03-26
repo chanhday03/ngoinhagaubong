@@ -39,7 +39,6 @@ if(isset($_POST['uname']) &&
                  $_SESSION['id'] = $id;
                  $_SESSION['fname'] = $fname;
                  $_SESSION['pp'] = $pp;
-
                  header("Location: ../../index.php");
                  exit;
              }else {

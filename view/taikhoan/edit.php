@@ -72,7 +72,7 @@ $user = getUserById($_SESSION['id'], $conn);
           </div>
           
           <button type="submit" class="btn btn-primary">Update</button>
-          <a href="home.php" class="link-secondary">Home</a>
+          <a href="../../index.php" class="link-secondary">Home</a>
         </form>
     </div>
     <?php }else{ 
