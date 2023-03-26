@@ -13,15 +13,15 @@ if(isset($_POST['fname']) &&
     $data = "fname=".$fname."&uname=".$uname;
     
     if (empty($fname)) {
-    	$em = "Full name is required";
+    	$em = "Tên đầy đủ là bắt buộc";
     	header("Location: ../signup.php?error=$em&$data");
 	    exit;
     }else if(empty($uname)){
-    	$em = "User name is required";
+    	$em = "Tên tài khoản là bắt buộc";
     	header("Location: ../signup.php?error=$em&$data");
 	    exit;
     }else if(empty($pass)){
-    	$em = "Password is required";
+    	$em = "Mật khẩu là bắt buộc";
     	header("Location: ../signup.php?error=$em&$data");
 	    exit;
     }else {
@@ -71,7 +71,7 @@ if(isset($_POST['fname']) &&
        	$stmt = $conn->prepare($sql);
        	$stmt->execute([$fname, $uname, $pass]);
 
-       	header("Location: ../../view/taikhoan/signup.php?success=Your account has been created successfully");
+       	header("Location: ../../view/taikhoan/signup.php?success=Tài khoản của bạn đã được tạo thành công");
    	    exit;
       }
     }

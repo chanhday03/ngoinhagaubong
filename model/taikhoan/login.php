@@ -12,11 +12,11 @@ if(isset($_POST['uname']) &&
     $data = "uname=".$uname;
     
     if(empty($uname)){
-    	$em = "User name is required";
+    	$em = "Tên người dùng là bắt buộc";
     	header("Location: ../login.php?error=$em&$data");
 	    exit;
     }else if(empty($pass)){
-    	$em = "Password is required";
+    	$em = "Mật khẩu là bắt buộc";
     	header("Location: ../login.php?error=$em&$data");
 	    exit;
     }else {
@@ -42,19 +42,19 @@ if(isset($_POST['uname']) &&
                  header("Location: ../../index.php");
                  exit;
              }else {
-               $em = "Incorect User name or password";
+               $em = "Tên người dùng hoặc mật khẩu sai";
                header("Location: ../../view/taikhoan/login.php?error=$em&$data");
                exit;
             }
 
           }else {
-            $em = "Incorect User name or password";
+            $em = "Tên người dùng hoặc mật khẩu sai";
             header("Location: ../../view/taikhoan/login.php?error=$em&$data");
             exit;
          }
 
       }else {
-         $em = "Incorect User name or password";
+         $em = "Tên người dùng hoặc mật khẩu sai";
          header("Location: ../../view/taikhoan/login.php?error=$em&$data");
          exit;
       }

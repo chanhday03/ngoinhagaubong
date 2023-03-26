@@ -133,7 +133,7 @@
                 </h3>
                 <i class="fa-solid fa-cart-shopping"></i>
                 <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span>
+                <span class="discount">'.$productPromotion.'%</span>
             </div>';
             }
             ?>

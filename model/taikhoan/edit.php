@@ -58,7 +58,7 @@ if(isset($_POST['fname']) &&
                $stmt = $conn->prepare($sql);
                $stmt->execute([$fname, $uname, $new_img_name, $id]);
                $_SESSION['fname'] = $fname;
-               header("Location: ../../view/taikhoan/edit.php?success=Your account has been updated successfully");
+               header("Location: ../../view/taikhoan/edit.php?success=Tài khoản của bạn đã được cập nhật thành công");
                 exit;
             }else {
                $em = "You can't upload files of this type";
@@ -79,7 +79,7 @@ if(isset($_POST['fname']) &&
        	$stmt = $conn->prepare($sql);
        	$stmt->execute([$fname, $uname, $id]);
 
-       	header("Location: ../../view/taikhoan/edit.php?success=Your account has been updated successfully");
+       	header("Location: ../../view/taikhoan/edit.php?success=Tài khoản của bạn đã được cập nhật thành công");
    	    exit;
       }
     }

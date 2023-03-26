@@ -27,7 +27,7 @@ $user = getUserById($_SESSION['id'], $conn);
               method="post"
               enctype="multipart/form-data">
 
-            <h4 class="display-4  fs-1">Edit Profile</h4><br>
+            <h4 class="display-4  fs-1">Chỉnh sửa hồ sơ</h4><br>
             <!-- error -->
             <?php if(isset($_GET['error'])){ ?>
             <div class="alert alert-danger" role="alert">
@@ -42,7 +42,7 @@ $user = getUserById($_SESSION['id'], $conn);
             </div>
             <?php } ?>
           <div class="mb-3">
-            <label class="form-label">Full Name</label>
+            <label class="form-label">Họ và tên</label>
             <input type="text" 
                    class="form-control"
                    name="fname"
@@ -50,7 +50,7 @@ $user = getUserById($_SESSION['id'], $conn);
           </div>
 
           <div class="mb-3">
-            <label class="form-label">User name</label>
+            <label class="form-label">Tên tài khoản</label>
             <input type="text" 
                    class="form-control"
                    name="uname"
@@ -58,7 +58,7 @@ $user = getUserById($_SESSION['id'], $conn);
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Profile Picture</label>
+            <label class="form-label">Ảnh đại diện</label>
             <input type="file" 
                    class="form-control"
                    name="pp">
@@ -71,8 +71,8 @@ $user = getUserById($_SESSION['id'], $conn);
                    value="<?=$user['pp']?>" >
           </div>
           
-          <button type="submit" class="btn btn-primary">Update</button>
-          <a href="../../index.php" class="link-secondary">Home</a>
+          <button type="submit" class="btn btn-primary">Cập nhật</button>
+          <a href="../../index.php" class="link-secondary">Trang chủ</a>
         </form>
     </div>
     <?php }else{ 

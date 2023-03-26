@@ -25,8 +25,7 @@
                             <th>ID Product</th>
                             <th>Name Product</th>
                             <th>Desc Product</th>
-                            <th>Image Product</th>
-                           
+                            <th>Image Product</th>   
                             <th>Price Product</th>
                             <th>Size Product</th>
                             <th>Promotion Product</th>
@@ -52,7 +51,7 @@
                         <td>'.$hinh.'</td>
                         <td>'.$productPrice.'</td>
                         <td>'.$productSize.'</td>
-                        <td>'.$productPromotion.'</td>
+                        <td>'.$productPromotion.' %</td>
                         <td>'.$productView.'</td>
                         <td>
                             <a href="'.$suasp.'"><i class="fa-solid fa-pen"></i></a>    
