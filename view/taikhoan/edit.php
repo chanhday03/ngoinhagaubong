@@ -56,13 +56,34 @@ $user = getUserById($_SESSION['id'], $conn);
                    name="uname"
                    value="<?php echo $user['username']?>">
           </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" 
+                   class="form-control"
+                   name="email"
+                   value="<?php echo $user['email']?>" >
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Địa chỉ</label>
+            <input type="text" 
+                   class="form-control"
+                   name="adress"
+                   value="<?php echo $user['adress']?>" >
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Số điện thoại</label>
+            <input type="text" 
+                   class="form-control"
+                   name="phone"
+                   value="<?php echo $user['phone']?>" >
+          </div>
 
           <div class="mb-3">
             <label class="form-label">Ảnh đại diện</label>
             <input type="file" 
                    class="form-control"
                    name="pp">
-            <img src="upload/<?=$user['pp']?>"
+            <img src="../../upload/<?=$user['pp']?>"
                  class="rounded-circle"
                  style="width: 70px">
             <input type="text"

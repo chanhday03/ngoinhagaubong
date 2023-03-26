@@ -12,18 +12,35 @@ if(isset($_POST['fname']) &&
 
     $fname = $_POST['fname'];
     $uname = $_POST['uname'];
+    $email = $_POST['email'];
+    $adress = $_POST['adress'];
+    $phone = $_POST['phone'];
     $old_pp = $_POST['old_pp'];
     $id = $_SESSION['id'];
 
     if (empty($fname)) {
-    	$em = "Full name is required";
+    	$em = "Tên đầy đủ là bắt buộc";
     	header("Location: ../../view/taikhoan/edit.php?error=$em");
 	    exit;
     }else if(empty($uname)){
-    	$em = "User name is required";
+    	$em = "Tên người dùng là bắt buộc";
     	header("Location: ../../view/taikhoan/edit.php?error=$em");
 	    exit;
-    }else {
+    }else if(empty($email)){
+      $em = "Email là bắt buộc";
+      header("Location: ../../view/taikhoan/edit.php?error=$em");
+      exit;
+   }
+   else if(empty($adress)){
+      $em = "Địa chỉ là bắt buộc";
+      header("Location: ../../view/taikhoan/edit.php?error=$em");
+      exit;
+   }
+   else if(empty($phone)){
+      $em = "Số điện thoại là bắt buộc";
+      header("Location: ../../view/taikhoan/edit.php?error=$em");
+      exit;
+   }else   {
 
       if (isset($_FILES['pp']['name']) AND !empty($_FILES['pp']['name'])) {
          
@@ -39,9 +56,9 @@ if(isset($_POST['fname']) &&
             $allowed_exs = array('jpg', 'jpeg', 'png');
             if(in_array($img_ex_to_lc, $allowed_exs)){
                $new_img_name = uniqid($uname, true).'.'.$img_ex_to_lc;
-               $img_upload_path = '../upload/'.$new_img_name;
+               $img_upload_path = '../../upload/'.$new_img_name;
                // Delete old profile pic
-               $old_pp_des = "../upload/$old_pp";
+               $old_pp_des = "../../upload/$old_pp";
                if(unlink($old_pp_des)){
                	  // just deleted
                	  move_uploaded_file($tmp_name, $img_upload_path);
@@ -53,20 +70,21 @@ if(isset($_POST['fname']) &&
 
                // update the Database
                $sql = "UPDATE users 
-                       SET fname=?, username=?, pp=?
+                       SET fname=?, username=?,email=?,adress=?,phone=?, pp=?
                        WHERE id=?";
                $stmt = $conn->prepare($sql);
-               $stmt->execute([$fname, $uname, $new_img_name, $id]);
+               $stmt->execute([$fname, $uname,$email,$adress,$phone, $new_img_name, $id]);
                $_SESSION['fname'] = $fname;
                header("Location: ../../view/taikhoan/edit.php?success=Tài khoản của bạn đã được cập nhật thành công");
                 exit;
             }else {
-               $em = "You can't upload files of this type";
+               $em = "
+               Bạn không thể tải lên các tệp loại này";
                header("Location: ../../view/taikhoan/edit.php?error=$em&$data");
                exit;
             }
          }else {
-            $em = "unknown error occurred!";
+            $em = "Xảy ra lỗi không xác định được!";
             header("Location: ../../view/taikhoan/edit.php?error=$em&$data");
             exit;
          }
@@ -74,10 +92,10 @@ if(isset($_POST['fname']) &&
         
       }else {
        	$sql = "UPDATE users 
-       	        SET fname=?, username=?
+       	        SET fname=?, username=?,email=?,adress=?,phone=?
                 WHERE id=?";
        	$stmt = $conn->prepare($sql);
-       	$stmt->execute([$fname, $uname, $id]);
+       	$stmt->execute([$fname, $uname,$email,$adress,$phone, $id]);
 
        	header("Location: ../../view/taikhoan/edit.php?success=Tài khoản của bạn đã được cập nhật thành công");
    	    exit;
