@@ -21,8 +21,8 @@
                 <div class="row mb10"> Miêu tả sản phẩm<br>
                     <textarea rows="10" cols="30" name="motasp" id="product-description"></textarea>
                 </div>
-                <div class="row mb10"> Số lượng sản phẩm<br>
-                    <input type="number" name="soluongsp" id="product-name">
+                <div class="row mb10"> Khuyến mãi sản phẩm<br>
+                    <input type="text" name="khuyenmai" id="product-name">
                 </div>
                 <div class="row mb10">Giá<br>
                     <input type="text" name="giasp" id="product-price">
@@ -33,6 +33,7 @@
                 <div class="row mb10">Hình ảnh<br>
                     <input type="file" name="hinh">
                 </div>
+                
                 <div class="row mb10">
                     <input type="submit" name="themmoi" value="Thêm Mới" class="btn">
                     <input type="reset" value="Nhập Lại" class="btn">

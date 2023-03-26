@@ -26,9 +26,11 @@
                             <th>Name Product</th>
                             <th>Desc Product</th>
                             <th>Image Product</th>
-                            <th>Count Product</th>
+                           
                             <th>Price Product</th>
                             <th>Size Product</th>
+                            <th>Promotion Product</th>
+                            <th>View Product</th>
                             <th>Action</th>
                         </tr>
                         <?php 
@@ -48,9 +50,10 @@
                         <td>'.$productName.'</td>
                         <td>'.$productDesc.'</td>
                         <td>'.$hinh.'</td>
-                        <td>'.$productCount.'</td>
                         <td>'.$productPrice.'</td>
                         <td>'.$productSize.'</td>
+                        <td>'.$productPromotion.'</td>
+                        <td>'.$productView.'</td>
                         <td>
                             <a href="'.$suasp.'"><i class="fa-solid fa-pen"></i></a>    
                             <a href="'.$xoasp.'"><i class="fa-solid fa-trash"></i></a>               

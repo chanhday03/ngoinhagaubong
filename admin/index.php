@@ -48,7 +48,7 @@ if (isset($_GET['act'])) {
                 $iddm = $_POST['iddm'];
                 $tensp = $_POST['tensp'];
                 $motasp = $_POST['motasp'];
-                $soluongsp = $_POST['soluongsp'];
+                $khuyenmai = $_POST['khuyenmai'];
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
                 $hinh = $_FILES['hinh']['name'];
@@ -59,7 +59,7 @@ if (isset($_GET['act'])) {
                 } else {
                     // echo "Sorry, there was an error uploading your file.";
                 }
-                insert_product($tensp, $motasp, $hinh, $soluongsp, $giasp, $sizesp, $iddm);
+                insert_product($tensp, $motasp, $hinh,  $giasp, $sizesp,$khuyenmai, $iddm);
                 $thongbao = 'Thêm thành công';
             }
             $listcategory = loadall_category();
@@ -101,7 +101,7 @@ if (isset($_GET['act'])) {
                 $iddm = $_POST['iddm'];
                 $tensp = $_POST['tensp'];
                 $motasp = $_POST['motasp'];
-                $soluongsp = $_POST['soluongsp'];
+                $khuyenmai = $_POST['khuyenmai'];
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
                 $hinh = $_FILES['hinh']['name'];
@@ -112,7 +112,7 @@ if (isset($_GET['act'])) {
                 }else {
                     $hinh = $_POST['oldImage'];
                 }
-                update_product($id, $iddm, $tensp, $motasp, $soluongsp, $giasp, $sizesp, $hinh);
+                update_product($id, $iddm, $tensp, $motasp,  $giasp, $sizesp,$khuyenmai, $hinh);
                 $thongbao = 'Thêm thành công';
             }
             $listcategory = loadall_category();
