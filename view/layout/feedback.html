@@ -106,24 +106,40 @@
     .btn--active {
         display: inline-block;
     }
+
+    /* .emoji input{
+        border: none;
+    } */
 </style>
 
 <body>
-    <div class="container">
+
+    <form action="" class="container">
         <div class="wrapper">
             <p class="text">Trải nghiệm của bạn về Website này ?</p>
+            <!-- <div class="emoji">
+                    <input type="text" value="😊" name="">
+                    <input type="text" value="😊" name="">
+                    <input type="text" value="😊" name="">
+                    <input type="text" value="😊" name="">
+                    <input type="text" value="😊" name="">
+                </div> -->
             <div class="emoji">
-                <div>😊</div>
-                <div>😢</div>
-                <div>😁</div>
-                <div>😍</div>
-                <div>😠</div>
+                <div onclick="setInputValue_1()">😊</div>
+                <div onclick="setInputValue_2()">😢</div>
+                <div onclick="setInputValue_3()">😁</div>
+                <div onclick="setInputValue_4()">😍</div>
+                <div onclick="setInputValue_5()">😠</div>
             </div>
         </div>
-        <textarea class="textarea" cols="30" rows="10"
+
+        <textarea class="textarea" cols="30" rows="10" name="feedback"
             placeholder="Bạn hãy cho chúng mình biết về đánh giá của bạn  !"></textarea>
-        <a href="" class="btn">Gửi cho bọn tớ !</a>
-    </div>
+        <input type="text" value="" class="hidden">
+        <a href=""><button type="submit" class="btn">Gửi cho bọn tớ !</button></a>
+
+    </form>
+
 
 </body>
 <script>
@@ -141,6 +157,28 @@
         textarea.classList.remove('textarea--active');
         btn.classList.remove('btn--active');
     })
+
+    const hidden = document.querySelector('.hidden');
+    function setInputValue_1() {
+        hidden.setAttribute("value", "😊");
+        alert("Đã chọn tâm trạng 😊");
+    }
+    function setInputValue_2() {
+        hidden.setAttribute("value", "😢");
+        alert("Đã chọn tâm trạng 😢");
+    }
+    function setInputValue_3() {
+        hidden.setAttribute("value", "😁");
+        alert("Đã chọn tâm trạng 😁");
+    }
+    function setInputValue_4() {
+        hidden.setAttribute("value", "😍");
+        alert("Đã chọn tâm trạng 😍");
+    }
+    function setInputValue_5() {
+        hidden.setAttribute("value", "😠");
+        alert("Đã chọn tâm trạng 😠");
+    }
 </script>
 
 </html>

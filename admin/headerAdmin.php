@@ -246,49 +246,40 @@
   <div class="container">
     <nav>
       <ul>
-        <li>
-          <a href="#" class="logo">
-            <img src="https://img.freepik.com/premium-vector/cute-teddy-bear-logo-template_83738-274.jpg?w=2000" />
+        <li><a href="#" class="logo">
+            <img src="https://img.freepik.com/premium-vector/cute-teddy-bear-logo-template_83738-274.jpg?w=2000">
             <span class="nav-item">Admin</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php">
+          </a></li>
+        <li><a href="index.php">
             <i class="fas fa-clipboard"></i>
             <span class="nav-item">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=adddm">
+          </a></li>
+        <li><a href="index.php?act=adddm">
             <i class="fas fa-list"></i>
             <span class="nav-item">Category</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=addsp">
+          </a></li>
+        <li><a href="index.php?act=addsp">
             <i class="fas fa-bars"></i>
             <span class="nav-item">Products</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=dskh">
+          </a></li>
+        <li><a href="index.php?act=dskh">
             <i class="fas fa-user"></i>
             <span class="nav-item">User</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=dsbl">
+          </a></li>
+        <li><a href="index.php?act=dsbl">
             <i class="fas fa-comment"></i>
             <span class="nav-item">Comment</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=thongke">
+          </a></li>
+        <li><a href="index.php?act=thongke">
             <i class="fas fa-chart-pie"></i>
             <span class="nav-item">View All</span>
+          </a></li>
+        <li>
+          <a href="index.php?act=feedback">
+            <i class="fa-solid fa-notes"></i>
+            <span class="nav-item">Feedback</span>
           </a>
         </li>
-
         <li>
           <a href="#" class="logout">
             <i class="fas fa-sign-out-alt"></i>

@@ -66,6 +66,18 @@ header form i {
   column-gap: 5px;
   cursor: pointer;
 }
+.profile2{
+  display: grid;
+  grid-template-columns: 50px 1fr ;
+
+}
+.profile img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  overflow: hidden;
 .profile .navlogin ul {
   display: flex;
   gap: 20px;
@@ -143,6 +155,8 @@ form #search-icon {
   top: 0;
   color: #a68567;
   font-size: 20px;
+  border: none;
+  background-color: transparent;
 }
 form #search-icon:hover {
   color: #a68567;
@@ -1576,3 +1590,4 @@ footer {
   font-size: 15px;
   color: var(--text-color);
 }
+

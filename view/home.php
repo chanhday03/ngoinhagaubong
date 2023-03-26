@@ -80,6 +80,72 @@ foreach ($dsdm as $dm) {
     </div>
     <div class="products-container">
         <?php
+    <style>
+        .danhmuc{
+            max-width: 1248px;
+          transform: translate(50px,300px);
+   
+        }
+        
+    </style>
+    <link rel="stylesheet" href="layout/assets/style.css" />
+    <div class="danhmuc">
+        <div class="heading">
+            <h1>Danh mục</h1>
+         </div>
+         <div class="menu_dm">
+            <ul>
+                <?php 
+                   foreach ($dsdm as $dm) {
+                   extract($dm);
+                  $linkdm = "index.php?act=product&category_id=".$id;
+                  echo '<li>
+                   <a href="'.$linkdm.'">'.$categoryName.'</a>
+                  </li>';
+      
+                 }
+                 ?>
+
+        </ul>
+    </div>
+    <div class="searchbox">
+        <form action="" method="post">
+            <input type="text" name="" id="" placeholder="Search ... " required />
+            <button><a class="fa-solid fa-magnifying-glass" id="search-icon"></a></button>
+        </form>
+    </div>
+    </div>
+    <!-- categories -->
+    <section class="categories" id="categories">
+        <div class="heading">
+            <h1>Top 10 Sản phẩm được yêu thích nhất<br /><span>Teddyshop</span></h1>
+            <a href="#" class="btn">Order now<i class="fa-solid fa-circle-right"></i></a>
+        </div>
+        <div class="categories-container">
+            <?php 
+            foreach($dstop10 as $sp){
+                extract($sp);
+                $linksp="index.php?act=sanphamct&idsp=".$id;
+                $img = $img_path.$productImage; 
+                echo '<div class="box box1">
+            <img src=" '.$img.' " alt="" />
+            <h2><a href=" '.$linksp.' ">'.$productName.'</a></h2>
+            <i class=" fa-solid fa-arrow-right"></i>
+        </div>';
+        }
+        ?>
+
+
+        </div>
+    </section>
+    <!-- product -->
+    <section class="products" id="products">
+        <div class="heading">
+            <h1>Tất cả sản phẩm nội bật <br /><span>Teddyshop</span></h1>
+            <a href="#" class="btn">Shop now<i class="fa-solid fa-circle-right"></i></a>
+        </div>
+        <div class="products-container">
+            <?php
             foreach ($spnew as $sp) {
                 extract($sp);
                 $linksp="index.php?act=sanphamct&idsp=".$id;
@@ -91,12 +157,21 @@ foreach ($dsdm as $dm) {
                 <h3 class="price"> Price : 
                 '.$productPrice.'  <ins>đ</ins> <span class="size">/ Size :  '.$productSize.' cm</span>
                 </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="discount">'.$productPromotion.'%</span>
+                <form action="index.php?act=addtocart" method="post">
+                <input type="hidden" name="id" value="'.$id.'">
+                <input type="hidden" name="name" value="'.$productName.'">
+                <input type="hidden" name="price" value="'.$productPrice.'">
+                <input type="hidden" name="images" value="'.$hinh.'">
+                <input type="hidden" name="size" value="'.$productSize.'">
+                <input type="hidden" name="khuyenmai" value="'.$productPromotion.'">
+                <button type="submit" name="btn_addtocart" value="btn_addtocart">   <i class="fa-solid fa-cart-shopping"></i></button>
+                 </form>
                 <i class="fa-solid fa-heart"></i>
                 <span class="discount">- '.$productPromotion.'%</span>
             </div>';
             }
             ?>
-    </div>
-    </div>
-</section>
+        </div>
+        </div>
+    </section>

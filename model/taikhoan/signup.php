@@ -1,4 +1,3 @@
-
 <?php 
 
 $sName = "localhost";
@@ -67,15 +66,16 @@ if(isset($_POST['fname']) &&
                $stmt = $conn->prepare($sql);
                $stmt->execute([$fname, $uname, $pass, $new_img_name]);
 
-               header("Location: ../../view/taikhoan/signup.php?success=Your account has been created successfully");
+               header("Location: ../../view/taikhoan/signup.php?success=Tài khoản của bạn đã được tạo thành công");
                 exit;
             }else {
-               $em = "You can't upload files of this type";
+               $em = "Bạn không thể tải lên các tệp loại này";
                header("Location: ../../view/taikhoan/signup.php?error=$em&$data");
                exit;
             }
          }else {
-            $em = "unknown error occurred!";
+            $em = "
+            Xảy ra lỗi không xác định được!";
             header("Location: ../../view/taikhoan/signup.php?error=$em&$data");
             exit;
          }

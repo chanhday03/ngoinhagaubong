@@ -10,10 +10,10 @@
                 <th>Tên người dùng</th>
                 <th>Tên đăng nhập</th>
                 <th>Mật khẩu</th>
-                <th>ảnh</th>
-                <th>Email</th>
+                <th>Hình ảnh</th>
                 <th>Địa chỉ</th>
                 <th>Điện thoại</th>
+
                 <th>Vai trò</th>
                 <th>Action</th>
 
@@ -28,11 +28,12 @@
                     <td>' . $id . '</td>
                     <td>'.$fname.'</td>
                     <td>' . $username . '</td>
-                    <td class=listuser>' . $password. '</td>
-                    <td><img src="../upload/'.$pp.'" alt="" width="100px" height="50px"></td>
-                    <td>' .$email.'</td>
+                    <td>' . $email. '</td>
+                    <td id="pass">' . $password. '</td>
+                    <td><img src="../upload/'.$pp.'" alt="Lỗi ảnh" /></td>
                     <td>' . $adress . '</td>
-                    <td>' . $phone . '</td>
+                    <td>' . $phone. '</td>
+                    
                     <td>' . $role . '</td>
                     <td>
                        <a href="'.$xoatk.'"><i class="fa-solid fa-trash"></i></a>
@@ -64,7 +65,12 @@
             margin-right: 30px;
         }
 
-        .listuser {
+        img {
+            height: 50px;
+            width: 40px;
+        }
+
+        #pass {
             max-width: 250px;
             word-wrap: break-word;
         }

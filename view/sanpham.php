@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 <style>
-img {
-    max-width: 100%;
-}
+    img {
+        max-width: 100%;
+    }
 </style>
 
 <body>
     <section class="products" id="products">
         <div class="heading">
             <h1>Sản phẩm theo danh mục <strong style="color : red ">
-                    <?= $tendm ?></strong><br /><span>Teddyshop</span></h1>
+                    <?= $tendm ?>
+                </strong><br /><span>Teddyshop</span></h1>
         </div>
         <div class=" products-container">
             <?php

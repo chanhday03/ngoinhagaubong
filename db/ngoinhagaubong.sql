@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2023 at 06:05 AM
+-- Generation Time: Mar 29, 2023 at 07:52 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -39,7 +39,8 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `categoryName`) VALUES
 (4, 'gấu teddy'),
 (5, 'chuột túi'),
-(6, 'gấu teddy12');
+(6, 'gấu teddy12'),
+(9, 'gấu teddy123');
 
 -- --------------------------------------------------------
 
@@ -65,15 +66,23 @@ CREATE TABLE `dathang` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `fullname` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `phone` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `note` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `product_price` int(11) DEFAULT NULL,
-  `total_money` int(11) DEFAULT NULL
+  `status` tinyint(1) DEFAULT 0 COMMENT '0.Đang xử lý\r\n1.Đã xử lý\r\n2.Đang giao hàng\r\n3.Đã giao hàng',
+  `total_money` int(11) DEFAULT NULL,
+  `created` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `dathang`
+--
+
+INSERT INTO `dathang` (`id`, `user_id`, `fullname`, `email`, `phone`, `address`, `note`, `status`, `total_money`, `created`) VALUES
+(1, 22, 'Nguyễn Trung Kiên', 'chưa có', 'chưa có', 'chưa có', 'chưa có', 0, 11, NULL),
+(2, 22, 'Nguyễn Trung Kiên', 'chưa có', 'chưa có', 'chưa có', 'chưa có', 0, 11, NULL),
+(10, 22, 'kien', 'ntrkien001@gmail.com', '01929332', 'Chưa có', '1234', 0, 703502, '07:50:46pm 29/03/2023');
 
 -- --------------------------------------------------------
 
@@ -111,8 +120,10 @@ CREATE TABLE `galery` (
 
 CREATE TABLE `order_details` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
+  `images` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   `total_money` int(11) DEFAULT NULL
@@ -141,8 +152,16 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `productName`, `productDesc`, `productImage`, `productPrice`, `productSize`, `productPromotion`, `productView`, `category_id`) VALUES
-(3, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
-(9, 'đồng hồ 1', '12', '1074.jpg', 112111, '111', '12', NULL, 5);
+(15, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '26', NULL, 4),
+(17, 'iphone 14 promax', 'không có mô tả', '1083.jpg', 27012313, '1', '22', NULL, 5),
+(18, 'iphone 15 promax', 'không có', '1071.jpg', 230000, '23', '11', NULL, 9),
+(19, 'đồng hồ 1', '', '1027.jpg', 290001, '11', '32', NULL, 4),
+(20, 'đồng hồ 2', '', '1027.jpg', 23321200, '11', '12', NULL, 9),
+(21, 'đồng hồ 3', '', '1030.jpg', 290001, '11', '43', NULL, 4),
+(22, 'đồng hồ 4', '', '1037.jpg', 290001, '11', '42', NULL, 4),
+(23, 'đồng hồ 5', '', '1036.jpg', 290001, '11', '11', NULL, 4),
+(24, 'đồng hồ 6', '', '1038.jpg', 290001, '11', '14', NULL, 4),
+(25, 'đồng hồ 7', '', '1030.jpg', 290001, '11', '61', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -167,9 +186,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `username`, `password`, `pp`, `email`, `adress`, `phone`, `role`) VALUES
-(11, 'kien', 'ntrkien', '$2y$10$OJUCwfXFRjx4M4n3lquJZeeUXsj23FekLFckb.lphzszuC8CflnPG', 'ntrkien642021667d4429.76713660.jpg', NULL, NULL, NULL, 0),
-(12, 'Nguyễn Trung Kiên', 'ntrkien', '$2y$10$klXaVMuhT1hU/7SmNi0RSuY/yXdKdaBi80bNmeu6xy31ujltIOXGm', 'ntrkien64210052a1a291.32619833.jpg', NULL, NULL, NULL, 0),
-(13, 'kien12', 'kienne', '$2y$10$Cy0yOGdea6HZKUZYVQWEe.ucJSvu0L1ATcw/IHCFPl1ukUDNT5b8.', 'kienne642100ace8b838.82151696.jpg', NULL, NULL, NULL, 0);
+(22, 'kien', 'ntrkien', '$2y$10$oRBtiw07dXqDrhm1H6l5LeqLdhrhMmzF9jFHitZ7iNiBLnTAVPh4K', 'ntrkien6423bd00aec611.49525871.jpg', 'ntrkien001@gmail.com', 'Chưa có', '01929332', 0);
 
 --
 -- Indexes for dumped tables
@@ -186,7 +203,8 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `dathang`
@@ -214,7 +232,8 @@ ALTER TABLE `galery`
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`),
-  ADD KEY `order_id` (`order_id`);
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `product`
@@ -237,7 +256,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -249,7 +268,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `dathang`
 --
 ALTER TABLE `dathang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -267,19 +286,19 @@ ALTER TABLE `galery`
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
@@ -309,7 +328,8 @@ ALTER TABLE `galery`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `dathang` (`id`);
+  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `dathang` (`id`),
+  ADD CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `product`
