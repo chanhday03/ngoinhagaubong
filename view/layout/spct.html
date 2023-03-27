@@ -21,8 +21,8 @@
     }
   </style>
   <body>
-    <!-- header -->
-    <header>
+
+    <!-- <header>
       <a href="" class="logo">
         <img src="https://i.pinimg.com/564x/63/e4/c9/63e4c923c2467000cf6dbb3a0499bf61.jpg" alt="" />
       </a>
@@ -58,7 +58,7 @@
         <span>ChanhDay hihi</span>
         <i class="fa-solid fa-caret-down"></i>
       </div>
-    </header>
+    </header> -->
     <section class="prodetails" id="prodetails">
         <div class="single-pro-image">
             <img src="https://i.pinimg.com/564x/fa/d0/84/fad084474e0272dea31f9aee795f586d.jpg" alt="" width="100%" id="MainImg">
@@ -94,9 +94,17 @@
                 <input class="yellow" type="radio" name="color">
                 <input class="blue" type="radio" name="color">
             </div>
-            Số lượng :
-            <input type="number" min="0"> <br>
-            <button class="btn">Add to cart</button>
+            <form action="" >
+              <input type="text" name="product_name" value="" hidden>
+              <input type="file" name="product_image" value="" hidden>
+              <input type="text" name="product_size" value="" hidden>
+              <input type="number" name="product_price" value="" hidden>
+              Số lượng :
+              <input type="number" min="0" name="product_quantity" value="" > <br>
+              <button class="btn">Add to cart</button>
+            </form>
+            
+            
             <button class="btn">Buy Now</button>
             <div class="desc"> 
               <h2>//Miêu tả</h2>

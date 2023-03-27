@@ -17,6 +17,7 @@ img {
 </style>
 
 <body>
+    <?php session_destroy()?>
     <section class="prodetails" id="prodetails">
         <div class="single-pro-image">
             <?php 
@@ -69,10 +70,15 @@ img {
           <h2 class="price"> Price : 
                 '.$productPrice.'  <ins>đ</ins> <span class="size">/ Size :  '.$productSize.' cm</span>
           </h2>
-          Số lượng :
-          <input type="number" min="0"> <br>
-          <button class="btn">Add to cart</button>
-          <button class="btn">Buy Now</button>
+          <form action="index.php?act=addtocart" method="POST">
+              <input type="text" name="product_name" value="'.$productName.'" hidden>
+              <input type="text" name="product_image" value="'.$img.'" hidden>
+              <input type="text" name="product_size" value="'.$productSize.'" hidden>
+              <input type="number" name="product_price" value="'.$productPrice.'" hidden>
+              Số lượng :
+              <input type="number" min="0" name="product_quantity"> <br>
+              <button class="btn">Add to cart</button>
+            </form>
           <div class="desc"> 
           <h2>//Miêu tả</h2>
           <p>'.$productDesc.'</p>

@@ -6,6 +6,7 @@ include 'model/product.php';
 include 'model/category.php';
 include 'global.php';
 include 'view/header.php';
+if (!isset($_SESSION["addtocart"])) $_SESSION["addtocart"]=[];
 $spnew = loadall_product_home();
 $dsdm = loadall_category();
 $dstop10 = loadall_product_top10();
@@ -43,6 +44,17 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             break;
         case 'lienhe':
             include"view/lienhe.php";
+            break;
+        case 'addtocart':
+            $product_name = $_POST["product_name"];
+            $product_image = $_POST ["product_image"];
+            $product_size = $_POST ["product_size"];
+            $product_price = $_POST ["product_price"];
+            $product_quantity = $_POST ["product_quantity"];
+            // $total_money = $product_price * $product_quantity;
+            $addtocart = [$product_name,$product_image,$product_size,$product_price,$product_quantity];
+            array_push($_SESSION["addtocart"],$addtocart);
+            include "view/giohang.php";
             break;
         default:
             include"view/home.php";
