@@ -155,34 +155,21 @@ img {
         </div>
         <div class="products-container">
             <div class="box">
-                <img src="./assets/images/products_thobong.jpg" alt="" />
+                <!-- <img src="./assets/images/products_thobong.jpg" alt="" />
                 <h2 class="name"><a href="">THỎ BÔNG ĐEO SAO</a></h2>
                 <h3 class="price">
                     199.000 <ins>đ</ins><span class="size">/ 48cm</span>
                 </h3>
                 <i class="fa-solid fa-cart-shopping"></i>
                 <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span>
-            </div>
-            <div class="box">
-                <img src="./assets/images/products_kylan.jpg" alt="" />
-                <h2 class="name"><a href="">KÌ LÂN BÔNG NGỒI ÔM CẦU VỒNG</a></h2>
-                <h3 class="price">
-                    199.000 <ins>đ</ins><span class="size">/ 50cm</span>
-                </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span>
-            </div>
-            <div class="box">
-                <img src="./assets/images/products_heobong.jpg" alt="" />
-                <h2 class="name"><a href="">HEO BÔNG NẰM BỜM THÚ</a></h2>
-                <h3 class="price">
-                    199.000 <ins>đ</ins><span class="size">/ 48cm</span>
-                </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span>
+                <span class="discount">-5%</span> -->
+                <?php
+                foreach ($sp_cung_loai as $sp_cung_loai) {
+                    extract($sp_cung_loai);
+                    $linksp = "index.php?act=sanphamct&idsp=".$id;
+                    echo ' <li><a href=" '.$linksp.' ">'.$productName.'</a></li>';
+                }
+         ?>
             </div>
         </div>
     </section>

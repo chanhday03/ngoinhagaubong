@@ -3,19 +3,24 @@
         <div class="attendance-list">
             <h1>Danh sách sản phẩm</h1>
         </div>
-        <form action="index.php?act=listsp" method="post">
-            <input type="text" name="kyw" value="">
-            <select name="iddm">
-                <option value="0" selected>Tất cả</option>
-                <?php 
-                    foreach ( $listcategory as $category) {
-                        extract($category);
-                        echo ' <option value="'.$id.'">'.$categoryName.'</option>';
-                    }
-                    ?>
-            </select>
-            <input type="submit" name="listok" value="Go" class="go">
-        </form>
+        <div class="attendance-header">
+            <form action="index.php?act=listsp" method="post">
+                <input class="header-search" type="text" name="kyw" value="">
+                <select name="iddm" class="header-select">
+                    <option value="0" selected>Tất cả</option>
+                    <?php 
+                        foreach ( $listcategory as $category) {
+                            extract($category);
+                            echo ' <option value="'.$id.'">'.$categoryName.'</option>';
+                        }
+                        ?>
+                </select>
+                <input type="submit" name="listok" value="Go" class="go">
+            </form>
+            <a href="index.php?act=addsp">
+                <input type="button" value="Nhập thêm" class="btn">
+            </a>
+        </div>
         <section class="main">
             <div class="attendance">
                 <div class="attendance-list">
@@ -60,9 +65,7 @@
                  ?>
                     </table>
                 </div>
-                <a href="index.php?act=addsp">
-                    <input type="button" value="Nhập thêm" class="btn">
-                </a>
+
                 </form>
             </div>
         </section>
@@ -73,15 +76,15 @@
 
 <body>
     <style>
-    .fa-trash {
-        color: red;
-        font-size: 30px;
-    }
+        .fa-trash {
+            color: red;
+            font-size: 30px;
+        }
 
-    .fa-pen {
-        color: greenyellow;
-        font-size: 30px;
-        margin-right: 30px;
-    }
+        .fa-pen {
+            color: greenyellow;
+            font-size: 30px;
+            margin-right: 30px;
+        }
     </style>
 </body>
