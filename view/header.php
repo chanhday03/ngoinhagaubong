@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="view/layout/assets/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
+<style>
+.danhmuc {
+    padding-top: 20px;
+    max-width: 1248px;
+    margin: 0 auto;
+}
+</style>
 
 <body>
     <!-- header -->
@@ -18,8 +25,8 @@
         </a>
         <div class="fa-solid fa-bars" id="menu-icon"></div>
         <div class="navbar">
-            <a href="index.php">Trang Chủ</a>
-            <a href="index.php?act=gioithieu">Giới thiệu</a>
+            <a href="#home" class="home-active">Trang Chủ</a>
+            <a href="#">Giới thiệu</a>
             <div class="dropdown">
                 <button class="dropbtn">Sản phẩm
                     <i class="fa fa-caret-down"></i>
@@ -29,21 +36,53 @@
                     <a href="#">Phụ Kiện</a>
                 </div>
             </div>
-            <a href="index.php?act=lienhe">Liên Hệ</a>
-            <a href="index.php?act=gopy">Góp Ý</a>
+            <a href="#">Liên Hệ</a>
+            <a href="#">Góp Ý</a>
         </div>
         <div class="icons">
             <a href="#" class="fa-solid fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
         </div>
-        <form action="">
-            <input type="text" name="" id="" placeholder="Search ... " />
-            <a class="fa-solid fa-magnifying-glass" id="search-icon"></a>
+        <form action="index.php?act=sanpham" method="post">
+            <input type="text" name="kyw" id="" />
+            <a class="fa-solid fa-magnifying-glass" id="search-icon">
+                <input type="submit" name="timkiem" value="Search">
+            </a>
         </form>
+        <!-- <form action="">
+            <input type="email" name="" id="" placeholder="Search ... " />
+            <a class="fa-solid fa-magnifying-glass" id="search-icon"></a>
+        </form> -->
         <div class="profile">
-            <img src="https://i.pinimg.com/564x/12/c3/a7/12c3a7ad1deac1c7c93c435bd8e09cbf.jpg" alt="" />
-            <span>ChanhDay hihi</span>
-            <i class="fa-solid fa-caret-down"></i>
+            <?php 
+            if(isset($_SESSION['user'])){
+                  extract($_SESSION['user']);
+                  echo '<img src="https://i.pinimg.com/564x/12/c3/a7/12c3a7ad1deac1c7c93c435bd8e09cbf.jpg" alt="" />
+                  <span>ChanhDay hihi</span>';           
+            }else{
+                 echo '<div class="navlogin">
+                 <ul>
+                     <a href="view/taikhoan/dangnhap.php">
+                         <li>Log in</li>
+                     </a>
+                     <a href="view/taikhoan/dangky.php">
+                         <li>Register</li>
+                     </a>            
+                 </ul>
+                 <div id="direction">
+                
+                 </div>
+             </div>';
+            }
+            ?>
+
+            <!-- 
+                  <a href="#">    <li>Cập nhật tài khoản</li></a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                         <path fill-rule="evenodd"
+                             d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                     </svg> -->
         </div>
     </header>
     <!-- home -->
@@ -141,68 +180,3 @@
             <p>BẢO QUẢN GẤU BÔNG</p>
         </div>
     </div>
-    <header>
-        <a href="" class="logo">
-            <img src="https://i.pinimg.com/564x/63/e4/c9/63e4c923c2467000cf6dbb3a0499bf61.jpg" alt="" />
-        </a>
-        <div class="fa-solid fa-bars" id="menu-icon"></div>
-        <div class="navbar">
-            <a href="#home" class="home-active">Trang Chủ</a>
-            <a href="#">Giới thiệu</a>
-            <div class="dropdown">
-                <button class="dropbtn">Sản phẩm
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Gấu bông</a>
-                    <a href="#">Phụ Kiện</a>
-                </div>
-            </div>
-            <a href="#">Liên Hệ</a>
-            <a href="#">Góp Ý</a>
-            <a href="#">Khám phá</a>
-        </div>
-        <div class="icons">
-            <a href="#" class="fa-solid fa-heart"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
-        </div>
-        <form action="">
-            <input type="email" name="" id="" placeholder="Search ... " />
-            <a class="fa-solid fa-magnifying-glass" id="search-icon"></a>
-        </form>
-        <div class="profile">
-            
-            <?php 
-            if(isset($_SESSION['user'])){
-                  extract($_SESSION['user']);
-                  echo '<img src="https://i.pinimg.com/564x/12/c3/a7/12c3a7ad1deac1c7c93c435bd8e09cbf.jpg" alt="" />
-                  <span>ChanhDay hihi</span>';
-                  
-            }else{
-                 echo '<div class="navlogin">
-                 <ul>
-                     <a href="view/taikhoan/dangnhap.php">
-                         <li>Đăng nhập</li>
-                     </a>
-                     <a href="view/taikhoan/dangky.php">
-                         <li>Đăng ký</li>
-                     </a>
-                   
-                 
-                 </ul>
-                 <div id="direction">
-                
-                 </div>
-             </div>';
-            }
-            ?>
-
-            <!-- 
-                  <a href="#">    <li>Cập nhật tài khoản</li></a>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                         <path fill-rule="evenodd"
-                             d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                     </svg> -->
-        </div>
-    </header>

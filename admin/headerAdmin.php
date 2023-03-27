@@ -32,7 +32,7 @@ nav {
     bottom: 0;
     height: 100vh;
     left: 0;
-    width: 97px;
+    width: 85px;
     background: #fff;
     overflow: hidden;
     transition: 1s;

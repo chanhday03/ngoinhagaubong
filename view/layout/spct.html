@@ -41,7 +41,6 @@
         </div>
         <a href="#">Liên Hệ</a>
         <a href="#">Góp Ý</a>
-        <a href="#">Khám phá</a>
     </div>
       <div class="icons">
         <a href="#" class="fa-solid fa-heart"></a>
@@ -60,34 +59,30 @@
         <i class="fa-solid fa-caret-down"></i>
       </div>
     </header>
-    <section class="page-header" id="page-header">
-        <h2>#stayhome<p>Save more with coupons & up to 70% off !</p></h2>
-        <img src="./assets/images/news4.jpg" alt="">
-    </section>
     <section class="prodetails" id="prodetails">
         <div class="single-pro-image">
-            <img src="./assets/images/phukien_tui1.jpg" alt="" width="100%" id="MainImg">
+            <img src="https://i.pinimg.com/564x/fa/d0/84/fad084474e0272dea31f9aee795f586d.jpg" alt="" width="100%" id="MainImg">
             <div class="small-img-group">
                 <div class="small-img-col">
-                    <img src="./assets/images/phukien_tui1.jpg" alt="" width="100%" class="small-img">
+                    <img src="https://i.pinimg.com/564x/8d/b5/52/8db5522f474abd8d2e40028a02effcdd.jpg" alt="" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
-                    <img src="./assets/images/phukien_tui1.jpg" alt="" width="100%" class="small-img">
+                    <img src="https://i.pinimg.com/564x/2c/df/bd/2cdfbd882b61eeb3ec2e62484d977196.jpg" alt="" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
-                    <img src="./assets/images/phukien_tui1.jpg" alt="" width="100%" class="small-img">
+                    <img src="https://i.pinimg.com/564x/e8/a3/84/e8a384fda75790d7d66c8accf6944929.jpg" alt="" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
-                    <img src="./assets/images/phukien_tui1.jpg" alt="" width="100%" class="small-img">
+                    <img src="https://i.pinimg.com/736x/9e/d3/3b/9ed33b3b351ed219648762268db4c525.jpg" alt="" width="100%" class="small-img">
                 </div>
             </div>
         </div>
         <div class="single-pro-details">
-            <h3>Home / Gấu bông</h3>
+            <h3>Home / <p>Gấu bông</p> </h3>
             <h4 class="name">THỎ BÔNG ĐEO SAO</h4>
-            <h2 class="price">149.000 <p>đ</p></h2>
-            <select name="size_detail" id="">
-                <option value="">Select Size</option>              
+            <h2 class="price">149.000  <p>đ</p></h2>
+            <select name="size_detail" id=" Select Size">
+                <option value=""></option>              
                 <option value="">25cm</option>
                 <option value="">40cm</option>
                 <option value="">1m</option>
@@ -99,9 +94,10 @@
                 <input class="yellow" type="radio" name="color">
                 <input class="blue" type="radio" name="color">
             </div>
-            <input type="number" value="1">
-            <button>Add to cart</button>
-            <button>Buy Now</button>
+            Số lượng :
+            <input type="number" min="0"> <br>
+            <button class="btn">Add to cart</button>
+            <button class="btn">Buy Now</button>
             <div class="desc"> 
               <h2>//Miêu tả</h2>
               <p>Gống bông Mèo Dudu đẹp , hình dáng bắt mắt , nhiều màu sắc </p>
@@ -128,9 +124,59 @@
               </div>      
         </div>
     </section>
+    <section class="comment">
+        <div class="heading">
+            <h1>Bình luận sản phẩm<br /><span>comment products</span></h1>
+          </div>    
+          <div class="form-commnet">
+        <form action="" method="POST">
+            <input type="hidden" name="id" value="">
+            <input type="text" name="noidung">
+            <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
+        </form>
+        <section class="main">
+            <section class="attendance">
+              <div class="attendance-list">
+                <h1>List comment</h1>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name User</th>
+                      <th>Comment Content</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01</td>
+                      <td>Sam David</td>
+                      <td>San pham ok</td>
+                      <td>03-24-22</td>
+                      <td><button>Delete</button></td>
+                      <td><button>Edit</button></td>
+                    </tr>
+                    <tr class="active">
+                      <td>02</td>
+                      <td>Balbina Kherr</td>
+                      <td>san pham xau qua</td>
+                      <td>03-24-22</td>
+                      <td><button>Delete</button></td>
+                      <td><button>Edit</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+    </div>
+    </section>
+
     <section class="products" id="products">
         <div class="heading">
-          <h1>Same Products<br /><span>our popular</span></h1>
+          <h1>Sản phẩm cùng loại<br /><span>same products</span></h1>
         </div>
         <div class="products-container">
           <div class="box">
@@ -176,7 +222,7 @@
       </section>
     <!-- footer -->
     <footer class="footer" id="footer">
-      <img src="./assets/images/logo.jpg" alt="" /> 
+      <img src="https://img.freepik.com/premium-vector/cute-teddy-bear-logo-template_83738-274.jpg?w=2000" alt="" /> 
       <div class="footer-box">   
         <h3>Contact</h3>
         <p><h4>Address :</h4> so 1 Trinh Van Bo , Nam Tu Liem , Ha Noi</p>
@@ -222,6 +268,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="./assets/js/main.js"></script>
   <script>
+    // javascipit phan ảnh
     var MainImg = document.getElementById("MainImg");
 var smallimg = document.getElementsByClassName("small-img");
 smallimg[0].onclick = function(){
@@ -238,4 +285,3 @@ smallimg[3].onclick = function(){
 }
   </script>
 </html>
-<!-- https://www.youtube.com/watch?v=99muDSuP55s&list=RDCMUC8k9jpaeyitFgB0tanVPB9g&start_radio=1&rv=99muDSuP55s&t=77 -->
