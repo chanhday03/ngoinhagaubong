@@ -1,14 +1,4 @@
 <?php 
-session_start();
-
-if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
-
-include '../../model/user.php';
-
-$user = getUserById($_SESSION['id'], $conn);
-
- ?>
- <?php 
 
 $sName = "localhost";
 $uName = "root";
@@ -23,6 +13,17 @@ try {
   echo "Connection failed : ". $e->getMessage();
 }
 ?>
+<?php 
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
+
+include '../../model/user.php';
+
+$user = getUserById($_SESSION['id'], $conn);
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
