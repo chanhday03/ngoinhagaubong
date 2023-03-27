@@ -2,12 +2,27 @@
 session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
-include "db_conn.php";
-include '../../model/taikhoan/User.php';
+
+include '../../model/user.php';
 
 $user = getUserById($_SESSION['id'], $conn);
 
  ?>
+ <?php 
+
+$sName = "localhost";
+$uName = "root";
+$pass = "";
+$db_name = "ngoinhagaubong";
+
+try {
+    $conn = new PDO("mysql:host=$sName;dbname=$db_name", 
+                    $uName, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}catch(PDOException $e){
+  echo "Connection failed : ". $e->getMessage();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
