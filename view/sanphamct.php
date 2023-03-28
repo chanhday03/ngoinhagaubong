@@ -99,14 +99,57 @@ img {
         ';
           ?>
     </section>
-    <section class="comment">
+    <!-- <section class="comment">
         <div class="heading">
             <h1>Bình luận sản phẩm<br /><span>comment products</span></h1>
-        </div>
-        <div class="form-commnet">
-            <iframe src="view/binhluan/binhluanform.php?idpro=<?$id?>" frameborder="0" width="100%" height="300px"></iframe>
-        </div>
-    </section>
+          </div>    
+          <div class="form-commnet">
+        <form action="" method="POST">
+            <input type="hidden" name="id" value="">
+            <input type="text" name="noidung">
+            <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
+        </form>
+        <section class="main">
+            <section class="attendance">
+              <div class="attendance-list">
+                <h1>List comment</h1>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name User</th>
+                      <th>Comment Content</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                        foreach ($dsbl as $bl) {
+                        extract($bl);
+                        
+                        echo '<tr><td>'.$description.'</td>';
+                        echo '<td>'.$user_id .'</td>';
+                        echo' <td>'.$time.'</td></tr>';
+                        }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+    </div>
+    </section> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("#binhluan").load("view/binhluan/binhluanform.php", {product_id: <?=$id?>});
+                }); 
+                
+            </script>
+            <div class="comment" id="binhluan">
+
 
     <section class="products" id="products">
         <div class="heading">

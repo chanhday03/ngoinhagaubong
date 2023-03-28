@@ -2,8 +2,8 @@
     session_start();
     include "../../model/pdo.php";
     include "../../model/binhluan.php";
-    $idpro=$_REQUEST['idpro'];
-    $dsbl=loadall_binhluan($idpro);
+    $product_id=$_REQUEST['product_id'];
+    $dsbl=get_binhluan($product_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../layout/assets/style.css">
+    <link rel="stylesheet" href="..view/layout/assets/style.css">
 </head>
 <body>
 <section class="comment">
@@ -21,8 +21,8 @@
           </div>    
           <div class="form-commnet">
         <form action="<?=$_SERVER['PHP_SELF'];?>" method="POST">
-            <input type="hidden" name="idpro" value="<?=$idpro?>">
-            <input type="text" name="noidung">
+            <input type="hidden" name="ngoinhagaubong" value="<?=$product_id?>">
+            <input type="text" name="description">
             <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
         </form>
         <section class="main">
@@ -33,9 +33,9 @@
                     <?php
                         foreach ($dsbl as $bl){
                             extract($bl);
-                            echo'<tr><td>'.$noidung.'</td>';
-                            echo'<td>'.$iduser.'</td>';
-                            echo'<tr><td>'.$ngaybinhluan.'</td></tr>';
+                            echo'<tr><td>'.$description.'</td>';
+                            echo'<td>'.$user_id.'</td>';
+                            echo'<tr><td>'.$time.'</td></tr>';
                         }
                     ?>
                 </table>
@@ -45,11 +45,11 @@
 
           <?php
             if(isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])){
-                $noidung=$_POST['noidung'];
-                $idpro=$_POST['idpro'];
-                $iduser=$_SESSION['user']['id'];
-                $ngaybinhluan=date('h:i:sa d/m/Y');
-                insert_binhluan($noidung,$iduser,$idpro,$ngaybinhluan);
+                $description=$_POST['description'];
+                $product_id =$_POST['product_id '];
+                $user_id=$_SESSION['user']['id'];
+                $time=date('h:i:sa d/m/Y');
+                insert_binhluan($description,$user_id,$product_id,$time);
                 header("Location:".$_SERVER['HTTP_REFERER']);
             }
           ?>

@@ -1,39 +1,20 @@
 <?php
-function add_binhluan($noidung, $iduser, $idpro, $ngaybinhluan)
+function insert_binhluan($description, $user_id, $product_id, $time)
 {
-    $sql = "INSERT INTO `duanmau`.`binhluan` (`noidung`, `iduser`, `idpro`, `ngaybinhluan`)  VALUE ('$noidung', $iduser, $idpro, '$ngaybinhluan')";
+    $sql = "insert into comment(description,user_id,product_id,time)  values ('$description', '$user_id', '$product_id', '$time')";
     pdo_execute($sql);
 }
 
-function get_binhluan($idpro)
-{
-    $sql = "SELECT binhluan.noidung, binhluan.ngaybinhluan, taikhoan.`user` FROM binhluan INNER JOIN taikhoan ON binhluan.iduser = taikhoan.id WHERE binhluan.idpro = $idpro";
-    $listbinhluan = pdo_query($sql);
-
-    return $listbinhluan;
-}
-
-function get_list_binhluan()
-{
-    $sql = "SELECT binhluan.id, binhluan.noidung, binhluan.ngaybinhluan, taikhoan.`user`, sanpham.`name` as pro FROM binhluan INNER JOIN taikhoan ON binhluan.iduser = 
-            " . "taikhoan.id INNER JOIN sanpham ON binhluan.idpro = sanpham.id";
-    $listbinhluan = pdo_query($sql);
-
-    return $listbinhluan;
-}
-
-function delete_binhluan($id)
-{
-    $sql = "DELETE FROM `duanmau`.`binhluan` WHERE `id` = $id;";
+function delete_binhluan($product_id){
+    $sql=" delete from binhluan where id=".$id;
     pdo_execute($sql);
 }
 
-function delete_binhluan_check($_id)
+function get_binhluan($product_id)
 {
-    $sqlId = join(' OR ', array_map(function ($id) {
-        return '`id` =' . $id;
-    }, $_id));
-
-    $sql = "DELETE FROM `duanmau`.`binhluan` WHERE $sqlId;";
-    pdo_execute($sql);
+    $sql = "select * from comment where 1";
+    if ($product_id>0) $sql .=" AND product_id='".$product_id."'";
+    $sql.=" order by id desc";
+    $listbl = pdo_query($sql);
+    return $listbl;
 }
