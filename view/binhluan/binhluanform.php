@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="..view/layout/assets/style.css">
+    <link rel="stylesheet" href="../layout/assets/style.css">
 </head>
 <body>
 <section class="comment">
@@ -30,14 +30,29 @@
               <div class="attendance-list">
                 <h1>List comment</h1>
                 <table class="table">
-                    <?php
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name Product</th>
+                      <th>Name User</th>
+                      <th>Comment Content</th>
+                      <th>Date</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
                         foreach ($dsbl as $bl){
                             extract($bl);
-                            echo'<tr><td>'.$description.'</td>';
-                            echo'<td>'.$user_id.'</td>';
-                            echo'<tr><td>'.$time.'</td></tr>';
+                            echo'<tr><td>'.$id.'</td>';
+                            echo'<td>'.$product_id .'</td>';
+                            echo'<td>'.$user_id .'</td>';
+                            echo'<td>'.$description.'</td>';
+                            echo'<td>'.$time.'</td></tr>';
                         }
                     ?>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </section>

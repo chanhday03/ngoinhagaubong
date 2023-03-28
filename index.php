@@ -38,9 +38,9 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 include 'view/home.php';
             }
             break;
-        case 'dsbl':
-            $listbinhluan=loadall_binhluan();
-            break;
+        // case 'dsbl':
+        //     $listbinhluan=loadall_binhluan();
+        //     break;
         case 'gioithieu':
             include"view/gioithieu.php";
             break;
