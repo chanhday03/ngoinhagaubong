@@ -48,10 +48,9 @@ if (isset($_GET['act'])) {
                 $iddm = $_POST['iddm'];
                 $tensp = $_POST['tensp'];
                 $motasp = $_POST['motasp'];
-                
+                $khuyenmai = $_POST['khuyenmai'];
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
-                $khuyenmai = $_POST['khuyenmai'];
                 $hinh = $_FILES['hinh']['name'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);

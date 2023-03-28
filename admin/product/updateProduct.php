@@ -30,21 +30,23 @@
                     <textarea rows="10" cols="30" name="motasp" id=" product-description"
                         value="<?= $productDesc ?>"></textarea>
                 </div>
+                
                 <div class="row mb10">Hình ảnh<br>
                     <input type="file" name="hinh">
+                    
                 </div>
                 <input type="hidden" name="oldImage" value="<?= $productImage?>">
-                
-        </div>
+  
+         </div>
         <div class="row mb10">Giá<br>
-            <input type="text" name="giasp" id="product-price" value="<?= $productPrice ?>">
+            <input type="text" name="giasp" id="product-price" value="<?= $productPrice?>">
         </div>
         <div class="row mb10">Size<br>
             <input type="text" name="sizesp" id="product-size" value="<?= $productSize ?>">
         </div>
-        <div class="row mb10">Khuyến mãi<br>
-        <input type="text" name="khuyenmai" id="product-promotion" value="<?= $productPromotion?>">
-        </div>
+        <div class="row mb10"> Khuyến mãi sản phẩm<br>
+                <input type="text" name="khuyenmai" id="product-promotion" value="<?= $productPromotion?>">
+                </div>
 
         <div class="row mb10">
             <input type="hidden" name="id" value="<?=$id?>">

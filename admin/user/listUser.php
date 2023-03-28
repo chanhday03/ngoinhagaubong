@@ -11,6 +11,7 @@
                 <th>Tên đăng nhập</th>
                 <th>Email</th>
                 <th>Mật khẩu</th>
+                <th>Hình ảnh</th>
                 <th>Điện thoại</th>
                 <th>Địa chỉ</th>
                 <th>Vai trò</th>
@@ -24,12 +25,14 @@
                     echo '<tr>
                     <td><input type="checkbox"></td>
                     <td>' . $id . '</td>
-                    <td>'.$name.'</td>
-                    <td>' . $userName . '</td>
+                    <td>'.$fname.'</td>
+                    <td>' . $username . '</td>
                     <td>' . $email. '</td>
-                    <td>' . $passWord. '</td>
-                    <td>' . '</td>
-                    <td>' . $address . '</td>
+                    <td id="pass">' . $password. '</td>
+                    <td><img src="../upload/'.$pp.'" alt="Lỗi ảnh" /></td>
+                    <td>' . $adress . '</td>
+                    <td>' . $phone. '</td>
+                    
                     <td>' . $role . '</td>
                     <td>
                        <a href="'.$xoatk.'"><i class="fa-solid fa-trash"></i></a>
@@ -59,6 +62,14 @@
         color: greenyellow;
         font-size: 30px;
         margin-right: 30px;
+    }
+    img{
+        height:50px;
+        width: 40px;
+    }
+    #pass{
+        max-width: 300px;
+    word-wrap: break-word;
     }
     </style>
 </body>

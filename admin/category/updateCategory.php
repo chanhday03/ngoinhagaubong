@@ -13,6 +13,11 @@
     extract($dm);
     }
 ?>
+<?php
+    if(is_array($dm)){
+    extract($dm);
+    }
+?>
 <section class="main">
     <div class="attendance">
         <div class="attendance-list">
