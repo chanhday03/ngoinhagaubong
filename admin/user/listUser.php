@@ -68,7 +68,7 @@
         width: 40px;
     }
     #pass{
-        max-width: 300px;
+        max-width: 250px;
     word-wrap: break-word;
     }
     </style>
