@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php 
+
+$sName = "localhost";
+$uName = "root";
+$pass = "";
+$db_name = "ngoinhagaubong";
+
+try {
+    $conn = new PDO("mysql:host=$sName;dbname=$db_name", 
+                    $uName, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}catch(PDOException $e){
+  echo "Connection failed : ". $e->getMessage();
+}
+?>
+<?php
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
+
+include 'model/user.php';
+$user = getUserById($_SESSION['id'], $conn);
+}
+ ?>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ngôi nhà gấu bông</title>
+    <link rel="stylesheet" href="view/layout/assets/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script
+      src="https://kit.fontawesome.com/62fe7548c5.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <a href="" class="logo">
+            <img src="https://i.pinimg.com/564x/63/e4/c9/63e4c923c2467000cf6dbb3a0499bf61.jpg" alt="" />
+        </a>
+        <div class="fa-solid fa-bars" id="menu-icon"></div>
+        <div class="navbar">
+            <a href="#home" class="home-active">Trang Chủ</a>
+            <a href="#">Giới thiệu</a>
+            <div class="dropdown">
+                <button class="dropbtn">Sản phẩm
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Gấu bông</a>
+                    <a href="#">Phụ Kiện</a>
+                </div>
+            </div>
+            <a href="#">Liên Hệ</a>
+            <a href="#">Góp Ý</a>
+            <a href="#">Khám phá</a>
+        </div>
+        <div class="icons">
+            <a href="#" class="fa-solid fa-heart"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+        </div>
+        <form action="index.php?act=timkiem" method="POST">
+            <input type="text" name="keyword" id="" placeholder="Search ... " required=""/>
+            <button type="submit" name="timkiem" class="btn_search" id="search-icon"><i class="fas fa-search" ></i></button>
+        </form>
+        <div class="profile">
+
+            <?php
+   
+             if (isset($user)) { ?>
+            <div class="d-flex justify-content-center align-items-center vh-100">
+
+                <div class="shadow w-350 p-3 text-center">
+                    <div class="profile2">
+                        <img id="profileimg" src="upload/<?=$user['pp']?>" class="img-fluid rounded-circle">
+                        <h3 class="display-4 "><?=$user['fname']?></h3>
+                    </div>
+
+                    <a href="view/taikhoan/edit.php" class="btn btn-primary">
+                        Edit Profile
+                    </a>
+                    <a href="view/taikhoan/logout.php" class="btn btn-warning">
+                        Logout
+                    </a>
+                </div>
+            </div>
+            <?php }else { 
+                  echo '<div class="navlogin">
+                   <ul>
+               <a href="view/taikhoan/login.php">
+                 <li>Đăng nhập</li>
+               </a>
+                <a href="view/taikhoan/signup.php">
+                <li>Đăng ký</li>
+                  </a>
+                </ul>';
+              exit;
+             } ?>
+
+        </div>
+
+    </header>
+    <style>
+        #search-icon{
+            border:none;
+            background-color: transparent;
+        }
+        header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fbfdfc;
+  box-shadow: 0 8px 11px rgba(14 55 54 / 15%);
+  padding: 20px 10px;
+  transition: 0.5s;
+  font-family: Pacifico;
+}
+.logo img {
+  width: 90px;
+  height: 80px;
+}
+header form input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+}
+header form i {
+  font-size: 20px;
+  color: var(--light-brown-color);
+  cursor: pointer;
+}
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+}
+.profile2{
+  display: grid;
+  grid-template-columns: 50px 1fr ;
+
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile span {
+  font-size: 13px;
+  font-weight: 500;
+}
+        .profile2{
+  display: grid;
+  grid-template-columns: 50px 1fr ;
+
+}
+        #profileimg{
+            width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.navlogin{
+    display: grid;
+  grid-template-columns: 1fr ;
+}
+    </style>
