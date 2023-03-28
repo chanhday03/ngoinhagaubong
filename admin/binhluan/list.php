@@ -37,7 +37,6 @@
                       <th></th>
                     </tr>
                   </thead>
-
                   <tbody>
                     <?php
                         foreach($listbinhluan as $binhluan){
