@@ -104,48 +104,7 @@ img {
             <h1>Bình luận sản phẩm<br /><span>comment products</span></h1>
         </div>
         <div class="form-commnet">
-            <form action="" method="POST">
-                <input type="hidden" name="id" value="">
-                <input type="text" name="noidung">
-                <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
-            </form>
-            <section class="main">
-                <section class="attendance">
-                    <div class="attendance-list">
-                        <h1>List comment</h1>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name User</th>
-                                    <th>Comment Content</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>01</td>
-                                    <td>Sam David</td>
-                                    <td>San pham ok</td>
-                                    <td>03-24-22</td>
-                                    <td><button>Delete</button></td>
-                                    <td><button>Edit</button></td>
-                                </tr>
-                                <tr class="active">
-                                    <td>02</td>
-                                    <td>Balbina Kherr</td>
-                                    <td>san pham xau qua</td>
-                                    <td>03-24-22</td>
-                                    <td><button>Delete</button></td>
-                                    <td><button>Edit</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </section>
+            <iframe src="view/binhluan/binhluanform.php?idpro=<?$id?>" frameborder="0" width="100%" height="300px"></iframe>
         </div>
     </section>
 
