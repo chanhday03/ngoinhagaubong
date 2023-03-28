@@ -77,18 +77,6 @@ header form i {
   display: flex;
   gap: 20px;
 }
-/* .profile img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-  overflow: hidden;
-} */
-/* .profile span {
-  font-size: 13px;
-  font-weight: 500;
-} */
 .navbar {
   font-family: Pacifico;
   display: flex;
@@ -581,7 +569,7 @@ footer {
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   margin-top: 20px;
   background-color: #fcfbf9;
@@ -730,7 +718,7 @@ footer {
   width: 25%;
   border: none;
 }
-.btn1:hover {
+.prodetails .btn:hover {
   background-color: #a68567;
   color: white;
 }

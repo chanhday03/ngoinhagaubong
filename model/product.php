@@ -44,8 +44,8 @@ function loadall_product($kyw="",$iddm=0){
         $sp = pdo_query_one($sql); 
         return $sp; 
     }
-    function load_product_cungloai($id,$iddm){ 
-        $sql = "SELECT * FROM product WHERE category_id = ".$iddm." AND id <> ".$id; 
+    function load_product_cungloai($id,$category_id){ 
+        $sql = "SELECT * FROM product WHERE category_id = ".$category_id." AND id <> ".$id; 
         $listproduct = pdo_query($sql); 
         return $listproduct; 
     } 

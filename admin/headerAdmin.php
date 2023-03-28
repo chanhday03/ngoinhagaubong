@@ -156,7 +156,6 @@
         border-radius: 12px;
         background: #4AD389;
         cursor: pointer;
-        ;
     }
 
     .header-select {
@@ -167,7 +166,7 @@
         border: 1px solid red;
     }
 
-    s h1 {
+    h1 {
         color: black;
         text-align: center;
     }

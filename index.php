@@ -32,7 +32,7 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 $id = $_GET['idsp'];
                 $onesp = loadone_product($id);
                 extract($onesp);
-                $sp_cung_loai = load_product_cungloai($id,$iddm);
+                $sp_cung_loai = load_product_cungloai($id,$category_id);
                 include 'view/sanphamct.php';
             } else {
                 include 'view/home.php';

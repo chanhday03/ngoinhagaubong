@@ -154,23 +154,24 @@ img {
             <h1>Sản phẩm cùng loại<br /><span>same products</span></h1>
         </div>
         <div class="products-container">
-            <div class="box">
-                <!-- <img src="./assets/images/products_thobong.jpg" alt="" />
-                <h2 class="name"><a href="">THỎ BÔNG ĐEO SAO</a></h2>
-                <h3 class="price">
-                    199.000 <ins>đ</ins><span class="size">/ 48cm</span>
-                </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span> -->
-                <?php
+            <?php
                 foreach ($sp_cung_loai as $sp_cung_loai) {
                     extract($sp_cung_loai);
+                    $hinh = $img_path.$productImage;
                     $linksp = "index.php?act=sanphamct&idsp=".$id;
-                    echo ' <li><a href=" '.$linksp.' ">'.$productName.'</a></li>';
+                    echo '<div class="box">
+                        <img src="'.$hinh.'"
+                            alt="">
+                        <h2 class="name"><a href="'.$linksp.'">Name : '.$productName.'</a></h2>
+                        <h3 class="price"> Price : 
+                        '.$productPrice.'  <ins>đ</ins> <span class="size">/ Size :  '.$productSize.' cm</span>
+                        </h3>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i class="fa-solid fa-heart"></i>
+                        <span class="discount">- '.$productPromotion.'%</span>
+                    </div>';
                 }
-         ?>
-            </div>
+                ?>
         </div>
     </section>
 </body>

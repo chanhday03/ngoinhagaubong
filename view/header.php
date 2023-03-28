@@ -25,7 +25,7 @@
         </a>
         <div class="fa-solid fa-bars" id="menu-icon"></div>
         <div class="navbar">
-            <a href="#home" class="home-active">Trang Chủ</a>
+            <a href="index.php">Trang Chủ</a>
             <a href="#">Giới thiệu</a>
             <div class="dropdown">
                 <button class="dropbtn">Sản phẩm
