@@ -21,11 +21,11 @@
                 <div class="row mb10"> Tên Loại<br>
                     <input type="text" name="tenloai" id="ten-loai">
                 </div>
-                <div class="row mb10">
+                <div class="nut">
                     <input type="submit" name="themmoi" value="Thêm Mới" class="btn">
                     <input type="reset" value="Nhập Lại" class="btn">
                     <a href=" index.php?act=listdm">
-                        <input type="button" value="Danh Sách" class="btn">
+                        <input type="button" value="Danh Sách">
                     </a>
                 </div>
                 <?php

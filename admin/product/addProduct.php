@@ -74,7 +74,7 @@
                 <div class="row mb10">Hình ảnh<br>
                     <input type="file" name="hinh">
                 </div>
-                <div class="row mb10">
+                <div class="nut">
                     <input type="submit" name="themmoi" value="Thêm Mới" class="btn">
                     <input type="reset" value="Nhập Lại" class="btn">
                     <a href="index.php?act=listsp">
