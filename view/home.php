@@ -7,11 +7,10 @@
             <?php 
 foreach ($dsdm as $dm) {
     extract($dm);
-    $linkdm = "index.php?act=sanphamct&idsp=".$id;
+    $linkdm = "index.php?act=sanpham&iddm=".$id;
     echo '<li>
     <a href="'.$linkdm.'">'.$categoryName.'</a>
 </li>';
-    # code...
 }
             ?>
             <!-- <li>
@@ -48,18 +47,6 @@ foreach ($dsdm as $dm) {
         </div>';
         }
         ?>
-
-        <!-- <div class="box box2">
-                <img src="https://i.pinimg.com/236x/b4/33/04/b43304ffe75fe4e7cfa6c9d5ea2398da.jpg" alt="" />
-                <h2><a href="">Cây nấm</a></h2>
-                <i class="fa-solid fa-arrow-right"></i>
-            </div>
-            <div class="box box3">
-                <img src="https://i.pinimg.com/564x/75/e9/51/75e9514a3f6d4b4fcc338aa52dc1cb1a.jpg" alt="" />
-                <h2><a href="">Chim cánh cụt</a></h2>
-                <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          -->
     </div>
 </section>
 <div class="sliderImage">
@@ -113,17 +100,5 @@ foreach ($dsdm as $dm) {
             }
             ?>
     </div>
-    <!-- <div class="box">
-            <img src="https://lzd-img-global.slatic.net/g/p/4e24af3f54a89474fcdf303b17b9ccc2.jpg_720x720q80.jpg_.webp"
-                alt="" />
-            <h2 class="name"><a href="">Gấu Bông Lotso Huggin Bea</a></h2>
-            <h3 class="price">
-                199.000 <ins>đ</ins><span class="size">/ 48cm</span>
-            </h3>
-            <i class="fa-solid fa-cart-shopping"></i>
-            <i class="fa-solid fa-heart"></i>
-            <span class="discount">-5%</span>
-        </div>
-        -->
     </div>
 </section>

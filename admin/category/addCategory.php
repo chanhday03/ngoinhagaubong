@@ -25,7 +25,7 @@
                     <input type="submit" name="themmoi" value="Thêm Mới" class="btn">
                     <input type="reset" value="Nhập Lại" class="btn">
                     <a href=" index.php?act=listdm">
-                        <input type="button" value="Danh Sách">
+                        <input type="button" value="Danh Sách" class="btn">
                     </a>
                 </div>
                 <?php

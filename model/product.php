@@ -32,9 +32,10 @@ function loadall_product($kyw="",$iddm=0){
 } 
     function load_ten_dm($iddm){ 
         if($iddm > 0 ) { 
-            $sql = "SELECT * FROM category WHERE category_id=".$iddm; $dm = pdo_query_one($sql); 
+            $sql = "SELECT * FROM category WHERE id=".$iddm; 
+            $dm = pdo_query_one($sql); 
             extract($dm); 
-            return $productName; 
+            return $categoryName; 
         }else{ 
             return ""; 
         } 
