@@ -89,6 +89,8 @@ $user = getUserById($_SESSION['id'], $conn);
                     </a>
                 </div>
             </div>
+            </header>
+            </div>
             <?php }else { 
                   echo '<div class="navlogin">
                    <ul>
@@ -98,10 +100,12 @@ $user = getUserById($_SESSION['id'], $conn);
                 <a href="view/taikhoan/signup.php">
                 <li>Đăng ký</li>
                   </a>
-                </ul>';
-              exit;
+                </ul>
+                </div>
+                </header>';
+      
+             
              } ?>
 
-        </div>
+      
 
-    </header>
