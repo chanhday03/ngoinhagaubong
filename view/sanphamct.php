@@ -131,8 +131,8 @@ img {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>01</td>
-                                    <td>Sam David</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>San pham ok</td>
                                     <td>03-24-22</td>
                                     <td><button>Delete</button></td>
