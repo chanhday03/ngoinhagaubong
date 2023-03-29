@@ -22,6 +22,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
 include 'model/user.php';
 $user = getUserById($_SESSION['id'], $conn);
 }
+
  ?>
 
 <head>
@@ -30,6 +31,8 @@ $user = getUserById($_SESSION['id'], $conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ngôi nhà gấu bông</title>
     <link rel="stylesheet" href="view/layout/assets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="view/layout/assets/style2.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script
       src="https://kit.fontawesome.com/62fe7548c5.js"
@@ -69,11 +72,9 @@ $user = getUserById($_SESSION['id'], $conn);
             <button type="submit" name="timkiem" class="btn_search" id="search-icon"><i class="fas fa-search"></i></button>
         </form>
         <div class="profile">
-
             <?php
-   
-             if (isset($user)) { ?>
-            <div class="d-flex justify-content-center align-items-center vh-100">
+               if (isset($user)) { ?>
+                 <div class="d-flex justify-content-center align-items-center vh-100">
 
                 <div class="shadow w-350 p-3 text-center">
                     <div class="profile2">

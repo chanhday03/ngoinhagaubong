@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIAO HÀNG</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/style2.css">
+</head>
+<style>
+  /*  */
+  .delivery{
+    margin-top: 150px;
+}
+.delivery-content-right{
+    border-left: solid lightgray;
+}
+.delivery-top-wap{
+    border: 1px solid lightgray;
+    border-radius: 30px 0px 30px 0px;
+}
+
+.cart-top-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart-top{
+  height: 2px;
+  width: 70%;
+  background-color: #dddddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0 100px;
+}
+.cart-top-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: 1px solid #dddddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.cart-top-item {
+  color: #dddddd;    
+  border: 1px solid #0db7ea;
+}
+.cart-top-cart .fa-location-dot{
+  color: #0db7ea;
+}
+/* css process status order */
+#bar-progress {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+#bar-progress .step {
+    display: inline-block;
+}
+
+#bar-progress .step .number-container {
+    display: inline-block;
+    border: solid 1px #000;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+}
+
+#bar-progress .step.step-active .number-container {
+    background-color: #000;
+}
+#bar-progress .step.step-active .number-container {
+    background-color: #000;
+}
+#bar-progress .step.step-order .number-container {
+    background-color: #000;
+    color: white;
+}
+.seperator{
+    background-color: #000;
+}
+#bar-progress .step .number-container .number {
+    font-weight: 700;
+    font-size: .8em;
+    line-height: 1.75em;
+    display: block;
+    text-align: center;
+}
+
+#bar-progress .step.step-active .number-container .number {
+    color: white;
+}
+
+#bar-progress .step h5 {
+    display: inline;
+    font-weight: 100;
+    font-size: .8em;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+#bar-progress .seperator {
+    display: block;
+    width: 20px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, .2);
+    margin: auto 20px;
+}
+</style>
+<body>
+    <!-- delivery : giao  hàng -->
+    <section class="delivery">
+        <div class="container">
+            <div class="cart-top-wrap">
+                <div class="cart-top">
+                    <div class="cart-top-cart cart-top-item">
+                        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <div class="cart-top-cart cart-top-item">
+                        <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="cart-top-cart cart-top-item">
+                        <i class="fa-regular fa-credit-card"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="delivery-content row">
+                    <div class="delivery-content-left col-md-5">
+                        <div class="form-check">
+                            <p>Vui lòng chọn địa chỉ giao hàng</p>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label">
+                                <p><span class="col-11" style="font-weight:
+                                            bold;">Khách lẻ</span> (Nếu bạn
+                                    không muốn lưu lại thông tin)</p>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                checked>
+                            <label class="form-check-label">
+                                <p><span class="col-11" style="font-weight:
+                                            bold;">Đăng ký</span> (Tạo mới tài
+                                    khoản với thông tin bên dưới)</p>
+                            </label>
+                        </div>
+                        <div class="form-infor row">
+                            <div class="form-infor-left col-md-6">
+                                <div class="form-group">
+                                    <label>Họ tên <code>*</code></label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Tỉnh/Tp <code>*</code></label>
+                                    <select class="form-control">
+                                        <option selected>Chọn Tỉnh/Tp</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-infor-right col-md-6">
+                                <div class="form-group">
+                                    <label>Điện thoại <code>*</code></label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Quận/Huyện <code>*</code></label>
+                                    <select class="form-control">
+                                        <option selected>Chọn Quận/Huyện</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-infor-bottom col-md-12 mt-2">
+                                <div class="form-group">
+                                    <label>Phường/Xã <code>*</code></label>
+                                    <select class="form-control">
+                                        <option selected>Chọn Phường/Xã</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Địa chỉ <code>*</code></label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group back-to-order row mt-2">
+                                <a href="#" class="text-decoration-none
+                                        col-md-6" style="color: orange;">
+                                    << Quay lại giỏ hàng</a>
+                                        <button type="button" class="btn-light
+                                        col-md-6 border font-weight-bold">THANH
+                                            TOÁN VÀ GIAO HÀNG</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="delivery-content-right col-md-6 offset-1">
+                        <table class="table table-hover table-bordered">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giảm giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Áo polo kẻ ngang MS 57E2940</td>
+                                    <td>-30%</td>
+                                    <td>1</td>
+                                    <td>
+                                        <p>590.000 <sup>đ</sup></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Áo polo kẻ ngang MS 57E2940</td>
+                                    <td>-30%</td>
+                                    <td>1</td>
+                                    <td>
+                                        <p>590.000 <sup>đ</sup></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center ">
+                                        <b>Tổng</b>
+                                    </td>
+                                    <td><b>1.080.000 <sup>đ</sup></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <hr style="font-weight: bold;">
+    <footer class="footer" id="footer">
+        <img src="https://img.freepik.com/premium-vector/cute-teddy-bear-logo-template_83738-274.jpg?w=2000" alt="" /> 
+        <div class="footer-box">   
+          <h3>Contact</h3>
+          <p><h4>Address :</h4> so 1 Trinh Van Bo , Nam Tu Liem , Ha Noi</p>
+          <p><h4>Phone :</h4>+01 2222 365 / (+91) 01 2345 6789</p>
+          <p><h4>Hours :</h4> :  10:00 - 18:00 , Mon - Sat</p>    
+          <div class="social">
+            <h3>Follow Us</h3>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-twitter"></i></a>
+            <a href=""><i class="fa-brands fa-github"></i></a>       
+          </div>
+        </div> 
+    
+        <div class="footer-box">
+          <h2>Categories</h2>
+          <a href="">Gấu bông</a>
+          <a href="">Thỏ bông</a>
+          <a href="">Gấu bông</a>
+        </div>
+        <div class="footer-box">
+          <h2>Usefull Links</h2>
+          <a href="">Payment & Tax</a>
+          <a href="">Term of Use</a>
+          <a href="">My Blog</a>
+          <a href="">Return Policy</a>
+        </div>
+        <div class="footer-box">
+          <h2>Newsletter</h2>
+          <p>
+            Get 10% Discount with <br />
+            Email Newsletter
+          </p>
+          <form action="">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" name="" id="" placeholder="Enter Your Mail" />
+            <i class="fa-solid fa-arrow-right"></i>
+          </form>
+        </div>
+      </footer>
+
+</body>
+
+</html>

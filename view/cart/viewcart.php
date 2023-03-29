@@ -265,13 +265,16 @@
                         <br>
                      
                        
-                        <td colspan="2">Tổng tiền giỏ hàng</td>
+                        <td >Tổng tiền giỏ hàng</td>
+                       
                         <td></td>
                         <td></td>
+                        <td></td>  
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                       <td  id="tongtien">  '.$tong.'<sup>vnđ</sup></td>
                        
-                       
-                       <td colspan="7" id="tongtien">  '.$tong.'<sup>vnđ</sup></td>
-                       <td></td>
                         ';?> 
                            
                     </table>
@@ -284,7 +287,8 @@
                     </div>
                     <div class="cart-content-right-button">
                         <a href="index.php"><button>TIẾP TỤC MUA SẮM</button></a>
-                        <button>THANH TOÁN</button>
+                        <a href="index.php?act=bill
+                        "><button>THANH TOÁN</button></a>
                     </div>
                     <div class="cart-content-right-dangnhap">
                         <p>Tài khoản TeddyShop</p> <br>

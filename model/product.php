@@ -25,9 +25,10 @@ function loadall_product($kyw="",$iddm=0){
     if($kyw != "" ){
         $sql .= "  and productName like '%".$kyw."%'"; 
     }
-    if($iddm >
-0 ){ $sql .= " and category_id = '".$iddm."'"; } $sql .=" ORDER BY id DESC ";
-$listproduct = pdo_query($sql); return $listproduct; } 
+    if($iddm >0 ){ $sql .= " and category_id = '".$iddm."'"; }
+     $sql .=" ORDER BY id DESC ";
+$listproduct = pdo_query($sql);
+ return $listproduct; } 
 
 function load_ten_dm($iddm){ if($iddm > 0 ) { 
     

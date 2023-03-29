@@ -6,6 +6,7 @@ include 'model/product.php';
 include 'model/category.php';
 include 'global.php';
 include 'view/header.php';
+include 'model/cart/cart.php';
 $spnew = loadall_product_home();
 $dsdm = loadall_category();
 $dstop10 = loadall_product_top10();
@@ -52,7 +53,38 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
               break;
         case 'viewcart':
                 include "view/cart/viewcart.php";
-                break;            
+                break; 
+                
+         case 'bill':
+             include "view/cart/bill.php";
+         break;     
+         case 'billconfirm':{
+            if(isset($_POST['btn_hoaDon'])&&($_POST['btn_hoaDon'])){
+                $name = $_POST["fname"];
+                $phone = $_POST["phone"];
+                $adress = $_POST["adress"];
+                $note = $_POST["note"];
+                $email = $_POST["email"];
+                $user_id = $user["id"];
+                $total_money=$_POST["tongtien"];
+                $created = date('h:i:sa d/m/Y');
+                $status = 0;
+               
+                $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money,$created);
+                foreach($_SESSION["mycart"] as $cart){
+                  $product_id= $cart[0];
+                  $name = $cart[1];
+                  $images = $cart[2];
+                  $size = $cart[3];
+                  $num= $cart[4];
+                  $price = $cart[5];
+                   $khuyenmai= $cart[6];
+                   insert_order_detail($user_id,$order_id,$product_id,$images,$price,$num,$total_money);}
+              }
+            include "view/cart/billconfirm.php";
+        break; 
+         }
+             
         case 'gioithieu':
             include "view/gioithieu.php";
             break;
