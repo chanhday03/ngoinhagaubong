@@ -147,6 +147,7 @@ header form i {
   color: tomato;
 }
 form #search-icon {
+  top:0;
   color: #a68567;
   font-size: 20px;
 }
@@ -329,6 +330,18 @@ form #search-icon:hover {
 }
 .categories-container .box:nth-child(odd) {
   background-color: #eeeff4;
+}
+.categories .heading form input[type="submit"] , input[type="text"]{
+padding: 10px 15px;
+border-radius: 3px;
+outline: none;
+border: none;
+background-color: #a68567;
+color: white;
+}
+.categories .heading form input[type="submit"]:hover , input[type="text"]:hover{
+background-color: #23e172;
+color: white;
 }
 /* slideImage */
 .sliderImage {
@@ -720,6 +733,7 @@ footer {
 }
 .prodetails .btn:hover {
   background-color: #a68567;
+  box-shadow: 0 0 30px rgb(169, 148, 132);
   color: white;
 }
 .desc {

@@ -43,16 +43,7 @@
             <a href="#" class="fa-solid fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
         </div>
-        <form action="index.php?act=sanpham" method="post">
-            <input type="text" name="kyw" id="" />
-            <a class="fa-solid fa-magnifying-glass" id="search-icon">
-                <input type="submit" name="timkiem" value="Search">
-            </a>
-        </form>
-        <!-- <form action="">
-            <input type="email" name="" id="" placeholder="Search ... " />
-            <a class="fa-solid fa-magnifying-glass" id="search-icon"></a>
-        </form> -->
+
         <div class="profile">
             <?php 
             if(isset($_SESSION['user'])){

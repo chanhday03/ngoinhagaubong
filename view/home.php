@@ -13,26 +13,17 @@ foreach ($dsdm as $dm) {
 </li>';
 }
             ?>
-            <!-- <li>
-                <a href="#">Gấu bông</a>
-            </li>
-            <li>
-                <a href="#">Phụ kiện</a>
-            </li> -->
         </ul>
     </div>
-    <!-- <form action="index.php?act=sanpham" method="post">
-        <input type="text" name="kyw" id="" placeholder="Search ... " />
-        <a class="fa-solid fa-magnifying-glass" id="search-icon">
-            <input type="submit" name="timkiem" value="Search">
-        </a>
-    </form> -->
 </div>
 <!-- categories -->
 <section class="categories" id="categories">
     <div class="heading">
         <h1>Top 10 Sản phẩm được yêu thích nhất<br /><span>Teddyshop</span></h1>
-        <a href="#" class="btn">Order now<i class="fa-solid fa-circle-right"></i></a>
+        <form action="index.php?act=sanpham" method="post">
+            <input type="text" name="kyw" placeholder="Tên sản phẩm bạn muốn.." />
+            <input type="submit" name="timkiem" value="Tìm">
+        </form>
     </div>
     <div class="categories-container">
         <?php 

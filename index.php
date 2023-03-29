@@ -23,7 +23,7 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             } else {
                 $iddm = 0;
             }
-            $dssp = loadall_product("", $iddm);
+            $dssp = loadall_product($kyw, $iddm);
             $tendm = load_ten_dm($iddm);
             include 'view/sanpham.php';
             break;
