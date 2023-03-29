@@ -42,8 +42,7 @@
                         foreach($listbinhluan as $binhluan){
                             extract($binhluan);
                             $xoabl= "index.php?act=xoabl&id=".$id;
-                            echo 
-                        '<tr>
+                            echo  '<tr>
                             <td><input type="checkbox" name="" id=""></td>
                             <td> '.$id.' </td>
                             <td> '.$product_id.' </td>

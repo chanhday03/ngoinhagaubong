@@ -22,7 +22,7 @@
           <div class="form-commnet">
         <form action="<?=$_SERVER['PHP_SELF'];?>" method="POST">
             <input type="hidden" name="ngoinhagaubong" value="<?=$product_id?>">
-            <input type="text" name="description">
+           <input type="text" name="description">
             <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
         </form>
         <section class="main">

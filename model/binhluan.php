@@ -7,9 +7,16 @@ function insert_binhluan($description, $user_id, $product_id, $time)
 
 function delete_binhluan($product_id){
     $sql=" delete from binhluan where id=".$id;
+
     pdo_execute($sql);
 }
+// function delete_binhluan($id){
+//     $sql=" delete from comment where id=".$id;
+//    // $sql=" delete from comment where product_id = ".$product_id;
+// //    $sql=" delete from comment where id=".$id;
 
+//     pdo_execute($sql);
+// }
 function get_binhluan($product_id)
 {
     $sql = "select * from comment where 1";
@@ -18,3 +25,11 @@ function get_binhluan($product_id)
     $listbl = pdo_query($sql);
     return $listbl;
 }
+// function get_binhluan($id)
+// {
+//     $sql = "select * from comment where 1";
+//     if ($id>0) $sql .=" AND id='".$id."'";
+//     $sql.=" order by id desc";
+//     $listbl = pdo_query($sql);
+//     return $listbl;
+// }
