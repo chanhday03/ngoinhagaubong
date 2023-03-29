@@ -4,6 +4,8 @@ session_start();
 include 'model/pdo.php';
 include 'model/product.php';
 include 'model/category.php';
+include 'model/comment.php';
+include "model/user.php";
 include 'global.php';
 include 'view/header.php';
 if (!isset($_SESSION["addtocart"])) $_SESSION["addtocart"]=[];
@@ -32,6 +34,9 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
                 $onesp = loadone_product($id);
+                $cmsp=loadall_comment_theosp($id);
+                extract($cmsp);
+               
                 extract($onesp);
                 // $sp_cung_loai = load_product_cungloai($id,$iddm);
                 include 'view/sanphamct.php';
@@ -39,6 +44,25 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 include 'view/home.php';
             }
             break;
+        case 'addcomment':
+            $user_id = $_SESSION ['id'];
+            $description = $_POST["description"];
+            $product_id = $_GET['idsp'];
+            if (isset($_POST["guibinhluan"])){
+                if(empty($description)){
+                    $thongbao ='Bạn đang để trống nội dung bình luận';
+                    header("location:index.php?act=sanphamct&idsp=".$product_id);
+                }else{
+                    add_comment($product_id,$user_id,$description);
+                    header("location:index.php?act=sanphamct&idsp=".$product_id);
+               }
+            }
+            break;
+        case 'delcomment':
+            $product_id = $_GET['idsp'];
+            delete_comment($_GET["idcm"]);
+            header("location:index.php?act=sanphamct&idsp=".$product_id);
+        break;
         case 'gioithieu':
             include"view/gioithieu.php";
             break;
