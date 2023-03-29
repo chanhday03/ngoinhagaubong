@@ -45,7 +45,7 @@ $user = getUserById($_SESSION['id'], $conn);
         </a>
         <div class="fa-solid fa-bars" id="menu-icon"></div>
         <div class="navbar">
-            <a href="#home" class="home-active">Trang Chủ</a>
+            <a href="index.php" class="home-active">Trang Chủ</a>
             <a href="#">Giới thiệu</a>
             <div class="dropdown">
                 <button class="dropbtn">Sản phẩm
@@ -62,7 +62,7 @@ $user = getUserById($_SESSION['id'], $conn);
         </div>
         <div class="icons">
             <a href="#" class="fa-solid fa-heart"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="index.php?act=viewcart" class="fas fa-shopping-cart"></a>
         </div>
         <form action="index.php?act=timkiem" method="POST">
             <input type="text" name="keyword" id="" placeholder="Search ... " required=""/>

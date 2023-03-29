@@ -142,7 +142,14 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`id`, `productName`, `productDesc`, `productImage`, `productPrice`, `productSize`, `productPromotion`, `productView`, `category_id`) VALUES
 (3, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
-(9, 'đồng hồ 1', '12', '1074.jpg', 112111, '111', '12', NULL, 5);
+(9, 'đồng hồ 1', '12', '1074.jpg', 112111, '111', '12', NULL, 5),
+(null, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
+(null, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
+(null, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
+(null, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
+(null, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
+(null, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4),
+(null, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '121', NULL, 4);
 
 -- --------------------------------------------------------
 

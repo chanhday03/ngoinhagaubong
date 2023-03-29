@@ -12,8 +12,9 @@
                 <th>Email</th>
                 <th>Mật khẩu</th>
                 <th>Hình ảnh</th>
-                <th>Điện thoại</th>
                 <th>Địa chỉ</th>
+                <th>Điện thoại</th>
+                
                 <th>Vai trò</th>
                 <th>Action</th>
             </tr>
