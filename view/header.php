@@ -25,7 +25,7 @@
         </a>
         <div class="fa-solid fa-bars" id="menu-icon"></div>
         <div class="navbar">
-            <a href="#home" class="home-active">Trang Chủ</a>
+            <a href="?act=home" class="home-active">Trang Chủ</a>
             <a href="#">Giới thiệu</a>
             <div class="dropdown">
                 <button class="dropbtn">Sản phẩm
@@ -41,7 +41,7 @@
         </div>
         <div class="icons">
             <a href="#" class="fa-solid fa-heart"></a>
-            <a href="?act=addtocart" class="fas fa-shopping-cart"></a>
+            <a href="?act=viewcart" class="fas fa-shopping-cart"></a>
         </div>
         <form action="index.php?act=sanpham" method="post">
             <input type="text" name="kyw" id="" />

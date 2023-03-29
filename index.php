@@ -45,17 +45,28 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
         case 'lienhe':
             include"view/lienhe.php";
             break;
+        case 'viewcart':
+            include"view/giohang.php";
+            break;
         case 'addtocart':
             $product_name = $_POST["product_name"];
             $product_image = $_POST ["product_image"];
             $product_size = $_POST ["product_size"];
             $product_price = $_POST ["product_price"];
             $product_quantity = $_POST ["product_quantity"];
-            // $total_money = $product_price * $product_quantity;
             $addtocart = [$product_name,$product_image,$product_size,$product_price,$product_quantity];
             array_push($_SESSION["addtocart"],$addtocart);
             include "view/giohang.php";
             break;
+        case'delcart':
+            if(isset($_GET["idcart"])){
+                array_splice($_SESSION["addtocart"],$_GET["idcart"],1);
+            }else{
+                $_SESSION["addtocart"]=[];
+            }
+            // include "view/giohang.php";
+            header("location: index.php?act=viewcart");
+        break;
         default:
             include"view/home.php";
             break;

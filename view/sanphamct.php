@@ -17,7 +17,6 @@ img {
 </style>
 
 <body>
-    <?php session_destroy()?>
     <section class="prodetails" id="prodetails">
         <div class="single-pro-image">
             <?php 
