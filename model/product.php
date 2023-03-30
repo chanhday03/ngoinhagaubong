@@ -18,7 +18,7 @@ function loadall_product_top10(){
     $listproduct =  pdo_query($sql);
     return $listproduct;
 }
-function loadall_product($kyw="",$iddm=0){
+function loadall_product($kyw="",$iddm=0,  $size=0  ){
     $sql = "SELECT * FROM product WHERE 1 " ; 
     if($kyw != "" ){
         $sql .= "  and productName like '%".$kyw."%'"; 
@@ -26,6 +26,9 @@ function loadall_product($kyw="",$iddm=0){
     if($iddm >0 ){
      $sql .= " and category_id = '".$iddm."'"; 
     } 
+     if($size > 0) {
+        $sql .= " and productSize = '".$size."'"; 
+     }
     $sql .=" ORDER BY id DESC ";
     $listproduct = pdo_query($sql); 
     return $listproduct; 
@@ -52,5 +55,10 @@ function loadall_product($kyw="",$iddm=0){
     } 
     function update_product($id,$iddm,$tensp,$motasp,$giasp,$sizesp,$khuyenmai,$hinh){ 
         $sql = "UPDATE product SET category_id='$iddm' , productName='$tensp', productDesc='$motasp' , productPrice=$giasp , productSize='$sizesp',productPromotion='$khuyenmai' ,productImage='$hinh'WHERE id=".$id; pdo_execute($sql);
+    }
+    function loadall_size(){
+        $sql = "SELECT DISTINCT productSize FROM product";
+        $listsize = pdo_query($sql);
+        return $listsize;
     }
 ?>

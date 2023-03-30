@@ -20,10 +20,6 @@ foreach ($dsdm as $dm) {
 <section class="categories" id="categories">
     <div class="heading">
         <h1>Top 10 Sản phẩm được yêu thích nhất<br /><span>Teddyshop</span></h1>
-        <form action="index.php?act=sanpham" method="post">
-            <input type="text" name="kyw" placeholder="Tên sản phẩm bạn muốn.." />
-            <input type="submit" name="timkiem" value="Tìm">
-        </form>
     </div>
     <div class="categories-container">
         <?php 
@@ -69,7 +65,18 @@ foreach ($dsdm as $dm) {
 <section class="products" id="products">
     <div class="heading">
         <h1>Tất cả sản phẩm nội bật <br /><span>Teddyshop</span></h1>
-        <a href="#" class="btn">Shop now<i class="fa-solid fa-circle-right"></i></a>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Chọn size</button>
+            <div id="myDropdown" class="dropdown-content">
+                <?php
+                    foreach ($listsize as $size) {
+                        extract($size);
+                        $linksize = "index.php?act=sanpham&size=".$productSize;
+                        echo '<a href="'.$linksize.'">'.$productSize.'</a>';
+                    }
+                ?>
+            </div>
+        </div>
     </div>
     <div class="products-container">
         <?php

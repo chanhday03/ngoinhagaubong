@@ -9,6 +9,8 @@ include 'view/header.php';
 $spnew = loadall_product_home();
 $dsdm = loadall_category();
 $dstop10 = loadall_product_top10();
+$listsize = loadall_size();
+
 if((isset($_GET['act'])) && ($_GET['act']!="")){
     $act = $_GET['act'];
     switch ($act) {
@@ -23,7 +25,13 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             } else {
                 $iddm = 0;
             }
-            $dssp = loadall_product($kyw, $iddm);
+
+            if (isset($_GET['size']) && ($_GET['size'] > 0)) {
+                $size = $_GET['size'];
+            } else {
+                $size = 0;
+            }
+            $dssp = loadall_product($kyw, $iddm, $size);
             $tendm = load_ten_dm($iddm);
             include 'view/sanpham.php';
             break;

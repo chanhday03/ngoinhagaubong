@@ -43,7 +43,10 @@
             <a href="#" class="fa-solid fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
         </div>
-
+        <form action="index.php?act=sanpham" method="post">
+            <input type="text" name="kyw" placeholder="Tên sản phẩm bạn muốn.." />
+            <input type="submit" name="timkiem" value="Tìm">
+        </form>
         <div class="profile">
             <?php 
             if(isset($_SESSION['user'])){
