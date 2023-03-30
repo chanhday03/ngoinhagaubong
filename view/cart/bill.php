@@ -18,7 +18,7 @@
     
     if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
     
-    include '../../model/user.php';
+   
     
     $user = getUserById($_SESSION['id'], $conn);
     
@@ -136,7 +136,7 @@
                     </div>   
                     <input type="hidden" class="form-control border" name="tongtien" value="<?=$tong?>" > 
                 <div class="form-group back-to-order row mt-2">
-                    <a href="../../index.php?act=viewcart" class="text-decoration-none
+                    <a href="index.php?act=viewcart" class="text-decoration-none
                                         col-md-6" style="color: orange;">
                         << Quay lại giỏ hàng</a>
                             <button type="submit" class="btn-light

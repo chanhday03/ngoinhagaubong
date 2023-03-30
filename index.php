@@ -7,6 +7,7 @@ include 'model/category.php';
 include 'global.php';
 include 'view/header.php';
 include 'model/cart/cart.php';
+// include 'model/user.php';
 $spnew = loadall_product_home();
 $dsdm = loadall_category();
 $dstop10 = loadall_product_top10();
@@ -44,7 +45,7 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
              break;
          case 'deletecart':
             if(isset($_GET["idcart"])){
-                 array_slice($_SESSION['mycart'],$_GET["idcart"],1);
+                 array_splice($_SESSION['mycart'],$_GET["idcart"],1);
                 header("location:index.php?act=addtocart"); 
             }else{
                 $_SESSION['mycart']=[];
@@ -57,8 +58,10 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 
          case 'bill':
              include "view/cart/bill.php";
+             
          break;     
          case 'billconfirm':{
+            
             if(isset($_POST['btn_hoaDon'])&&($_POST['btn_hoaDon'])){
                 $name = $_POST["fname"];
                 $phone = $_POST["phone"];
@@ -67,10 +70,8 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 $email = $_POST["email"];
                 $user_id = $user["id"];
                 $total_money=$_POST["tongtien"];
-                $created = date('h:i:sa d/m/Y');
-                $status = 0;
-               
-                $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money,$created);
+                $status = 0;    
+                $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money);
                 foreach($_SESSION["mycart"] as $cart){
                   $product_id= $cart[0];
                   $name = $cart[1];

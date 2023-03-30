@@ -18,7 +18,7 @@
     
     if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
     
-    include '../../model/user.php';
+    include '../user.php';
     
     $user = getUserById($_SESSION['id'], $conn);
     
@@ -42,7 +42,8 @@ if(isset($_POST['btn_hoaDon'])&&($_POST['btn_hoaDon'])){
   $created = date('h:i:sa d/m/Y');
   $status = 0;
  
-  $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money,$created);
+  $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money);
+ 
   $order_id = var_dump($order_id);die;
   foreach($_SESSION["mycart"] as $cart){
     $product_id= $cart[0];

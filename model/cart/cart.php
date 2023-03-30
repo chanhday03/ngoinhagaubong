@@ -1,9 +1,9 @@
 <?php
 include '../pdo.php';
-function insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money,$created){
+function insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money){
     $sql = 
-   "INSERT INTO `dathang`( `user_id`, `fullname`, `email`, `phone`, `address`, `note`, `status`, `total_money`, `created`)
-                  VALUES ('$user_id','$fullname','$email','$phone','$address','$note','$status','$total_money','$created')";
+   "INSERT INTO `dathang`( `user_id`, `fullname`, `email`, `phone`, `address`, `note`, `status`, `total_money`)
+                  VALUES ('$user_id','$fullname','$email','$phone','$address','$note','$status','$total_money')";
    pdo_execute_return_lastInsertId($sql);
 }
 function insert_order_detail($user_id,$order_id,$product_id,$images,$price,$num,$total_money){
