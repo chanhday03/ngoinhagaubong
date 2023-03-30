@@ -54,20 +54,6 @@ header {
   width: 90px;
   height: 80px;
 }
-header input[type="submit"],
-input[type="text"] {
-  padding: 10px 15px;
-  border-radius: 3px;
-  outline: none;
-  border: none;
-  background-color: #a68567;
-  color: white;
-}
-header input[type="submit"]:hover,
-input[type="text"]:hover {
-  background-color: burlywood;
-  color: white;
-}
 header form i {
   font-size: 20px;
   color: var(--light-brown-color);
@@ -1211,4 +1197,34 @@ table thead tr {
 
 .show {
   display: block;
+}
+.search-bar {
+  width: 100%;
+  max-width: 700px;
+  background-color: #a68567;
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 10px 20px;
+  backdrop-filter: blur(4px) saturate(180%);
+}
+.search-bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 24px 20px;
+  font-size: 20px;
+  color: #0db7ea;
+}
+::placeholder {
+  color: #0db7ea;
+}
+.search-bar button img {
+  border: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-color: #a68567;
+  cursor: pointer;
 }

@@ -15,6 +15,44 @@
     max-width: 1248px;
     margin: 0 auto;
 }
+
+.search-bar {
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 8px 25px;
+    backdrop-filter: blur(4px) saturate(180%);
+}
+
+.search-bar input {
+    background-color: transparent;
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+::placeholder {
+    color: white;
+    font-size: 14px;
+}
+
+.search-bar button img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #a68567;
+    cursor: pointer;
+}
 </style>
 
 <body>
@@ -39,14 +77,17 @@
             <a href="#">Liên Hệ</a>
             <a href="#">Góp Ý</a>
         </div>
+        <form action="index.php?act=sanpham" method="post" class="search-bar">
+            <input type="text" name="kyw" placeholder="Sản phẩm bạn muốn.." />
+            <button type="submit" name="timkiem">
+                <img src="https://static.vecteezy.com/system/resources/previews/001/591/517/non_2x/free-search-icon-free-vector.jpg"
+                    alt="">
+            </button>
+        </form>
         <div class="icons">
             <a href="#" class="fa-solid fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
         </div>
-        <form action="index.php?act=sanpham" method="post">
-            <input type="text" name="kyw" placeholder="Tên sản phẩm bạn muốn.." />
-            <input type="submit" name="timkiem" value="Tìm">
-        </form>
         <div class="profile">
             <?php 
             if(isset($_SESSION['user'])){
