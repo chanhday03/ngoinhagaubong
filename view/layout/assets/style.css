@@ -431,7 +431,7 @@ form #search-icon:hover{
 }
 .products-container .box:hover {
   box-shadow: 0 0 0 2px rgb(224, 178, 121);
-  transform: scale(1.03,1.03);
+  transform: rotate(6deg);
   transition: .3s ;
 }
 .products-container .box img {

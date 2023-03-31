@@ -32,7 +32,7 @@ foreach ($dsdm as $dm) {
 <!-- categories -->
 <section class="categories" id="categories">
     <div class="heading">
-        <h1>Top 10 Sản phẩm được yêu thích nhất<br /><span>Teddyshop</span></h1>
+        <h1>Top 10 Sản phẩm được yêu thích<br /><span>Teddyshop</span></h1>
         <a href="#" class="btn">Order now<i class="fa-solid fa-circle-right"></i></a>
     </div>
     <div class="categories-container">

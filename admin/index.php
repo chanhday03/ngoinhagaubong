@@ -3,6 +3,7 @@ include "../model/pdo.php";
 include "../model/category.php";
 include "../model/product.php";
 include "../model/user.php";
+include "../model/comment.php";
 include "headerAdmin.php";
 
 if (isset($_GET['act'])) {
@@ -133,6 +134,15 @@ if (isset($_GET['act'])) {
             include "user/listUser.php";
             break;
             // default
+        case 'dsbl':
+            $comment_list =  loadall_comments();
+            include "comment/list_comment.php";
+            break;
+        case 'delcommnet':
+            delete_comment($_GET["idcm"]);
+            $comment_list =  loadall_comments();
+            include "comment/list_comment.php";
+        break;
         default:
             include "home.php";
             break;
