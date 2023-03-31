@@ -1,160 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
-   
-</head>
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Pacifico&display=swap");
+.text_feedback {
+    margin-bottom: 5px;
+    font-size: 30px;
+    color: rgb(54, 54, 49);
+    text-align: center;
+    font-weight: bold;
+}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-        text-decoration: none;
-        scroll-padding-top: 20px;
-        scroll-behavior: smooth;
-    }
+.emoji {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
 
-    body {
-        font-family: Nunito;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #eee;
-    }
+.emoji>div:not(:first-child) {
+    margin-left: 10px;
+}
 
-    .container {
-        width: 800px;
-        background-color: rgb(242, 239, 235);
-        border-radius: 5px;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-        overflow: hidden;
-        position: relative;
-    }
+.emoji>div {
+    cursor: pointer;
+    transition: transform 0.2s ease-in;
+}
 
-    .wrapper {
-        margin: 20px 0;
-    }
+.emoji>div:hover {
+    cursor: pointer;
+    transform: scale(1.4);
+}
 
-    .text {
-        margin-bottom: 5px;
-        font-size: 30px;
-        color: rgb(54, 54, 49);
-        text-align: center;
-        font-weight: bold;
-    }
+.textarea {
+    height: 300px;
+    width: 30%;
+    display: block;
+    background-color: #a68567;
+    color: #eee;
+    border: none;
+    resize: none;
+    outline: none;
+    height: 0;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
-    .emoji {
-        font-size: 40px;
-        display: flex;
-        justify-content: center;
-    }
+.textarea--active {
+    padding: 10px;
+    opacity: 1;
+    height: 50px;
+    font-size: 15px;
+}
 
-    .emoji>div:not(:first-child) {
-        margin-left: 10px;
-    }
+.btn_feedback {
+    text-decoration: none;
+    color: #746161;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: rgb(210, 237, 101);
+    position: absolute;
+    right: 5px;
+    font-weight:bold;
+    bottom: 5px;
+    display : none;
+}
 
-    .emoji>div {
-        cursor: pointer;
-        transition: transform 0.2s ease-in;
-    }
+.btn--active {
+    display: inline-block;
+}
 
-    .emoji>div:hover {
-        cursor: pointer;
-        transform: scale(1.4);
-    }
-
-    .textarea {
-        height: 100px;
-        width: 100%;
-        display: block;
-        background-color: #a68567;
-        color: #eee;
-        border: none;
-        resize: none;
-        outline: none;
-        height: 0;
-        opacity: 0;
-        transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
-    }
-
-    .textarea--active {
-        padding: 10px;
-        opacity: 1;
-        height: 50px;
-        font-size: 15px;
-    }
-
-    .btn {
-        text-decoration: none;
-        color: #746161;
-        padding: 4px 10px;
-        border-radius: 4px;
-        background-color: rgb(210, 237, 101);
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
-        display: none;
-    }
-
-    .btn--active {
-        display: inline-block;
-    }
-    /* .emoji input{
-        border: none;
-    } */
 </style>
+<form action="model/feedback.php" class="w-full pt-36 pb-20 relative" method="POST">
+    <div class="wrapper">
+        <p class="text_feedback">Trải nghiệm của bạn về Website này ?</p>
+        <div class="emoji">
+            <div onclick="setInputValue_1()">😊</div>
+            <div onclick="setInputValue_2()">😢</div>
+            <div onclick="setInputValue_3()">😁</div>
+            <div onclick="setInputValue_4()">😍</div>
+            <div onclick="setInputValue_5()">😠</div>
+        </div>
+    </div>
+    <div class="flex w-full justify-center ">
+    <textarea class="textarea border " cols="30" rows="10" name="note"
+        placeholder="Bạn hãy cho chúng mình biết về đánh giá của bạn  !"></textarea>
+    </div>
+    <?php
+    if(isset($_SESSION["id"])){
+        echo '<input type="hidden" value=" '.$_SESSION["id"].'" name="user_id" class="user_id">';
+    }?>
+    
+    <input type="hidden" value=" " name="emoji" class="hidden">
+    <button type="submit" class="btn_feedback border-2 border-[#a68567]" name="btn_feedback" value="feedback">Gửi cho bọn tớ !</button>
 
-<body>
-   
-        <form action="" class="container">
-            <div class="wrapper">
-                <p class="text">Trải nghiệm của bạn về Website này ?</p>
-                <!-- <div class="emoji">
-                    <input type="text" value="😊" name="">
-                    <input type="text" value="😊" name="">
-                    <input type="text" value="😊" name="">
-                    <input type="text" value="😊" name="">
-                    <input type="text" value="😊" name="">
-                </div> -->
-                <div class="emoji">
-                    <div>😊</div>
-                    <div>😢</div>
-                    <div>😁</div>
-                    <div>😍</div>
-                    <div>😠</div>
-                </div>
-            </div>
-            <textarea class="textarea" cols="30" rows="10" name="feedback" 
-                placeholder="Bạn hãy cho chúng mình biết về đánh giá của bạn  !"></textarea>
-          
-                <a href=""><button type="submit"  class="btn">Gửi cho bọn tớ !</button></a>  
-      
-        </form>
-        
-
-</body>
+</form>
 <script>
-    const container = document.querySelector('.container');
-    const emoji = document.querySelector('.emoji');
-    const textarea = document.querySelector('.textarea');
-    const btn = document.querySelector('.btn');
-    emoji.addEventListener('click', (e) => {
-        if (e.target.className.includes('emoji')) return;
-        textarea.classList.add('textarea--active');
-        btn.classList.add('btn--active');
-    })
-    container.addEventListener('mouseleave', () => {
-        if (e.target.className.includes('emoji')) return;
-        textarea.classList.remove('textarea--active');
-        btn.classList.remove('btn--active');
-    })
+const container = document.querySelector('.container');
+const emoji = document.querySelector('.emoji');
+const textarea = document.querySelector('.textarea');
+const btn = document.querySelector('.btn_feedback');
+const hidden = document.querySelector('.hidden');
+emoji.addEventListener('click', (e) => {
+    if (e.target.className.includes('emoji')) return;
+    textarea.classList.add('textarea--active');
+    btn.classList.add('btn--active');
+
+})
+container.addEventListener('mouseleave', () => {
+    if (e.target.className.includes('emoji')) return;
+    textarea.classList.remove('textarea--active');
+    btn.classList.remove('btn--active');
+})
+
+function setInputValue_1() {
+    hidden.setAttribute("value", "😊");
+    alert("Đã chọn tâm trạng 😊");
+}
+
+function setInputValue_2() {
+    hidden.setAttribute("value", "😢");
+    alert("Đã chọn tâm trạng 😢");
+}
+
+function setInputValue_3() {
+    hidden.setAttribute("value", "😁");
+    alert("Đã chọn tâm trạng 😁");
+}
+
+function setInputValue_4() {
+    hidden.setAttribute("value", "😍");
+    alert("Đã chọn tâm trạng 😍");
+}
+
+function setInputValue_5() {
+    hidden.setAttribute("value", "😠");
+    alert("Đã chọn tâm trạng 😠");
+}
 </script>
 
 </html>

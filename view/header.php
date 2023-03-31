@@ -60,7 +60,7 @@ $user = getUserById($_SESSION['id'], $conn);
                 </div>
             </div>
             <a href="#">Liên Hệ</a>
-            <a href="#">Góp Ý</a>
+            <a href="index.php?act=feedback">Góp Ý</a>
             <a href="#">Khám phá</a>
         </div>
         <div class="icons">

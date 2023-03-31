@@ -86,8 +86,8 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
         break; 
          }
              
-        case 'gioithieu':
-            include "view/gioithieu.php";
+        case 'feedback':
+            include "view/feedback.php";
             break;
         case 'lienhe':
             include "view/lienhe.php";
