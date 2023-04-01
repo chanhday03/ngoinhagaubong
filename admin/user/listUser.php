@@ -28,7 +28,7 @@
                     <td>' . $id . '</td>
                     <td>'.$fname.'</td>
                     <td>' . $username . '</td>
-                    <td>' . $password. '</td>
+                    <td class=listuser>' . $password. '</td>
                     <td><img src="../upload/'.$pp.'" alt="" width="100px" height="50px"></td>
                     <td>' .$email.'</td>
                     <td>' . $adress . '</td>
@@ -62,6 +62,10 @@
         color: greenyellow;
         font-size: 30px;
         margin-right: 30px;
+    }
+    .listuser{
+        max-width: 250px;
+        word-wrap: break-word;
     }
     </style>
 </body>

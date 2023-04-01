@@ -14,6 +14,9 @@
     img {
         max-width: 100%;
     }
+    .login {
+        color: red;
+    }
 </style>
 
 <body>
@@ -109,11 +112,20 @@
             <h1>Bình luận sản phẩm<br /><span>comment products</span></h1>
         </div>
         <div class="form-commnet">
-            <form action="index.php?act=addcomment&idsp=<?php echo $_GET["idsp"]?>" method="POST">
+            <?php if(isset(($_SESSION["id"]))){
+                    echo '<form action="index.php?act=addcomment&idsp='.$_GET["idsp"].'" method="POST">
+                    <input type="hidden" name="product_id" value="'.$_GET['idsp'].'">
+                    <input type="text" class="border" name="description" >
+                    <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
+                    </form>';
+            }else{
+                echo '<button><a class="login" href="view/taikhoan/login.php">Đăng nhập</a> để bình luận sản phẩm</button> <br>';
+            }?>
+            <!-- <form action="index.php?act=addcomment&idsp=<?php echo $_GET["idsp"]?>" method="POST">
                 <input type="hidden" name="product_id" value="<?php echo $_GET['idsp'] ?>">
-                <input type="text" name="description" required >
+                <input type="text" class="border" name="description" required >
                 <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
-            </form>
+             -->
             <section class="main">
                 <section class="attendance">
                     <div class="attendance-list">
@@ -139,8 +151,12 @@
                                     extract($usnoe); echo $fname?></td>
                                     <td><?php extract($cmsp); echo $description?></td>
                                     <td><?php extract($cmsp); echo $time?></td>
-                                    <?php extract($onesp);extract($cmsp); if($_SESSION["id"] == $idus){
-                                        echo '<td><a href="index.php?act=delcomment&idsp='.$_GET["idsp"].'&idcm='.$id.'"><button>Delete</button></a></td>';
+                                    <?php extract($onesp);extract($cmsp); 
+                                    if( $_SESSION["id"] == $idus){
+                                        echo '<td><a href="index.php?act=delcomment&idsp='.$_GET["idsp"].'&idcm='.$id.'"><button>Delete</button></a> <br>
+                                        <a href="index.php?act=editcomment&idsp='.$_GET["idsp"].'&idcm='.$id.'"><button>edit</button></a></td>';
+                                    }else {
+                                        echo'<td></td>';
                                     }
                                     ?>
                                     
