@@ -124,6 +124,7 @@ if (isset($_GET['act'])) {
             $listuser = loadall_user();
             include "user/listUser.php";
             break;
+       
         case 'xoatk':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                  delete_user($_GET['id']);
@@ -132,6 +133,18 @@ if (isset($_GET['act'])) {
             include "user/listUser.php";
             break;
             // default
+            case 'feedback':
+                $listFeedBack = loadall_feedback();
+                include "user/feedback.php";
+                break;  
+                case 'xoafb':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                         delete_feedback($_GET['id']);
+                    }
+                    $listFeedBack = loadall_feedback();
+                    include "user/feedback.php";
+                    break;
+                    // default     
         default:
             include "home.php";
             break;

@@ -241,6 +241,10 @@ table tbody tr:last-of-type {
                         <i class="fas fa-chart-pie"></i>
                         <span class="nav-item">View All</span>
                     </a></li>
+                <li><a href="index.php?act=feedback">
+                <i class="fa-solid fa-notes"></i>
+                        <span class="nav-item">Feedback</span>
+                    </a></li>
 
                 <li><a href="#" class="logout">
                         <i class="fas fa-sign-out-alt"></i>

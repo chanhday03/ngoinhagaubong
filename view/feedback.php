@@ -57,7 +57,7 @@
     border-radius: 4px;
     background-color: rgb(210, 237, 101);
     position: absolute;
-    right: 5px;
+    right: 30px;
     font-weight:bold;
     bottom: 5px;
     display : none;

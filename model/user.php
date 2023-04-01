@@ -1,6 +1,15 @@
 <?php
 
-
+function loadall_feedback(){
+    $sql="SELECT * FROM feedback ORDER BY id DESC";
+    $listFeedback=pdo_query($sql);
+    return $listFeedback;
+}
+function delete_feedback($id)
+{
+    $sql = "delete from feedback where id=" . $id;
+    pdo_execute($sql);
+}
 function checkemail($email){
     $sql="SELECT * FROM users WHERE email='".$email."'";
     $sp =  pdo_query_one($sql);
