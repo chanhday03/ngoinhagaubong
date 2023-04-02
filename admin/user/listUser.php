@@ -9,12 +9,14 @@
                 <th>Mã tài khoản</th>
                 <th>Tên người dùng</th>
                 <th>Tên đăng nhập</th>
-                <th>Email</th>
                 <th>Mật khẩu</th>
-                <th>Điện thoại</th>
+                <th>ảnh</th>
+                <th>Email</th>
                 <th>Địa chỉ</th>
+                <th>Điện thoại</th>
                 <th>Vai trò</th>
                 <th>Action</th>
+                
             </tr>
             <?php 
                    foreach ($listuser as $user) {
@@ -24,12 +26,13 @@
                     echo '<tr>
                     <td><input type="checkbox"></td>
                     <td>' . $id . '</td>
-                    <td>'.$name.'</td>
-                    <td>' . $userName . '</td>
-                    <td>' . $email. '</td>
-                    <td>' . $passWord. '</td>
-                    <td>' . '</td>
-                    <td>' . $address . '</td>
+                    <td>'.$fname.'</td>
+                    <td>' . $username . '</td>
+                    <td class=listuser>' . $password. '</td>
+                    <td><img src="../upload/'.$pp.'" alt="" width="100px" height="50px"></td>
+                    <td>' .$email.'</td>
+                    <td>' . $adress . '</td>
+                    <td>' . $phone . '</td>
                     <td>' . $role . '</td>
                     <td>
                        <a href="'.$xoatk.'"><i class="fa-solid fa-trash"></i></a>
@@ -59,6 +62,10 @@
         color: greenyellow;
         font-size: 30px;
         margin-right: 30px;
+    }
+    .listuser{
+        max-width: 250px;
+        word-wrap: break-word;
     }
     </style>
 </body>
