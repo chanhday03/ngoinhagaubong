@@ -14,6 +14,7 @@
     img {
         max-width: 100%;
     }
+
     .login {
         color: red;
     }
@@ -112,16 +113,16 @@
             <h1>Bình luận sản phẩm<br /><span>comment products</span></h1>
         </div>
         <div class="form-commnet">
-            <?php if(isset(($_SESSION["id"]))){
-                    echo '<form action="index.php?act=addcomment&idsp='.$_GET["idsp"].'" method="POST">
-                    <input type="hidden" name="product_id" value="'.$_GET['idsp'].'">
+            <?php if (isset($_SESSION["id"])) {
+                echo '<form action="index.php?act=addcomment&idsp=' . $_GET["idsp"] . '" method="POST">
+                    <input type="hidden" name="product_id" value="' . $_GET['idsp'] . '">
                     <input type="text" class="border" name="description" >
                     <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
                     </form>';
-            }else{
+            } else {
                 echo '<button><a class="login" href="view/taikhoan/login.php">Đăng nhập</a> để bình luận sản phẩm</button> <br>';
-            }?>
-            <!-- <form action="index.php?act=addcomment&idsp=<?php echo $_GET["idsp"]?>" method="POST">
+            } ?>
+            <!-- <form action="index.php?act=addcomment&idsp=<?php echo $_GET["idsp"] ?>" method="POST">
                 <input type="hidden" name="product_id" value="<?php echo $_GET['idsp'] ?>">
                 <input type="text" class="border" name="description" required >
                 <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
@@ -142,27 +143,48 @@
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($cmsp as $cmsp):?>
+                                foreach ($cmsp as $cmsp): ?>
                                 <tr>
-                                    <td><?php
-                                    extract($cmsp);
-                                    $idus= $user_id; 
-                                    $usnoe = loadone_user($idus);
-                                    extract($usnoe); echo $fname?></td>
-                                    <td><?php extract($cmsp); echo $description?></td>
-                                    <td><?php extract($cmsp); echo $time?></td>
-                                    <?php extract($onesp);extract($cmsp); 
-                                    if( $_SESSION["id"] == $idus){
-                                        echo '<td><a href="index.php?act=delcomment&idsp='.$_GET["idsp"].'&idcm='.$id.'"><button>Delete</button></a> <br>
-                                        <a href="index.php?act=editcomment&idsp='.$_GET["idsp"].'&idcm='.$id.'"><button>edit</button></a></td>';
-                                    }else {
-                                        echo'<td></td>';
-                                    }
-                                    ?>
-                                    
+                                    <td>
+                                        <?php
+                                            // var_dump($cmsp);
+                                            extract($cmsp);
+                                            $idus = $user_id;
+                                            $usnoe = loadone_user($idus);
+                                            extract($usnoe);
+                                            echo $fname ?>
+                                    </td>
+                                    <td>
+                                        <?php extract($cmsp);
+                                            echo $description ?>
+                                    </td>
+                                    <td>
+                                        <?php extract($cmsp);
+                                            echo $time ?>
+                                    </td>
+                                    <?php extract($onesp);
+                                        extract($cmsp);
+                                        if ($_SESSION["id"] == $idus) {
+                                            echo '<td>
+                                            <a href="index.php?act=delcomment&idsp=' . $_GET["idsp"] . '&idcm=' . $id . '">
+                                            <button>Delete</button>
+                                            </a> 
+                                            <br>
+                                        <button onclick="showEditComment('.$id.', '.$product_id.')">edit</button>
+                                        </td>   
+                                        ';
+                                        } else {
+                                            echo '<td></td>';
+                                        }
+                                        ?>
                                 </tr>
-                                <?php endforeach?>
-                                
+                                <tr>
+                                    <td>
+                                        <div id="comment_<?php echo $id; ?>"></div>
+                                    </td>
+                                </tr>
+                                <?php endforeach ?>
+
                                 <!-- <tr class="active">
                                     <td>02</td>
                                     <td>Balbina Kherr</td>
@@ -173,6 +195,7 @@
                                 </tr> -->
                             </tbody>
                         </table>
+                        <div id="form-edit-comment"></div>
                     </div>
                 </section>
             </section>
@@ -184,55 +207,56 @@
             <h1>Sản phẩm cùng loại<br /><span>same products</span></h1>
         </div>
         <div class="products-container">
-            <div class="box">
-                <img src="./assets/images/products_thobong.jpg" alt="" />
-                <h2 class="name"><a href="">THỎ BÔNG ĐEO SAO</a></h2>
-                <h3 class="price">
-                    199.000 <ins>đ</ins><span class="size">/ 48cm</span>
-                </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span>
-            </div>
-            <div class="box">
-                <img src="./assets/images/products_kylan.jpg" alt="" />
-                <h2 class="name"><a href="">KÌ LÂN BÔNG NGỒI ÔM CẦU VỒNG</a></h2>
-                <h3 class="price">
-                    199.000 <ins>đ</ins><span class="size">/ 50cm</span>
-                </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span>
-            </div>
-            <div class="box">
-                <img src="./assets/images/products_heobong.jpg" alt="" />
-                <h2 class="name"><a href="">HEO BÔNG NẰM BỜM THÚ</a></h2>
-                <h3 class="price">
-                    199.000 <ins>đ</ins><span class="size">/ 48cm</span>
-                </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-heart"></i>
-                <span class="discount">-5%</span>
-            </div>
+            <?php
+            foreach ($sp_cung_loai as $sp_cung_loai) {
+                extract($sp_cung_loai);
+                $hinh = $img_path . $productImage;
+                $linksp = "index.php?act=sanphamct&idsp=" . $id;
+                echo '<div class="box">
+                        <img src="' . $hinh . '"
+                            alt="">
+                        <h2 class="name"><a href="' . $linksp . '">Name : ' . $productName . '</a></h2>
+                        <h3 class="price"> Price : 
+                        ' . $productPrice . '  <ins>đ</ins> <span class="size">/ Size :  ' . $productSize . ' cm</span>
+                        </h3>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i class="fa-solid fa-heart"></i>
+                        <span class="discount">- ' . $productPromotion . '%</span>
+                    </div>';
+            }
+            ?>
         </div>
     </section>
 </body>
+<script>
+    function showEditComment(idComment, idProduct) {
+
+        var formEditComment = `<form action="index.php?act=editcomment&idsp=${idProduct}&idcm=${idComment}" method="POST">
+                    <input type="hidden" name="idcm" value=${idComment}>
+                    <input type="text" class="border" name="description" >
+                    <input type="submit" name="editbinhluan" value="Sửa bình luận" class="btn1">
+                    </form>`
+        const contentComment = document.getElementById(`comment_${idComment}`)
+        contentComment.innerHTML = formEditComment
+
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="./assets/js/main.js"></script>
 <script>
     // javascipit phan ảnh
     var MainImg = document.getElementById("MainImg");
     var smallimg = document.getElementsByClassName("small-img");
-    smallimg[0].onclick = function() {
+    smallimg[0].onclick = function () {
         MainImg.src = smallimg[0].src;
     }
-    smallimg[1].onclick = function() {
+    smallimg[1].onclick = function () {
         MainImg.src = smallimg[1].src;
     }
-    smallimg[2].onclick = function() {
+    smallimg[2].onclick = function () {
         MainImg.src = smallimg[2].src;
     }
-    smallimg[3].onclick = function() {
+    smallimg[3].onclick = function () {
         MainImg.src = smallimg[3].src;
     }
 </script>

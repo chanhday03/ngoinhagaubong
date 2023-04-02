@@ -17,4 +17,8 @@
         $cm = pdo_query($sql); 
         return $cm; 
     }
+    function edit_comment($comment_id, $product_id, $user_id, $description) {
+        $sql = "UPDATE `comment` SET `description` = '$description' WHERE `id` = $comment_id AND `product_id` = $product_id AND `user_id` = $user_id";
+        pdo_execute($sql);
+    }
 ?>

@@ -732,7 +732,7 @@ footer {
 }
 .btn1 {
   margin-top: 10px;
-  background-color: #66d996;
+  background-color: #66d996 !important;
   display: inline;
   color: #fff;
   text-align: center;
@@ -1199,13 +1199,11 @@ table thead tr {
   display: block;
 }
 .search-bar {
-  width: 100%;
   max-width: 700px;
   background-color: #a68567;
   display: flex;
   align-items: center;
   border-radius: 60px;
-  padding: 10px 20px;
   backdrop-filter: blur(4px) saturate(180%);
 }
 .search-bar input {
@@ -1213,18 +1211,21 @@ table thead tr {
   flex: 1;
   border: 0;
   outline: none;
-  padding: 24px 20px;
+  /* padding: 24px 20px; */
   font-size: 20px;
   color: #0db7ea;
 }
 ::placeholder {
   color: #0db7ea;
 }
+
+.search-bar button {
+  width: 30px;
+  height: 30px;
+}
 .search-bar button img {
   border: 0;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
   background-color: #a68567;
   cursor: pointer;
 }
