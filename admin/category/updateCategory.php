@@ -1,3 +1,13 @@
+<script>
+  function checkUpdate() {
+    let category = document.querySelector("#ten-loai");
+    if (category.value.trim() === "") {
+      alert("Bạn cần điền đầy đủ thông tin !");
+      return false;
+    }
+    return true;
+  }
+</script>
 <?php
     if(is_array($dm)){
     extract($dm);

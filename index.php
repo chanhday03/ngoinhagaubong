@@ -1,5 +1,5 @@
 <?php 
-// ob_start();
+ob_start();
 session_start();
 include 'model/pdo.php';
 include 'model/product.php';
@@ -7,9 +7,45 @@ include 'model/category.php';
 include 'global.php';
 include 'view/header.php';
 $spnew = loadall_product_home();
+$dsdm = loadall_category();
+$dstop10 = loadall_product_top10();
+$listsize = loadall_size();
+
 if((isset($_GET['act'])) && ($_GET['act']!="")){
     $act = $_GET['act'];
     switch ($act) {
+        case 'sanpham':
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            if (isset($_GET['iddm']) && ($_GET['iddm'] > 0)) {
+                $iddm = $_GET['iddm'];
+            } else {
+                $iddm = 0;
+            }
+
+            if (isset($_GET['size']) && ($_GET['size'] > 0)) {
+                $size = $_GET['size'];
+            } else {
+                $size = 0;
+            }
+            $dssp = loadall_product($kyw, $iddm, $size);
+            $tendm = load_ten_dm($iddm);
+            include 'view/sanpham.php';
+            break;
+         case 'sanphamct':
+            if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
+                $id = $_GET['idsp'];
+                $onesp = loadone_product($id);
+                extract($onesp);
+                $sp_cung_loai = load_product_cungloai($id,$category_id);
+                include 'view/sanphamct.php';
+            } else {
+                include 'view/home.php';
+            }
+            break;
         case 'gioithieu':
             include"view/gioithieu.php";
             break;

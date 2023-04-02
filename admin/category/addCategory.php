@@ -1,3 +1,13 @@
+<script>
+    function check() {
+    let category = document.querySelector("#ten-loai");
+    if (category.value.trim() === "") {
+      alert("Bạn cần điền đầy đủ thông tin !");
+      return false;
+    }
+    return true;
+  }
+</script>
 <section class="main">
     <div class="attendance">
         <div class="attendance-list">
@@ -11,7 +21,7 @@
                 <div class="row mb10"> Tên Loại<br>
                     <input type="text" name="tenloai" id="ten-loai">
                 </div>
-                <div class="row mb10">
+                <div class="nut">
                     <input type="submit" name="themmoi" value="Thêm Mới" class="btn">
                     <input type="reset" value="Nhập Lại" class="btn">
                     <a href=" index.php?act=listdm">
