@@ -11,71 +11,79 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 <style>
-img {
-    max-width: 100%;
-}
+    img {
+        max-width: 100%;
+    }
+    .login {
+        color: red;
+    }
 </style>
 
 <body>
     <section class="prodetails" id="prodetails">
         <div class="single-pro-image">
-            <?php 
-          extract($onesp);
-          $img=$img_path.$productImage;
-         echo' <img src="'.$img.'" alt=""
+            <?php
+            extract($onesp);
+            $img = $img_path . $productImage;
+            echo ' <img src="' . $img . '" alt=""
                         width="100%" class="MainImg">';
-          ?>
+            ?>
             <div class="small-img-group">
                 <div class="small-img-col">
-                    <?php 
-          extract($onesp);
-          $img=$img_path.$productImage;
-         echo' <img src="'.$img.'" alt=""
+                    <?php
+                    extract($onesp);
+                    $img = $img_path . $productImage;
+                    echo ' <img src="' . $img . '" alt=""
                         width="100%" class="small-img">';
-          ?>
+                    ?>
                 </div>
                 <div class="small-img-col">
-                    <?php 
-          extract($onesp);
-          $img=$img_path.$productImage;
-         echo' <img src="'.$img.'" alt=""
+                    <?php
+                    extract($onesp);
+                    $img = $img_path . $productImage;
+                    echo ' <img src="' . $img . '" alt=""
                         width="100%" class="small-img">';
-          ?>
+                    ?>
                 </div>
                 <div class="small-img-col">
-                    <?php 
-          extract($onesp);
-          $img=$img_path.$productImage;
-         echo' <img src="'.$img.'" alt=""
+                    <?php
+                    extract($onesp);
+                    $img = $img_path . $productImage;
+                    echo ' <img src="' . $img . '" alt=""
                         width="100%" class="small-img">';
-          ?>
+                    ?>
                 </div>
                 <div class="small-img-col">
-                    <?php 
-          extract($onesp);
-          $img=$img_path.$productImage;
-         echo' <img src="'.$img.'" alt=""
+                    <?php
+                    extract($onesp);
+                    $img = $img_path . $productImage;
+                    echo ' <img src="' . $img . '" alt=""
                         width="100%" class="small-img">';
-          ?>
+                    ?>
                 </div>
             </div>
         </div>
         <div class="single-pro-details">
-            <?php 
-          extract($onesp);
-          $img=$img_path.$productImage;
-          echo'<h3>Home / <p>'.$productName.'</p> </h3>
-          <h4 class="name">'.$productName.'</h4>
+            <?php
+            extract($onesp);
+            $img = $img_path . $productImage;
+            echo '<h3>Home / <p>' . $productName . '</p> </h3>
+          <h4 class="name">' . $productName . '</h4>
           <h2 class="price"> Price : 
-                '.$productPrice.'  <ins>đ</ins> <span class="size">/ Size :  '.$productSize.' cm</span>
+                ' . $productPrice . '  <ins>đ</ins> <span class="size">/ Size :  ' . $productSize . ' cm</span>
           </h2>
-          Số lượng :
-          <input type="number" min="0"> <br>
-          <button class="btn">Add to cart</button>
-          <button class="btn">Buy Now</button>
+          <form action="index.php?act=addtocart" method="POST">
+              <input type="text" name="product_name" value="' . $productName . '" hidden>
+              <input type="text" name="product_image" value="' . $img . '" hidden>
+              <input type="text" name="product_size" value="' . $productSize . '" hidden>
+              <input type="number" name="product_price" value="' . $productPrice . '" hidden>
+              Số lượng :
+              <input type="number" min="0" name="product_quantity"> <br>
+              <button class="btn">Add to cart</button>
+            </form>
           <div class="desc"> 
           <h2>//Miêu tả</h2>
-          <p>'.$productDesc.'</p>
+          <p>' . $productDesc . '</p>
         </div> <div class="intro">             
         <ul>
          <h3> Điểm nổi bật :</h3>
@@ -97,18 +105,27 @@ img {
         </ul>
        </div>
         ';
-          ?>
+            ?>
     </section>
     <section class="comment">
         <div class="heading">
             <h1>Bình luận sản phẩm<br /><span>comment products</span></h1>
         </div>
         <div class="form-commnet">
-            <form action="" method="POST">
-                <input type="hidden" name="id" value="">
-                <input type="text" name="noidung">
+            <?php if(isset(($_SESSION["id"]))){
+                    echo '<form action="index.php?act=addcomment&idsp='.$_GET["idsp"].'" method="POST">
+                    <input type="hidden" name="product_id" value="'.$_GET['idsp'].'">
+                    <input type="text" class="border" name="description" >
+                    <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
+                    </form>';
+            }else{
+                echo '<button><a class="login" href="view/taikhoan/login.php">Đăng nhập</a> để bình luận sản phẩm</button> <br>';
+            }?>
+            <!-- <form action="index.php?act=addcomment&idsp=<?php echo $_GET["idsp"]?>" method="POST">
+                <input type="hidden" name="product_id" value="<?php echo $_GET['idsp'] ?>">
+                <input type="text" class="border" name="description" required >
                 <input type="submit" name="guibinhluan" value="Gửi bình luận" class="btn1">
-            </form>
+             -->
             <section class="main">
                 <section class="attendance">
                     <div class="attendance-list">
@@ -116,31 +133,44 @@ img {
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <!-- <th>ID</th> -->
                                     <th>Name User</th>
                                     <th>Comment Content</th>
                                     <th>Date</th>
                                     <th>Action</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                foreach($cmsp as $cmsp):?>
                                 <tr>
-                                    <td>01</td>
-                                    <td>Sam David</td>
-                                    <td>San pham ok</td>
-                                    <td>03-24-22</td>
-                                    <td><button>Delete</button></td>
-                                    <td><button>Edit</button></td>
+                                    <td><?php
+                                    extract($cmsp);
+                                    $idus= $user_id; 
+                                    $usnoe = loadone_user($idus);
+                                    extract($usnoe); echo $fname?></td>
+                                    <td><?php extract($cmsp); echo $description?></td>
+                                    <td><?php extract($cmsp); echo $time?></td>
+                                    <?php extract($onesp);extract($cmsp); 
+                                    if( $_SESSION["id"] == $idus){
+                                        echo '<td><a href="index.php?act=delcomment&idsp='.$_GET["idsp"].'&idcm='.$id.'"><button>Delete</button></a> <br>
+                                        <a href="index.php?act=editcomment&idsp='.$_GET["idsp"].'&idcm='.$id.'"><button>edit</button></a></td>';
+                                    }else {
+                                        echo'<td></td>';
+                                    }
+                                    ?>
+                                    
                                 </tr>
-                                <tr class="active">
+                                <?php endforeach?>
+                                
+                                <!-- <tr class="active">
                                     <td>02</td>
                                     <td>Balbina Kherr</td>
                                     <td>san pham xau qua</td>
                                     <td>03-24-22</td>
                                     <td><button>Delete</button></td>
                                     <td><button>Edit</button></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -154,45 +184,57 @@ img {
             <h1>Sản phẩm cùng loại<br /><span>same products</span></h1>
         </div>
         <div class="products-container">
-            <?php
-                foreach ($sp_cung_loai as $sp_cung_loai) {
-                    extract($sp_cung_loai);
-                    $hinh = $img_path.$productImage;
-                    $linksp = "index.php?act=sanphamct&idsp=".$id;
-                    echo '<div class="box">
-                        <img src="'.$hinh.'"
-                            alt="">
-                        <h2 class="name"><a href="'.$linksp.'">Name : '.$productName.'</a></h2>
-                        <h3 class="price"> Price : 
-                        '.$productPrice.'  <ins>đ</ins> <span class="size">/ Size :  '.$productSize.' cm</span>
-                        </h3>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <i class="fa-solid fa-heart"></i>
-                        <span class="discount">- '.$productPromotion.'%</span>
-                    </div>';
-                }
-                ?>
+            <div class="box">
+                <img src="./assets/images/products_thobong.jpg" alt="" />
+                <h2 class="name"><a href="">THỎ BÔNG ĐEO SAO</a></h2>
+                <h3 class="price">
+                    199.000 <ins>đ</ins><span class="size">/ 48cm</span>
+                </h3>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-heart"></i>
+                <span class="discount">-5%</span>
+            </div>
+            <div class="box">
+                <img src="./assets/images/products_kylan.jpg" alt="" />
+                <h2 class="name"><a href="">KÌ LÂN BÔNG NGỒI ÔM CẦU VỒNG</a></h2>
+                <h3 class="price">
+                    199.000 <ins>đ</ins><span class="size">/ 50cm</span>
+                </h3>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-heart"></i>
+                <span class="discount">-5%</span>
+            </div>
+            <div class="box">
+                <img src="./assets/images/products_heobong.jpg" alt="" />
+                <h2 class="name"><a href="">HEO BÔNG NẰM BỜM THÚ</a></h2>
+                <h3 class="price">
+                    199.000 <ins>đ</ins><span class="size">/ 48cm</span>
+                </h3>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-heart"></i>
+                <span class="discount">-5%</span>
+            </div>
         </div>
     </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="./assets/js/main.js"></script>
 <script>
-// javascipit phan ảnh
-var MainImg = document.getElementById("MainImg");
-var smallimg = document.getElementsByClassName("small-img");
-smallimg[0].onclick = function() {
-    MainImg.src = smallimg[0].src;
-}
-smallimg[1].onclick = function() {
-    MainImg.src = smallimg[1].src;
-}
-smallimg[2].onclick = function() {
-    MainImg.src = smallimg[2].src;
-}
-smallimg[3].onclick = function() {
-    MainImg.src = smallimg[3].src;
-}
+    // javascipit phan ảnh
+    var MainImg = document.getElementById("MainImg");
+    var smallimg = document.getElementsByClassName("small-img");
+    smallimg[0].onclick = function() {
+        MainImg.src = smallimg[0].src;
+    }
+    smallimg[1].onclick = function() {
+        MainImg.src = smallimg[1].src;
+    }
+    smallimg[2].onclick = function() {
+        MainImg.src = smallimg[2].src;
+    }
+    smallimg[3].onclick = function() {
+        MainImg.src = smallimg[3].src;
+    }
 </script>
 
 </html>
