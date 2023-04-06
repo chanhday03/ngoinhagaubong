@@ -1,6 +1,6 @@
 <?php
 function insert_user($email,$user,$pass){
-    $sql="INSERT INTO user(email,userName,passWord) values ('$email','$user','$pass')";
+    $sql="INSERT INTO users (email,userName,passWord) values ('$email','$user','$pass')";
     pdo_execute($sql);
 }
 function checkuser($user , $pass){
@@ -31,5 +31,17 @@ function delete_user($id)
 {
     $sql = "delete from users where id=" . $id;
     pdo_execute($sql);
+}
+function getUserById($id, $db){
+ $sql = "SELECT * FROM users WHERE id = ?";
+	$stmt = $db->prepare($sql);
+	$stmt->execute([$id]);
+    
+    if($stmt->rowCount() == 1){
+        $user = $stmt->fetch();
+        return $user;
+    }else {
+        return 0;
+    }
 }
 ?>

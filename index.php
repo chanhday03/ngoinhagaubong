@@ -63,12 +63,10 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             delete_comment($_GET["idcm"]);
             header("location:index.php?act=sanphamct&idsp=".$product_id);
         break;
-        case 'gioithieu':
-            include"view/gioithieu.php";
-            break;
-        case 'lienhe':
-            include"view/lienhe.php";
-            break;
+        case 'editcomment':
+            $id = $_GET['idcm'];
+            
+        break;
         case 'viewcart':
             include"view/giohang.php";
             break;
@@ -91,6 +89,12 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             // include "view/giohang.php";
             header("location: index.php?act=viewcart");
         break;
+        case 'gioithieu':
+            include"view/gioithieu.php";
+            break;
+        case 'lienhe':
+            include"view/lienhe.php";
+            break;
         default:
             include"view/home.php";
             break;

@@ -4,6 +4,7 @@ include "../model/category.php";
 include "../model/product.php";
 include "../model/user.php";
 include "../model/comment.php";
+include "../model/cart.php";
 include "headerAdmin.php";
 
 if (isset($_GET['act'])) {
@@ -142,6 +143,10 @@ if (isset($_GET['act'])) {
             delete_comment($_GET["idcm"]);
             $comment_list =  loadall_comments();
             include "comment/list_comment.php";
+        break;
+        case 'thongke':
+            $listthongke=loadall_thongke();
+            include "thongke/list.php";
         break;
         default:
             include "home.php";
