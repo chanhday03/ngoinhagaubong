@@ -24,6 +24,28 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 include 'view/home.php';
             }
             break;
+            case 'addwishlist':
+                if(isset($_GET['id'])&& $_GET['id']) {
+                    $id=$_GET['id'];
+                    $check=true;
+                    foreach($_SESSION["mywishlist"] as $item) {
+                    if($item==$id){
+                        $check=false;
+                        break;
+                                }
+                    }
+                    if($check){
+                    $_SESSION["mywishlist"][]=$id;
+                }
+                }
+                header("location:index.php?act=wishlist");
+                break;
+            case 'wishlist':
+                $wishlist=[];
+                foreach($_SESSION["mywishlist"] as $item){
+                    $wishlist[]=loadone_product($item);
+                }
+                include "view/wishlist.php";
         case 'gioithieu':
             include"view/gioithieu.php";
             break;
