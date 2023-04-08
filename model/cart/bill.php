@@ -25,34 +25,56 @@
     }
        
 
-// echo '<pre>';
-// var_dump($_POST);
+echo '<pre>';
+var_dump($_POST);
 // var_dump($_SESSION['mycart']);
-// var_dump($user);
+var_dump($user);
 // session_destroy();
 include 'cart.php';
-if(isset($_POST['btn_hoaDon'])&&($_POST['btn_hoaDon'])){
-    $fullname = $_POST["fname"];
-  $phone = $_POST["phone"];
-  $address = $_POST["adress"];
-  $note = $_POST["note"];
+if(isset($_POST['themvanchuyen'])) {
+  $fullname = $_POST['fname'];
+  $phone = $_POST['phone'];
+  $address = $_POST['adress'];
+  $note = $_POST['note'];
   $email = $_POST["email"];
   $user_id = $user["id"];
-  $total_money=$_POST["tongtien"];
-  $created = date('h:i:sa d/m/Y');
-  $status = 0;
+  insert_shipping($fullname,$phone,$address,$email,$note,$user_id);
+      echo '<script>alert("Cập nhật vận chuyển thành công")</script>';}
+// }elseif(isset($_POST['capnhatvanchuyen'])){
+//   $name = $_POST['name'];
+//   $phone = $_POST['phone'];
+//   $address = $_POST['address'];
+//   $note = $_POST['note'];
+//   $id_dangky = $_SESSION['id_khachhang'];
+//   $sql_update_vanchuyen = mysqli_query($mysqli,"UPDATE tbl_shipping SET name='$name',phone='$phone',address='$address',note='$note',id_dangky='$id_dangky' WHERE id_dangky='$id_dangky'");
+//   if($sql_update_vanchuyen){
+//       echo '<script>alert("Cập nhật vận chuyển thành công")</script>';
+
+//   }
+// }
+// die;
+// if(isset($_POST['btn_hoaDon'])&&($_POST['btn_hoaDon'])){
+//     $fullname = $_POST["fname"];
+//   $phone = $_POST["phone"];
+//   $address = $_POST["adress"];
+//   $note = $_POST["note"];
+//   $email = $_POST["email"];
+//   $user_id = $user["id"];
+//   $total_money=$_POST["tongtien"];
+//   $created = date('h:i:sa d/m/Y');
+//   $status = 0;
+//   insert_shipping($fullname,$phone,$address,$email,$note,$id);die;
+//   $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money);
  
-  $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money);
- 
-  $order_id = var_dump($order_id);die;
-  foreach($_SESSION["mycart"] as $cart){
-    $product_id= $cart[0];
-    $name = $cart[1];
-    $images = $cart[2];
-    $size = $cart[3];
-    $num= $cart[4];
-    $price = $cart[5];
-     $khuyenmai= $cart[6];
-     insert_order_detail($user_id,$order_id,$product_id,$images,$price,$num,$total_money);
-}
-}
+//   $order_id = var_dump($order_id);die;
+//   foreach($_SESSION["mycart"] as $cart){
+//     $product_id= $cart[0];
+//     $name = $cart[1];
+//     $images = $cart[2];
+//     $size = $cart[3];
+//     $num= $cart[4];
+//     $price = $cart[5];
+//      $khuyenmai= $cart[6];
+//      insert_order_detail($user_id,$order_id,$product_id,$images,$price,$num,$total_money);
+// }
+// }

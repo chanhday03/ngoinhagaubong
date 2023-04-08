@@ -1,5 +1,12 @@
 <?php
-// include 'model/pdo.php';
+
+function insert_shipping($fullname,$phone,$address,$email,$note,$user_id)
+{
+    $sql =
+        "INSERT INTO `tbl_shipping`( `fname`, `phone`, `addres`, `email`, `note`, `id_user`)
+         VALUES ('$fullname','$phone','$address','$email','$note','$user_id')";
+    pdo_execute($sql);
+}
 function insert_bill($user_id, $fullname, $email, $phone, $address, $note, $status, $total_money)
 {
     $sql =

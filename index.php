@@ -86,6 +86,7 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             }
             break;
          case 'addtocart':
+            $soLuong=0;
             if(isset($_POST["btn_addtocart"])&&($_POST["btn_addtocart"]!="")){
                 $id = $_POST['id'];
                 $name = $_POST['name'];
@@ -93,8 +94,9 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 $size = $_POST["size"];
                 $price = $_POST['price'];
                 $khuyenmai = $_POST["khuyenmai"];
-               
-                $soLuong = 1;
+                $soLuong=1;
+                if(isset($_POST["soluong"]))$soLuong = intval($_POST["soluong"]);
+                
                 $soTien = $soLuong * $price;
                 $spadd = [$id,$name,$images,$size,$soLuong,$price,$khuyenmai,$soTien];
                 array_push($_SESSION['mycart'],$spadd);     
@@ -108,39 +110,33 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             }else{
                 $_SESSION['mycart']=[];
             }
-          
               break;
         case 'viewcart':
                 include "view/cart/viewcart.php";
                 break; 
                 
          case 'bill':
-             include "view/cart/bill.php";
+             include "view/cart/vanchuyen.php";
              
          break;     
-         case 'billconfirm':{
+         case 'themvanchuyen':
             
-            if(isset($_POST['btn_hoaDon'])&&($_POST['btn_hoaDon'])){
-                $name = $_POST["fname"];
-                $phone = $_POST["phone"];
-                $adress = $_POST["adress"];
-                $note = $_POST["note"];
-                $email = $_POST["email"];
-                $user_id = $user["id"];
-                $total_money=$_POST["tongtien"];
-                $status = 0;    
-                $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money);
-                foreach($_SESSION["mycart"] as $cart){
-                  $product_id= $cart[0];
-                  $name = $cart[1];
-                  $images = $cart[2];
-                  $size = $cart[3];
-                  $num= $cart[4];
-                  $price = $cart[5];
-                   $khuyenmai= $cart[6];
-                   insert_order_detail($user_id,$order_id,$product_id,$images,$price,$num,$total_money);}
-              }
-            include "view/cart/billconfirm.php";
+           if(isset($_POST['themvanchuyen'])) {
+            echo '<script>alert("Cập nhật vận chuyển thành công")</script>';
+            $fullname = $_POST['fname'];
+            $phone = $_POST['phone'];
+            $address = $_POST['adress'];
+            $note = $_POST['note'];
+            $email = $_POST["email"];
+            $user_id = $user["id"];
+           
+            insert_shipping($fullname,$phone,$address,$email,$note,$user_id);
+          
+               header("location:index.php?act=bill");
+           }
+        break;
+         case 'hinhthucthanhtoan':{
+            include "view/cart/thongtinthanhtoan.php";
         break; 
          }
              

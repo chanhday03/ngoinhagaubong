@@ -1,10 +1,11 @@
-`
 <?php
 include "../model/pdo.php";
 include "../model/category.php";
 include "../model/product.php";
 include "../model/user.php";
 include "../model/comment.php";
+include "../model/dashboard.php";
+include "../model/thongke.php";
 include "headerAdmin.php";
 
 if (isset($_GET['act'])) {
@@ -155,7 +156,28 @@ if (isset($_GET['act'])) {
             $listFeedBack = loadall_feedback();
             include "user/feedback.php";
             break;
-            // default     
+            // order
+        case 'order':
+            include "order/order.php";
+            break;
+            // thongke
+        case 'thongke':
+            $listthongke = loadall_thongke();
+            include "thongke/list.php";
+            break;
+            // bieudo
+        case 'bieudo':
+            $listthongke = loadall_thongke();
+            include "thongke/bieudo.php";
+            break;
+        case 'danhsach':
+            $listdsdm = loadall_danhsach_dm();
+            $listdssp = loadall_danhsach_sp();
+            $listdsuser=loadall_danhsach_user();
+            $listdscomment =loadall_danhsach_comment();
+            $listdsfeedback=loadall_danhsach_feedback();
+            include "home.php";
+            break;
         default:
             include "home.php";
             break;

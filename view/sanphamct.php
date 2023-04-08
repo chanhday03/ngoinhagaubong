@@ -62,10 +62,13 @@
                         width="100%" class="small-img">';
                     ?>
                 </div>
+                
             </div>
         </div>
         <div class="single-pro-details">
             <?php
+            // index.php?act=addtocart
+            $soLuong=1;
             extract($onesp);
             $img = $img_path . $productImage;
             echo '<h3>Home / <p>' . $productName . '</p> </h3>
@@ -73,24 +76,17 @@
           <h2 class="price"> Price : 
                 ' . $productPrice . '  <ins>đ</ins> <span class="size">/ Size :  ' . $productSize . ' cm</span>
           </h2>
-          <!-- <form action="index.php?act=addtocart" method="POST">
-              <input type="text" name="product_name" value="' . $productName . '" hidden>
-              <input type="text" name="product_image" value="' . $img . '" hidden>
-              <input type="text" name="product_size" value="' . $productSize . '" hidden>
-              <input type="number" name="product_price" value="' . $productPrice . '" hidden>
-              Số lượng :
-              <input type="number" min="0" name="product_quantity"> <br>
-              <button class="btn">Add to cart</button>
-            </form> -->
+          <h2>Số Lương:<input onkeyup="checksoluong()" type="text" value="" min=1 class="border-2 soluong " name="" placeholder=">=1"></h2>
             <form action="index.php?act=addtocart" method="post">
                 <input type="hidden" name="id" value="' . $id . '">
                 <input type="hidden" name="name" value="' . $productName . '">
                 <input type="hidden" name="price" value="' . $productPrice . '">
                 <input type="hidden" name="images" value="' . $img . '">
                 <input type="hidden" name="size" value="' . $productSize . '">
+                <input id="soluong2" type="hidden" name="soluong" value="">
                 <input type="hidden" name="khuyenmai" value="' . $productPromotion . '">
                 <button type="submit" name="btn_addtocart" value="btn_addtocart" class="btn"> <i class="fa-solid fa-cart-shopping"></i></button>
-                 </form>
+             </form>
           <div class="desc"> 
           <h2>//Miêu tả</h2>
           <p>' . $productDesc . '</p>
@@ -114,8 +110,17 @@
          <li> - Mở cửa: 9h -20h </li>
         </ul>
        </div>
+      
+
         ';
             ?>
+           <script>
+        function checksoluong(){
+        const soluong = document.querySelector('.soluong').value;
+        document.getElementById('soluong2').value=soluong;
+    }
+       
+      </script> 
     </section>
     <section class="comment">
         <div class="heading">

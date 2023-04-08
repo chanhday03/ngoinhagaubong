@@ -1,305 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <title>Admin</title>
-  <link rel="stylesheet" href="../view/style.css" />
-  <script src="https://kit.fontawesome.com/62fe7548c5.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-</head> -->
-<!-- <style>
-  /*  import google fonts */
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
-  * {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-
-  body {
-    background: rgb(226, 226, 226);
-  }
-
-  nav {
-    position: sticky;
-    top: 0;
-    bottom: 0;
-    height: 100vh;
-    left: 0;
-    width: 85px;
-    background: #fff;
-    overflow: hidden;
-    transition: 1s;
-  }
-
-  nav:hover {
-    width: 280px;
-    transition: 1s;
-  }
-
-  .logo {
-    text-align: center;
-    display: flex;
-    margin: 10px 0 0 10px;
-    padding-bottom: 3rem;
-  }
-
-  .logo img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-  }
-
-  .logo span {
-    font-weight: bold;
-    padding-left: 15px;
-    font-size: 18px;
-    text-transform: uppercase;
-  }
-
-  a {
-    position: relative;
-    width: 280px;
-    font-size: 14px;
-    color: rgb(85, 83, 83);
-    display: table;
-    padding: 10px;
-  }
-
-  nav .fas {
-    position: relative;
-    width: 70px;
-    height: 40px;
-    top: 20px;
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .nav-item {
-    position: relative;
-    top: 12px;
-    margin-left: 10px;
-  }
-
-  a:hover {
-    background: #eee;
-  }
-
-  a:hover i {
-    color: #3ef995;
-    transition: 0.5s;
-  }
-
-  .logout {
-    position: absolute;
-    bottom: 0;
-  }
-
-  .container {
-    display: flex;
-  }
-
-  /* MAin Section */
-  .main {
-    position: relative;
-    padding: 20px;
-    width: 100%;
-  }
-
-  .main-top {
-    display: flex;
-    width: 100%;
-  }
-
-  .main-top i {
-    position: absolute;
-    right: 0;
-    margin: 10px 30px;
-    color: rgb(110, 109, 109);
-    cursor: pointer;
-  }
-
-  /*Attendance List serction  */
-  .attendance {
-    margin-top: 20px;
-    text-transform: capitalize;
-  }
-
-  .attendance-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  input[type="button"] {
-    width: 126px;
-    border-radius: 10px;
-    padding: 6px;
-  }
-
-  .attendance-header input[type="text"],
-  select {
-    width: 126px;
-    border-radius: 10px;
-    padding: 4px;
-    border: 1px solid #34af6d;
-    background-color: transparent;
-  }
-
-  .attendance-list {
-    /* width: 100%; */
-    padding: 10px;
-    margin-top: 10px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-  }
-
-  h1 {
-    color: black;
-    text-align: center;
-  }
-
-  input.go {
-    padding: 8px 16px;
-    border-radius: 12px;
-    background: #4ad389;
-    cursor: pointer;
-  }
-
-  .go:hover {
-    color: #fff;
-    background: #34af6d;
-  }
-
-  form input[type="submit"]:hover {
-    color: #fff;
-    background: #34af6d;
-  }
-
-  h1 {
-    color: black;
-    text-align: center;
-  }
-
-  table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 15px;
-    min-width: 100%;
-    overflow: hidden;
-    border-radius: 5px 5px 0 0;
-  }
-
-  table tr th {
-    color: #fff;
-    background: #34af6d;
-    text-align: left;
-    font-weight: bold;
-  }
-
-  table th,
-  table td {
-    padding: 12px 15px;
-  }
-
-  table tbody tr {
-    border-bottom: 1px solid #ddd;
-  }
-
-  table tbody tr:nth-of-type(odd) {
-    background: #f3f3f3;
-  }
-
-  table tbody tr:last-of-type {
-    border-bottom: 2px solid #4ad489;
-  }
-
-  .btn {
-    padding: 0px 20px;
-    margin-top: 20px;
-    margin-right: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #4ad489;
-  }
-
-  .btn:hover {
-    background: #4ad489;
-    color: #fff;
-    transition: 1s;
-  }
-
-  .nut {
-    display: flex;
-  }
-</style> -->
-<!-- 
-<body>
-  <div class="container">
-    <nav>
-      <ul>
-        <li>
-          <a href="#" class="logo">
-            <img src="https://img.freepik.com/premium-vector/cute-teddy-bear-logo-template_83738-274.jpg?w=2000" />
-            <span class="nav-item">Admin</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php">
-            <i class="fas fa-clipboard"></i>
-            <span class="nav-item">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=adddm">
-            <i class="fas fa-list"></i>
-            <span class="nav-item">Category</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=addsp">
-            <i class="fas fa-bars"></i>
-            <span class="nav-item">Products</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=dskh">
-            <i class="fas fa-user"></i>
-            <span class="nav-item">User</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=dsbl">
-            <i class="fas fa-comment"></i>
-            <span class="nav-item">Comment</span>
-          </a>
-        </li>
-        <li>
-          <a href="index.php?act=thongke">
-            <i class="fas fa-chart-pie"></i>
-            <span class="nav-item">View All</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span class="nav-item">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</body> -->
-
-<!-- </html> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -333,9 +31,8 @@
   :root {
     --poppins: 'Poppins', sans-serif;
     --lato: 'Lato', sans-serif;
-
     --light: #F9F9F9;
-    --blue: #3C91E6;
+    --brown: #a68567;
     --light-blue: #CFE8FF;
     --grey: #eee;
     --dark-grey: #AAAAAA;
@@ -358,7 +55,7 @@
   }
 
   body {
-    position: relative;
+    /* position: relative; */
     background: var(--grey);
     overflow-x: hidden;
   }
@@ -396,7 +93,7 @@
     height: 56px;
     display: flex;
     align-items: center;
-    color: var(--blue);
+    color: var(--brown);
     position: sticky;
     top: 0;
     left: 0;
@@ -468,7 +165,7 @@
   }
 
   #sidebar .side-menu.top li.active a {
-    color: var(--blue);
+    color: var(--brown);
   }
 
   #sidebar.hide .side-menu li a {
@@ -481,7 +178,7 @@
   }
 
   #sidebar .side-menu.top li a:hover {
-    color: var(--blue);
+    color: var(--brown);
   }
 
   #sidebar .side-menu li a .bx {
@@ -552,8 +249,8 @@
     transition: .3s ease;
   }
 
-  #content nav .nav-link:hover {
-    color: var(--blue);
+  #content nav .nav-link:active {
+    color: var(--brown);
   }
 
   #content nav form {
@@ -586,7 +283,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--blue);
+    background: var(--brown);
     color: var(--light);
     font-size: 18px;
     border: none;
@@ -641,7 +338,7 @@
     left: 2px;
     bottom: 2px;
     width: calc(25px - 4px);
-    background: var(--blue);
+    background: var(--brown);
     border-radius: 50%;
     transition: all .3s ease;
   }
@@ -663,6 +360,29 @@
     font-family: var(--poppins);
     max-height: calc(100vh - 56px);
     overflow-y: auto;
+  }
+
+  .head-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .head-header input,
+  select {
+    cursor: pointer;
+    width: 150px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    border: 1px solid var(--brown);
+  }
+
+  .head-header input:hover {
+    background-color: var(--brown);
+    color: white;
   }
 
   #content main .head-title {
@@ -696,25 +416,9 @@
   }
 
   #content main .head-title .left .breadcrumb li a.active {
-    color: var(--blue);
+    color: var(--brown);
     pointer-events: unset;
   }
-
-  #content main .head-title .btn-download {
-    height: 36px;
-    padding: 0 16px;
-    border-radius: 36px;
-    background: var(--blue);
-    color: var(--light);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-gap: 10px;
-    font-weight: 500;
-  }
-
-
-
 
   #content main .box-info {
     display: grid;
@@ -744,7 +448,7 @@
 
   #content main .box-info li:nth-child(1) .bx {
     background: var(--light-blue);
-    color: var(--blue);
+    color: var(--brown);
   }
 
   #content main .box-info li:nth-child(2) .bx {
@@ -792,6 +496,7 @@
     align-items: center;
     grid-gap: 16px;
     margin-bottom: 24px;
+    color: var(--brown);
   }
 
   #content main .table-data .head h3 {
@@ -804,46 +509,60 @@
     cursor: pointer;
   }
 
-  #content main .table-data .order {
+  #content main .table-data .table-box {
     flex-grow: 1;
     flex-basis: 500px;
   }
 
-  #content main .table-data .order table {
+  #content main .table-data .table-box table {
     width: 100%;
     border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    margin: 25px 0;
+    margin: 0 auto;
   }
 
-  #content main .table-data .order table th {
-    padding-bottom: 12px;
+  #content main .table-data .table-box table th {
+    padding: 15px 18px;
     font-size: 13px;
     text-align: left;
     border-bottom: 1px solid var(--grey);
+    background: #a68567;
+    border-right: 1px solid rgb(248, 244, 239);
   }
 
-  #content main .table-data .order table td {
-    padding: 16px 0;
+  #content main .table-data .table-box table td {
+    padding: 16px 10px;
   }
 
-  #content main .table-data .order table tr td:first-child {
+  #content main .table-data .table-box table tr td:first-child {
     display: flex;
     align-items: center;
     grid-gap: 12px;
     padding-left: 6px;
   }
 
-  #content main .table-data .order table td img {
+  #content main .table-data .table-box table tbody tr:nth-of-type(odd) {
+    background: #f3f3f3;
+  }
+
+  #content main .table-data .table-box table tbody tr:last-of-type {
+    border-bottom: 2px solid #a68567;
+  }
+
+  #content main .table-data .table-box table td img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
   }
 
-  #content main .table-data .order table tbody tr:hover {
-    background: var(--grey);
+  #content main .table-data .table-box table tbody tr:hover {
+    background: #e7e5e5;
   }
 
-  #content main .table-data .order table tr td .status {
+  #content main .table-data .table-box table tr td .status {
     font-size: 10px;
     padding: 6px 16px;
     color: var(--light);
@@ -851,15 +570,15 @@
     font-weight: 700;
   }
 
-  #content main .table-data .order table tr td .status.completed {
-    background: var(--blue);
+  #content main .table-data .table-box table tr td .status.completed {
+    background: var(--brown);
   }
 
-  #content main .table-data .order table tr td .status.process {
+  #content main .table-data .table-box table tr td .status.process {
     background: var(--yellow);
   }
 
-  #content main .table-data .order table tr td .status.pending {
+  #content main .table-data .table-box table tr td .status.pending {
     background: var(--orange);
   }
 
@@ -889,7 +608,7 @@
   }
 
   #content main .table-data .todo .todo-list li.completed {
-    border-left: 10px solid var(--blue);
+    border-left: 10px solid var(--brown);
   }
 
   #content main .table-data .todo .todo-list li.not-completed {
@@ -979,125 +698,36 @@
     }
   }
 
-  /*Attendance List serction  */
-  .attendance {
-    position: absolute;
-    /* margin-left: 100px; */
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    margin-top: 20px;
-    text-transform: capitalize;
-  }
-
-  .attendance-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  input[type="button"] {
-    width: 126px;
-    border-radius: 10px;
-    padding: 6px;
-  }
-
-  .attendance-header input[type="text"],
-  select {
-    width: 126px;
-    border-radius: 10px;
-    padding: 4px;
-    border: 1px solid #34af6d;
-    background-color: transparent;
-  }
-
-  .attendance-list {
-    /* width: 100%; */
-    padding: 10px;
-    margin-top: 10px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-  }
-
-  h1 {
-    color: black;
-    text-align: center;
-  }
-
-  input.go {
-    padding: 8px 16px;
-    border-radius: 12px;
-    background: #4ad389;
-    cursor: pointer;
-  }
-
-  .go:hover {
-    color: #fff;
-    background: #34af6d;
-  }
-
-  form input[type="submit"]:hover {
-    color: #fff;
-    background: #34af6d;
-  }
-
-  h1 {
-    color: black;
-    text-align: center;
-  }
-
-  table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 15px;
-    min-width: 100%;
-    overflow: hidden;
-    border-radius: 5px 5px 0 0;
-  }
-
-  table tr th {
-    color: #fff;
-    background: #34af6d;
-    text-align: left;
-    font-weight: bold;
-  }
-
-  table th,
-  table td {
-    padding: 12px 15px;
-  }
-
-  table tbody tr {
-    border-bottom: 1px solid #ddd;
-  }
-
-  table tbody tr:nth-of-type(odd) {
-    background: #f3f3f3;
-  }
-
-  table tbody tr:last-of-type {
-    border-bottom: 2px solid #4ad489;
-  }
-
   .btn {
-    padding: 0px 20px;
+    cursor: pointer;
+    padding: 8px 20px;
     margin-top: 20px;
     margin-right: 10px;
     border-radius: 10px;
     cursor: pointer;
     background: transparent;
-    border: 1px solid #4ad489;
+    border: 1px solid #a68567;
   }
 
   .btn:hover {
-    background: #4ad489;
-    color: #fff;
+    background: #a68567;
+    color: white;
     transition: 1s;
   }
 
   .nut {
     display: flex;
+  }
+
+  .fa-trash {
+    color: red;
+    font-size: 30px;
+  }
+
+  .fa-pen {
+    color: greenyellow;
+    font-size: 30px;
+    margin-right: 30px;
   }
 </style>
 
@@ -1112,47 +742,59 @@
     </a>
     <ul class="side-menu top">
       <li class="active">
-        <a href="index.php?act=listDB">
+        <a href="index.php?act=danhsach">
           <i class='bx bxs-dashboard'></i>
           <span class="text">Dashboard</span>
         </a>
       </li>
+      <!-- <li class="active">
+        <a href="index.php?act=listDB">
+          <i class='bx bxs-dashboard'></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li> -->
       <li>
         <a href="index.php?act=adddm">
           <i class='bx bxs-shopping-bag-alt'></i>
-          <span class="text">category</span>
+          <span class="text">Category</span>
         </a>
       </li>
       <li>
         <a href="index.php?act=addsp">
-          <i class='bx bxs-doughnut-chart'></i>
-          <span class="text">products</span>
+          <i class='bx bxs-analyse'></i>
+          <span class="text">Products</span>
         </a>
       </li>
       <li>
         <a href="index.php?act=dskh">
-        <i class='bx bxs-group'></i>
-          <span class="text">user</span>
+          <i class='bx bxs-group'></i>
+          <span class="text">User</span>
         </a>
       </li>
       <li>
         <a href="index.php?act=dsbl">
           <i class='bx bxs-message-dots'></i>
-          <span class="text">comment</span>
+          <span class="text">Comment</span>
         </a>
       </li>
       <li>
         <a href="index.php?act=feedback">
           <i class='bx bxs-note'></i>
-          <span class="text">feedback</span>
+          <span class="text">Feedback</span>
+        </a>
+      </li>
+      <li>
+        <a href="index.php?act=order">
+          <i class='bx bx-cart'></i>
+          <span class="text">Order</span>
         </a>
       </li>
     </ul>
     <ul class="side-menu">
       <li>
-        <a href="#">
-          <i class='bx bxs-cog'></i>
-          <span class="text">Settings</span>
+        <a href="index.php?act=thongke">
+          <i class='bx bxs-chart'></i>
+          <span class="text">Statistical</span>
         </a>
       </li>
       <li>
@@ -1164,6 +806,7 @@
     </ul>
   </section>
   <!-- SIDEBAR -->
+  <!-- CONTENT -->
   <section id="content">
     <!-- NAVBAR -->
     <nav>
@@ -1186,8 +829,8 @@
       </a>
     </nav>
     <!-- NAVBAR -->
-
   </section>
+  <!-- CONTENT -->
   <script>
     const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
