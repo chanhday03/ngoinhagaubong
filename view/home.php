@@ -1,92 +1,63 @@
+<style>
+/* .danhmuc {
+        max-width: 1248px;
+        transform: translate(50px, 300px);
+
+    } */
+</style>
+<link rel="stylesheet" href="layout/assets/style.css" />
 <div class="danhmuc">
     <div class="heading">
         <h1>Danh mục</h1>
     </div>
     <div class="menu_dm">
         <ul>
-            <?php 
-foreach ($dsdm as $dm) {
-    extract($dm);
-    $linkdm = "index.php?act=sanphamct&idsp=".$id;
-    echo '<li>
-    <a href="'.$linkdm.'">'.$categoryName.'</a>
+            <?php
+            foreach ($dsdm as $dm) {
+                extract($dm);
+                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                echo '<li>
+    <a href="' . $linkdm . '">' . $categoryName . '</a>
 </li>';
-    # code...
-}
+            }
             ?>
-            <!-- <li>
-                <a href="#">Gấu bông</a>
-            </li>
-            <li>
-                <a href="#">Phụ kiện</a>
-            </li> -->
         </ul>
     </div>
-    <!-- <form action="index.php?act=sanpham" method="post">
-        <input type="text" name="kyw" id="" placeholder="Search ... " />
-        <a class="fa-solid fa-magnifying-glass" id="search-icon">
-            <input type="submit" name="timkiem" value="Search">
-        </a>
-    </form> -->
 </div>
 <!-- categories -->
-<section class="categories" id="categories">
+<section class="products" id="products">
     <div class="heading">
-        <h1>Top 10 Sản phẩm được yêu thích nhất<br /><span>Teddyshop</span></h1>
-        <a href="#" class="btn">Order now<i class="fa-solid fa-circle-right"></i></a>
+        <h1>Tất cả sản phẩm nội bật <br /><span>Teddyshop</span></h1>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Chọn size</button>
+            <div id="myDropdown" class="dropdown-content">
+                <?php
+                foreach ($listsize as $size) {
+                    extract($size);
+                    $linksize = "index.php?act=sanpham&size=" . $productSize;
+                    echo '<a href="' . $linksize . '">' . $productSize . '</a>';
+                }
+                ?>
+            </div>
+        </div>
     </div>
     <div class="categories-container">
-        <?php 
-            foreach($dstop10 as $sp){
-                extract($sp);
-                $linksp="index.php?act=sanphamct&idsp=".$id;
-                $img = $img_path.$productImage; 
-                echo '<div class="box box1">
-            <img src=" '.$img.' " alt="" />
-            <h2><a href=" '.$linksp.' ">'.$productName.'</a></h2>
+        <?php
+        foreach ($dstop10 as $sp) {
+            extract($sp);
+            $linksp = "index.php?act=sanphamct&idsp=" . $id;
+            $img = $img_path . $productImage;
+            echo '<div class="box box1">
+            <img src=" ' . $img . ' " alt="" />
+            <h2><a href=" ' . $linksp . ' ">' . $productName . '</a></h2>
             <i class=" fa-solid fa-arrow-right"></i>
         </div>';
         }
         ?>
 
-        <!-- <div class="box box2">
-                <img src="https://i.pinimg.com/236x/b4/33/04/b43304ffe75fe4e7cfa6c9d5ea2398da.jpg" alt="" />
-                <h2><a href="">Cây nấm</a></h2>
-                <i class="fa-solid fa-arrow-right"></i>
-            </div>
-            <div class="box box3">
-                <img src="https://i.pinimg.com/564x/75/e9/51/75e9514a3f6d4b4fcc338aa52dc1cb1a.jpg" alt="" />
-                <h2><a href="">Chim cánh cụt</a></h2>
-                <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          -->
+
     </div>
 </section>
-<div class="sliderImage">
-    <div class="images">
-        <div class="item" style="--i: 1">
-            <img src="https://i.pinimg.com/564x/ae/eb/9a/aeeb9aaf8bfc3984a57ad882d7f7d8c8.jpg" />
-        </div>
-        <div class="item" style="--i: 2">
-            <img src="https://i.pinimg.com/564x/c7/c0/c9/c7c0c91662e5493f309a877743a1abe9.jpg" />
-        </div>
-        <div class="item" style="--i: 3">
-            <img src="https://i.pinimg.com/564x/93/a2/ab/93a2ab6a6f163ed4bd76cdd14323f8bf.jpg" />
-        </div>
-        <div class="item" style="--i: 4">
-            <img src="https://i.pinimg.com/564x/4e/c6/57/4ec65795eadba193a8c4686a8149b716.jpg" />
-        </div>
-        <div class="item" style="--i: 5">
-            <img src="https://i.pinimg.com/564x/28/41/6c/28416c671d8127f9151f718c8859b71a.jpg" />
-        </div>
-        <div class="item" style="--i: 6">
-            <img src="https://i.pinimg.com/564x/78/a8/98/78a898bf598ca2a058a5543bb95701d5.jpg" />
-        </div>
-    </div>
-    <button id="prev">
-        << /button>
-            <button id="next">></button>
-</div>
 <!-- product -->
 <section class="products" id="products">
     <div class="heading">
@@ -95,35 +66,157 @@ foreach ($dsdm as $dm) {
     </div>
     <div class="products-container">
         <?php
-            foreach ($spnew as $sp) {
-                extract($sp);
-                $linksp="index.php?act=sanphamct&idsp=".$id;
-                $hinh = $img_path.$productImage;
-                echo '<div class="box">
-                <img src="'.$hinh.'"
+        foreach ($spnew as $sp) {
+            extract($sp);
+            $hinh = $img_path . $productImage;
+            $linksp = "index.php?act=sanphamct&idsp=" . $id;
+            echo '<div class="box">
+                <img src="' . $hinh . '"
                     alt="">
-                <h2 class="name"><a href="'.$linksp.'">Name : '.$productName.'</a></h2>
+                <h2 class="name"><a href="' . $linksp . '">Name : ' . $productName . '</a></h2>
                 <h3 class="price"> Price : 
-                '.$productPrice.'  <ins>đ</ins> <span class="size">/ Size :  '.$productSize.' cm</span>
+                ' . $productPrice . '  <ins>đ</ins> <span class="size">/ Size :  ' . $productSize . '</span>
                 </h3>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-solid fa-heart"></i>
-                <span class="discount">- '.$productPromotion.'%</span>
+                <span class="discount">- ' . $productPromotion . '%</span>
+                <form action="index.php?act=addtocart" method="post">
+                <input type="hidden" name="id" value="' . $id . '">
+                <input type="hidden" name="name" value="' . $productName . '">
+                <input type="hidden" name="price" value="' . $productPrice . '">
+                <input type="hidden" name="images" value="' . $hinh . '">
+                <input type="hidden" name="size" value="' . $productSize . '">
+                <input type="hidden" name="khuyenmai" value="' . $productPromotion . '">
+                <button type="submit" name="btn_addtocart" value="btn_addtocart">   <i class="fa-solid fa-cart-shopping"></i></button>
+                 </form>
+               <a href="?act=addwishlist&id='.$id.'"> <i class="fa-solid fa-heart"></i> </a>
+                
+
+
+               
             </div>';
-            }
-            ?>
+        }
+        ?>
     </div>
-    <!-- <div class="box">
-            <img src="https://lzd-img-global.slatic.net/g/p/4e24af3f54a89474fcdf303b17b9ccc2.jpg_720x720q80.jpg_.webp"
-                alt="" />
-            <h2 class="name"><a href="">Gấu Bông Lotso Huggin Bea</a></h2>
-            <h3 class="price">
-                199.000 <ins>đ</ins><span class="size">/ 48cm</span>
-            </h3>
-            <i class="fa-solid fa-cart-shopping"></i>
-            <i class="fa-solid fa-heart"></i>
-            <span class="discount">-5%</span>
+    <!-- index.php?act=addtocart -->
+    </div>
+
+</section>
+<section class="about" id="about">
+    <img src="https://i.pinimg.com/564x/93/b5/10/93b510a30b653ad2a059012e2a6e1f88.jpg" alt="" />
+    <div class="about-text">
+        <span>About Us</span>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
+            deserunt fugiat est in laudantium nostrum tempora omnis quo suscipit
+            quidem accusantium, numquam aspernatur architecto hic eius! Ipsum quis
+            hic maxime?
+        </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <a href="#" class="btn">
+            Learn more<i class="fa-solid fa-circle-right"></i></a>
+    </div>
+</section>
+<section class="customers" id="customers">
+    <h2>Why Customer's Love Us?</h2>
+    <div class="customers-container">
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
         </div>
-        -->
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-quote-left"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-quote-right"></i>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star-half-stroke"></i>
+            </div>
+            <p class="comment">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+                pariatur tempora vitae delectus quisquam in quasi error? Tenetur,
+                possimus architecto repellendus ab magni culpa voluptate,
+                necessitatibus in, iste suscipit fugiat.
+            </p>
+            <div class="review-profile">
+                <img src="https://i.pinimg.com/236x/7c/85/2b/7c852b4db3689f52e2a68f6624f2f56a.jpg" alt="" />
+                <h3>ChanhDay</h3>
+            </div>
+        </div>
     </div>
 </section>

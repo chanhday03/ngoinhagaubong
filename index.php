@@ -4,57 +4,193 @@ session_start();
 include 'model/pdo.php';
 include 'model/product.php';
 include 'model/category.php';
+include 'model/comment.php';
 include 'global.php';
 include 'view/header.php';
+include 'model/cart/cart.php';
+// include 'model/user.php';
 $spnew = loadall_product_home();
 $dsdm = loadall_category();
 $dstop10 = loadall_product_top10();
+$listsize = loadall_size();
+if(!isset($_SESSION['mycart']))$_SESSION['mycart']=[];
+if(!isset($_SESSION['mywishlist']))$_SESSION['mywishlist']=[];
 if((isset($_GET['act'])) && ($_GET['act']!="")){
     $act = $_GET['act'];
     switch ($act) {
-       
-         case 'sanphamct':
+        case 'sanpham':
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            if (isset($_GET['iddm']) && ($_GET['iddm'] > 0)) {
+                $iddm = $_GET['iddm'];
+            } else {
+                $iddm = 0;
+            }
+
+            if (isset($_GET['size']) && ($_GET['size'] > 0)) {
+                $size = $_GET['size'];
+            } else {
+                $size = 0;
+            }
+            $dssp = loadall_product($kyw, $iddm, $size);
+            $tendm = load_ten_dm($iddm);
+            include 'view/sanpham.php';
+            break;
+            case 'sanphamct':
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
                 $onesp = loadone_product($id);
+                $cmsp = loadall_comment_theosp($id);
+                extract($cmsp);
                 extract($onesp);
-                $sp_cung_loai = load_product_cungloai($id,$iddm);
+                $sp_cung_loai = load_product_cungloai($id, $category_id);
                 include 'view/sanphamct.php';
             } else {
                 include 'view/home.php';
             }
             break;
-            case 'addwishlist':
-                if(isset($_GET['id'])&& $_GET['id']) {
-                    $id=$_GET['id'];
-                    $check=true;
-                    foreach($_SESSION["mywishlist"] as $item) {
-                    if($item==$id){
-                        $check=false;
-                        break;
-                                }
-                    }
-                    if($check){
-                    $_SESSION["mywishlist"][]=$id;
+            case 'addcomment':
+            $user_id = $_SESSION['id'];
+            $description = $_POST["description"];
+            $product_id = $_GET['idsp'];
+            if (isset($_POST["guibinhluan"])) {
+                if (empty($description)) {
+                    $thongbao = 'Bạn đang để trống nội dung bình luận';
+                    header("location:index.php?act=sanphamct&idsp=" . $product_id);
+                } else {
+                    add_comment($product_id, $user_id, $description);
+                    header("location:index.php?act=sanphamct&idsp=" . $product_id);
                 }
+            }
+            break;
+        case 'delcomment':
+            $product_id = $_GET['idsp'];
+            delete_comment($_GET["idcm"]);
+            header("location:index.php?act=sanphamct&idsp=" . $product_id);
+            break;
+        case 'editcomment':
+            $id = $_GET['idcm'];
+            $user_id = $_SESSION['id'];
+            $description = $_POST["description"];
+            $product_id = $_GET['idsp'];
+            if (isset($_POST["editbinhluan"])) {
+                if (empty($description)) {
+                    $thongbao = 'Bạn đang để trống nội dung bình luận';
+                    header("location:index.php?act=sanphamct&idsp=" . $product_id);
+                } else {
+                    edit_comment($id, $product_id, $user_id, $description);
+                    header("location:index.php?act=sanphamct&idsp=" . $product_id);
                 }
-                header("location:index.php?act=wishlist");
-                break;
-            case 'wishlist':
-                $wishlist=[];
-                foreach($_SESSION["mywishlist"] as $item){
-                    $wishlist[]=loadone_product($item);
+            }
+            break;
+         case 'addtocart':
+            if(isset($_POST["btn_addtocart"])&&($_POST["btn_addtocart"]!="")){
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $images = $_POST['images'];
+                $size = $_POST["size"];
+                $price = $_POST['price'];
+                $khuyenmai = $_POST["khuyenmai"];
+               
+                $soLuong = 1;
+                $soTien = $soLuong * $price;
+                $spadd = [$id,$name,$images,$size,$soLuong,$price,$khuyenmai,$soTien];
+                array_push($_SESSION['mycart'],$spadd);     
+             }
+                include "view/cart/viewcart.php";
+             break;
+         case 'deletecart':
+            if(isset($_GET["idcart"])){
+                 array_splice($_SESSION['mycart'],$_GET["idcart"],1);
+                header("location:index.php?act=addtocart"); 
+            }else{
+                $_SESSION['mycart']=[];
+            }
+          
+              break;
+        case 'viewcart':
+                include "view/cart/viewcart.php";
+                break; 
+                
+         case 'bill':
+             include "view/cart/bill.php";
+             
+         break;    
+         case 'billconfirm':{
+            
+            if(isset($_POST['btn_hoaDon'])&&($_POST['btn_hoaDon'])){
+                $name = $_POST["fname"];
+                $phone = $_POST["phone"];
+                $adress = $_POST["adress"];
+                $note = $_POST["note"];
+                $email = $_POST["email"];
+                $user_id = $user["id"];
+                $total_money=$_POST["tongtien"];
+                $status = 0;    
+                $order_id = insert_bill($user_id,$fullname,$email,$phone,$address,$note,$status,$total_money);
+                foreach($_SESSION["mycart"] as $cart){
+                  $product_id= $cart[0];
+                  $name = $cart[1];
+                  $images = $cart[2];
+                  $size = $cart[3];
+                  $num= $cart[4];
+                  $price = $cart[5];
+                   $khuyenmai= $cart[6];
+                   insert_order_detail($user_id,$order_id,$product_id,$images,$price,$num,$total_money);}
+              }
+            include "view/cart/billconfirm.php";
+        break; 
+         }
+        case 'addwishlist':
+            if(isset($_GET['id'])&& $_GET['id']) {
+                $id=$_GET['id'];
+                $check=true;
+                foreach($_SESSION["mywishlist"] as $item) {
+                if($item==$id){
+                    $check=false;
+                    break;
+                            }
                 }
-                include "view/wishlist.php";
-        case 'gioithieu':
-            include"view/gioithieu.php";
+                if($check){
+                $_SESSION["mywishlist"][]=$id;
+            }
+            }
+            header("location:index.php?act=wishlist");
+            break;
+        case 'wishlist':
+            $wishlist=[];
+            // unset($_SESSION["mywishlist"]);     
+            foreach($_SESSION["mywishlist"] as $item){
+                $wishlist[]=loadone_product($item);
+            }
+            include "view/wishlist.php";
+            break;
+        case 'deletewishlist':
+                if(isset($_GET["id"])){
+                     foreach($_SESSION["mywishlist"] as $index =>$item){
+                        if($item==$_GET["id"]){
+                            unset($_SESSION["mywishlist"][$index]);
+                        }
+                     }
+                    header("location:index.php?act=wishlist"); 
+                }else{
+                    $_SESSION['mywishlist']=[];
+                }
+              
+            break;
+        case 'feedback':
+            include "view/feedback.php";
             break;
         case 'lienhe':
-            include"view/lienhe.php";
+            include "view/lienhe.php";
             break;
         default:
-            include"view/home.php";
+            include "view/home.php";
             break;
+            
     }
 }else {
     include 'view/home.php';

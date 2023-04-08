@@ -1,5 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ngôi nhà gấu bông</title>
+    <link rel="stylesheet" href="view/layout/assets/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+</head>
+<style>
+    .danhmuc {
+        padding-top: 20px;
+        max-width: 1248px;
+        margin: 0 auto;
+    }
+
+    .search-bar {
+        background-color: burlywood;
+        display: flex;
+        align-items: center;
+        border-radius: 60px;
+        padding: 8px 25px;
+        backdrop-filter: blur(4px) saturate(180%);
+    }
+
+    .search-bar input {
+        background-color: transparent;
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 5px 15px;
+        font-size: 10px;
+        margin-right: 10px;
+    }
+
+    ::placeholder {
+        color: white;
+        font-size: 14px;
+    }
+
+    .search-bar button img {
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    .search-bar button {
+        border: 0;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: #a68567;
+        cursor: pointer;
+    }
+</style>
 <?php 
 
 $sName = "localhost";
@@ -16,12 +70,13 @@ try {
 }
 ?>
 <?php
-session_start();
+
 if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {
 
 include 'model/user.php';
 $user = getUserById($_SESSION['id'], $conn);
 }
+
  ?>
 
 <head>
@@ -30,22 +85,24 @@ $user = getUserById($_SESSION['id'], $conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ngôi nhà gấu bông</title>
     <link rel="stylesheet" href="view/layout/assets/style.css" />
+    <link rel="stylesheet" href="view/layout/assets/style2.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="view/layout/assets/style2.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <script
-      src="https://kit.fontawesome.com/62fe7548c5.js"
-      crossorigin="anonymous"
-    ></script>
+
+    <script src="https://kit.fontawesome.com/62fe7548c5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!-- header -->
     <header>
+
         <a href="" class="logo">
             <img src="https://i.pinimg.com/564x/63/e4/c9/63e4c923c2467000cf6dbb3a0499bf61.jpg" alt="" />
         </a>
         <div class="fa-solid fa-bars" id="menu-icon"></div>
         <div class="navbar">
-            <a href="#home" class="home-active">Trang Chủ</a>
+            <a href="index.php" class="home-active">Trang Chủ</a>
             <a href="#">Giới thiệu</a>
             <div class="dropdown">
                 <button class="dropbtn">Sản phẩm
@@ -57,30 +114,32 @@ $user = getUserById($_SESSION['id'], $conn);
                 </div>
             </div>
             <a href="#">Liên Hệ</a>
-            <a href="#">Góp Ý</a>
-            <a href="#">Khám phá</a>
+            <a href="index.php?act=feedback">Góp Ý</a>
         </div>
-        <div class="icons">
-            <a href="#" class="fa-solid fa-heart"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
-        </div>
-        <form action="index.php?act=timkiem" method="POST">
-            <input type="text" name="keyword" id="" placeholder="Search ... " required=""/>
-            <button type="submit" name="timkiem" class="btn_search" id="search-icon"><i class="fas fa-search" ></i></button>
+        <form action="index.php?act=sanpham" method="post" class="search-bar">
+            <input type="text" name="kyw" placeholder="Sản phẩm bạn muốn.." />
+            <button type="submit" name="timkiem">
+                <img src="https://static.vecteezy.com/system/resources/previews/001/591/517/non_2x/free-search-icon-free-vector.jpg"
+                    alt="">
+            </button>
         </form>
-        <div class="profile">
+        <div class="icons">
+        <a href="index.php?act=addwishlist&id='.$id.'"> <i class="fa-solid fa-heart"></i> </a>
+            <a href="index.php?act=viewcart" class="fas fa-shopping-cart"></a>
+        </div>
 
+        <div class="profile">
             <?php
-   
-             if (isset($user)) { ?>
+               if (isset($user)) { ?>
             <div class="d-flex justify-content-center align-items-center vh-100">
 
                 <div class="shadow w-350 p-3 text-center">
                     <div class="profile2">
-                        <img id="profileimg" src="upload/<?=$user['pp']?>" class="img-fluid rounded-circle">
-                        <h3 class="display-4 "><?=$user['fname']?></h3>
+                        <img src="upload/<?=$user['pp']?>" class="img-fluid rounded-circle">
+                        <h3 class="display-4 ">
+                            <?=$user['fname']?>
+                        </h3>
                     </div>
-
                     <a href="view/taikhoan/edit.php" class="btn btn-primary">
                         Edit Profile
                     </a>
@@ -89,7 +148,9 @@ $user = getUserById($_SESSION['id'], $conn);
                     </a>
                 </div>
             </div>
-            <?php }else { 
+    </header>
+    </div>
+    <?php }else { 
                   echo '<div class="navlogin">
                    <ul>
                <a href="view/taikhoan/login.php">
@@ -98,88 +159,105 @@ $user = getUserById($_SESSION['id'], $conn);
                 <a href="view/taikhoan/signup.php">
                 <li>Đăng ký</li>
                   </a>
-                </ul>';
-              exit;
+                </ul>
+                </div>
+                </header>';
+      
+             
              } ?>
-
-        </div>
-
     </header>
-    <style>
-        #search-icon{
-            border:none;
-            background-color: transparent;
-        }
-        header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fbfdfc;
-  box-shadow: 0 8px 11px rgba(14 55 54 / 15%);
-  padding: 20px 10px;
-  transition: 0.5s;
-  font-family: Pacifico;
-}
-.logo img {
-  width: 90px;
-  height: 80px;
-}
-header form input {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  margin-left: 10px;
-}
-header form i {
-  font-size: 20px;
-  color: var(--light-brown-color);
-  cursor: pointer;
-}
-.profile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 5px;
-  cursor: pointer;
-}
-.profile2{
-  display: grid;
-  grid-template-columns: 50px 1fr ;
-
-}
-
-.profile img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.profile span {
-  font-size: 13px;
-  font-weight: 500;
-}
-        .profile2{
-  display: grid;
-  grid-template-columns: 50px 1fr ;
-
-}
-        #profileimg{
-            width: 40px;
-  height: 40px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.navlogin{
-    display: grid;
-  grid-template-columns: 1fr ;
-}
-    </style>
+    <!-- home -->
+    <section class="home" id="home">
+        <div class="banner">
+            <div class="swiper-container home-slider">
+                <div class="swiper-wrapper wrapper">
+                    <div class="slideshow"></div>
+                    <div class="swiper-slide slide">
+                        <div class="content">
+                            <span>teddyshop</span>
+                            <h3>Gấu bông Kuromi</h3>
+                            <p>
+                                Bộ sưu tập những mẫu Gấu Bông Kuromi, Gấu Bông Kuromi được thiết kế với chất liệu cao
+                                cấp, đường chỉ may & độ hoàn thiện các chi tiết đạt mức tinh xảo, giúp Gấu Bông Kuromi
+                                nỗi bật, rất dễ thương & đáng yêu
+                            </p>
+                            <a href="#" class="btn">Order now</a>
+                        </div>
+                        <div class="image">
+                            <img src="https://i.pinimg.com/564x/63/2d/e8/632de8fd243b344b00afe88c8a77e312.jpg" alt="" />
+                        </div>
+                    </div>
+                    <!-- slide2 -->
+                    <div class="swiper-slide slide">
+                        <div class="content">
+                            <span>teddyshop</span>
+                            <h3>Gấu bông Kuromi</h3>
+                            <p>
+                                Hơn +100 mẫu Gấu Teddy với nhiều thiết kế Teddy khác nhau, Gấu Teddy cao cấp được nhập
+                                khẩu trực tiếp và được nhồi 100% Bông Gòn đàn hồi trắng nên rất êm khi ôm.
+                                Chuyên mục này sẽ giới thiệu với các bạn những mẫu Gấu Teddy đang HOT nhất và được đông
+                                đảo giới trẻ yêu thích nhất.
+                                Đặc biệt Gấu Bông Teddy của gaubongcaocap.com đều được nhập khẩu 100% các bạn nhé.
+                            </p>
+                            <a href="#" class="btn">Order now</a>
+                        </div>
+                        <div class="image">
+                            <img src="https://i.pinimg.com/736x/07/25/0c/07250c6d8abf9c2abdf1b09006ae6806.jpg" alt="" />
+                        </div>
+                    </div>
+                    <!-- slide3 -->
+                    <div class="swiper-slide slide">
+                        <div class="content">
+                            <span>teddyshop</span>
+                            <h3>Gấu bông Kuromi</h3>
+                            <p>
+                                Gấu bông cao cấp, đẹp chính hãng giá rẻ chưa bao giờ lại mua
+                                dễ đến thế! Hãy đến với Shop Gấu bông Teddy có cho mình các
+                                sản phẩm to, nhỏ, dễ thương.
+                            </p>
+                            <a href="#" class="btn">Order now</a>
+                        </div>
+                        <div class="image">
+                            <img src="https://i.pinimg.com/564x/89/32/b5/8932b55b60900afab9230d89e7e12958.jpg" alt="" />
+                        </div>
+                    </div>
+                    <!-- slide4 -->
+                    <div class="swiper-slide slide">
+                        <div class="content">
+                            <span>teddyshop</span>
+                            <h3>Gấu bông Kuromi</h3>
+                            <p>
+                                Vì là Gấu nhập khẩu cao cấp nên các bạn vui lòng không so sánh giá với Gấu bông Fake bán
+                                ngoài lề đường & các shop nhỏ lẻ bán phá giá nhé.
+                                Gấu Teddy được gia công tại Thái Lan & Quảng Châu. Là loại Gấu Teddy cao cấp, được xuất
+                                khẩu sang thị trường Đông Nam Á, Úc, Malaysia & Việt Nam.
+                            </p>
+                            <a href="#" class="btn">Order now</a>
+                        </div>
+                        <div class="image">
+                            <img src="https://i.pinimg.com/564x/ad/46/da/ad46da0f690fdd823ef3bbea803e7347.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <div class="note">
+        <div class="ship">
+            <img src="view/layout/assets/images/note_ship.jpg" alt="">
+            <p>GIAO HÀNG TẬN NHÀ</p>
+        </div>
+        <div class="gift">
+            <img src="view/layout/assets/images/note_gift.jpg" alt="">
+            <p>GÓI QUÀ SIÊU ĐẸP</p>
+        </div>
+        <div class="ship">
+            <img src="view/layout/assets/images/note_wash.jpg" alt="">
+            <p>CÁCH GIẶT GẤU BÔNG</p>
+        </div>
+        <div class="ship">
+            <img src="view/layout/assets/images/note_help.jpg" alt="">
+            <p>BẢO QUẢN GẤU BÔNG</p>
+        </div>
+    </div>
