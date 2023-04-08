@@ -1,56 +1,60 @@
-<section class="main">
-    <div class=" attendance">
-        <div class="attendance-list">
-            <h1>Danh sách User</h1>
-        </div>
-        <table>
-            <tr>
-                <th></th>
-                <th>Mã tài khoản</th>
-                <th>Tên người dùng</th>
-                <th>Tên đăng nhập</th>
-                <th>Email</th>
-                <th>Mật khẩu</th>
-                <th>Hình ảnh</th>
-                <th>Địa chỉ</th>
-                <th>Điện thoại</th>
-
-                <th>Vai trò</th>
-                <th>Action</th>
-            </tr>
-            <?php 
-                   foreach ($listuser as $user) {
-                    extract($user);
-                    $suatk = "index.php?act=suatk&id=" . $id;
-                    $xoatk = "index.php?act=xoatk&id=". $id;
-                    echo '<tr>
-                    <td><input type="checkbox"></td>
-                    <td>' . $id . '</td>
-                    <td>'.$fname.'</td>
-                    <td>' . $username . '</td>
-                    <td>' . $email. '</td>
-                    <td id="pass">' . $password. '</td>
-                    <td><img src="../upload/'.$pp.'" alt="Lỗi ảnh" /></td>
-                    <td>' . $adress . '</td>
-                    <td>' . $phone. '</td>
-                    
-                    <td>' . $role . '</td>
-                    <td>
-                       <a href="'.$xoatk.'"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                    </tr>';
-                    }
-                 ?>
-        </table>
-        <div class="row mb10">
-            <a href="index.php?act=listuser">
-                <input type="button" value="Nhập thêm" class="btn">
-            </a>
-        </div>
-        </form>
-    </div>
-    </div>
+<!-- CONTENT -->
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <section class="table-data">
+            <div class="table-box">
+                <div class="head">
+                    <h1>List User</h1>
+                </div>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Fname</th>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>Image</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                    <?php 
+                           foreach ($listuser as $user) {
+                            extract($user);
+                            $suatk = "index.php?act=suatk&id=" . $id;
+                            $xoatk = "index.php?act=xoatk&id=". $id;
+                            echo '<tr>
+                            <td><input type="checkbox"></td>
+                            <td>' . $id . '</td>
+                            <td>'.$fname.'</td>
+                            <td>' . $username . '</td>
+                            <td id="pass">' . $password. '</td>
+                            <td><img src="../upload/'.$pp.'" alt="Lỗi ảnh" /></td>
+                            <td>' . $email. '</td>
+                            <td>' . $adress . '</td>
+                            <td>' . $phone. '</td>            
+                            <td>' . $role . '</td>
+                            <td>
+                               <a href="'.$xoatk.'"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                            </tr>';
+                            }
+                         ?>
+                </table>
+                <!-- <div class="">
+                    <a href="index.php?act=listUser">
+                        <input type="button" value="Add New" class="btn">
+                    </a>
+                </div> -->
+            </div>
+        </section>
+    </main>
+    <!-- MAIN -->
 </section>
+<!-- CONTENT -->
 
 <body>
     <style>
