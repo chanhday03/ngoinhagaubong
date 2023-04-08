@@ -1,2 +1,3 @@
-# adminhub
-Website ini merupakan hasil slicing dari Figma ke responsive website menggunakan HTML, CSS, dan JavaScript
+# NGOI NHA GAU BONG
+
+## This website make by chanhday and dongdoi va ca banana
