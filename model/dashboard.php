@@ -8,27 +8,32 @@ min(product.productPrice) as minprice, max(product.productPrice) as maxprice , a
     $listdsdm = pdo_query($sql);
     return $listdsdm;
 }
-function loadall_danhsach_sp()
+function Count_sp()
 {
     $sql = "SELECT COUNT(id) as count FROM `product`";
-    $listdssp = pdo_query($sql);
-    return $listdssp;
+    $Countsp = pdo_query($sql);
+    return $Countsp;
 }
-function loadall_danhsach_user()
+function Count_user()
 {
     $sql = "SELECT COUNT(id) as count FROM `users`";
-    $listdsuser = pdo_query($sql);
-    return $listdsuser;
+    $Countuser = pdo_query($sql);
+    return $Countuser;
 }
-function loadall_danhsach_comment()
+function Count_comment()
 {
     $sql = "SELECT COUNT(id) as count FROM `comment`";
-    $listdscomment = pdo_query($sql);
-    return $listdscomment;
+    $Countcomment = pdo_query($sql);
+    return $Countcomment;
 }
-function loadall_danhsach_feedback()
+function Count_feedback()
 {
     $sql = "SELECT COUNT(id) as count FROM `feedback`";
-    $listdsfeedback = pdo_query($sql);
-    return $listdsfeedback;
+    $Countfeedback = pdo_query($sql);
+    return $Countfeedback;
+}
+function count_Cart(){
+    $sql = "SELECT COUNT(id_cart) as count FROM `tbl_cart`";
+    $CountCart = pdo_query($sql);
+    return $CountCart;
 }

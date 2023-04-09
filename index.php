@@ -98,7 +98,7 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 if(isset($_POST["soluong"]))$soLuong = intval($_POST["soluong"]);
                 
                 $soTien = $soLuong * $price;
-                $spadd = [$id,$name,$images,$size,$soLuong,$price,$khuyenmai,$soTien];
+                $spadd = ['id'=>$id,'name'=>$name,'image'=>$images,'size'=>$size,'soluong'=>$soLuong,'price'=>$price,'khuyenmai'=>$khuyenmai,'sotien'=>$soTien];
                 array_push($_SESSION['mycart'],$spadd);     
              }
                 include "view/cart/viewcart.php";
@@ -122,27 +122,34 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
          case 'themvanchuyen':
             
            if(isset($_POST['themvanchuyen'])) {
-            echo '<script>alert("Cập nhật vận chuyển thành công")</script>';
             $fullname = $_POST['fname'];
             $phone = $_POST['phone'];
             $address = $_POST['adress'];
             $note = $_POST['note'];
             $email = $_POST["email"];
             $user_id = $user["id"];
-           
-            insert_shipping($fullname,$phone,$address,$email,$note,$user_id);
+            $id_shipping=  insert_shipping($fullname,$phone,$address,$email,$note,$user_id);
           
-               header("location:index.php?act=bill");
+               header("location:index.php?act=bill&&id_shipping=$id_shipping");
            }
         break;
          case 'hinhthucthanhtoan':{
             include "view/cart/thongtinthanhtoan.php";
         break; 
          }
-             
+         case 'xulythanhtoan':
+            include "model/cart/xulythanhtoan.php";
+            break;    
         case 'feedback':
             include "view/feedback.php";
             break;
+        case 'camon':
+                include "view/cart/camon.php";
+                break;
+         case 'lichsudonhang':
+                    include "view/cart/lichsudonhang.php";
+                    
+                    break;
         case 'lienhe':
             include "view/lienhe.php";
             break;

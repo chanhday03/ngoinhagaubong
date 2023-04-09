@@ -250,7 +250,7 @@
                         <?php 
                         // echo "<pre>";
                         // var_dump($_SESSION["mycart"]);
-                        // session_destroy();
+                     
                     
                         ?>
                         <?php
@@ -258,13 +258,13 @@
                         $i=0;
                         
                         foreach($_SESSION["mycart"] as $cart){
-                            $id = $cart[0];
-                            $name = $cart[1];
-                            $images = $cart[2];
-                            $size = $cart[3];
-                            $soLuong= $cart[4];
-                            $price = $cart[5];
-                            $khuyenmai= $cart[6];
+                            $id = $cart['id'];
+                            $name = $cart['name'];
+                            $images = $cart['image'];
+                            $size = $cart['size'];
+                            $soLuong= $cart['soluong'];
+                            $price = $cart['price'];
+                            $khuyenmai= $cart['khuyenmai'];
                             $soTien =  ($price -  ($price *($khuyenmai/100)))*$soLuong;
                             $tong+=$soTien;
                             $xoasp = '<a href="index.php?act=deletecart&idcart='.$i.'"> <input type="submit" value="Xóa"></a>';

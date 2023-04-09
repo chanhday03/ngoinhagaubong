@@ -109,17 +109,17 @@
                
                 foreach($_SESSION['mycart'] as $cart){
                    
-                    $gia=($cart[5]-($cart[5]*($cart[6]/100)))*$cart[4];
+                    $gia=($cart['price']-($cart['price']*($cart['khuyenmai']/100)))*$cart['soluong'];
                     $tong+=$gia;
                    ;
                      echo '
                      <tr>
-                       <td ><img class="h-[50px]" src="'.$cart[2].'" alt="Lỗi ảnh"></td>
-                       <td>'.$cart[1].'</td>
-                       <td>'.$cart[6].'%</td>
-                       <td>'.$cart[4].'</td>
+                       <td ><img class="h-[50px]" src="'.$cart['image'].'" alt="Lỗi ảnh"></td>
+                       <td>'.$cart['name'].'</td>
+                       <td>'.$cart['khuyenmai'].'%</td>
+                       <td>'.$cart['soluong'].'</td>
                        <td>
-                        <p>'.$cart[5].'<sup>đ</sup></p>
+                        <p>'.$cart['price'].'<sup>đ</sup></p>
                       </td>
                      
                       <td>
@@ -151,7 +151,21 @@
 
                 </tbody>
             </table>
-            <a href="index.php?act=hinhthucthanhtoan">Hình thức thanh toán</a>
+            <?php
+            if(isset($_GET["id_shipping"])){
+                $id_shipping=$_GET["id_shipping"];
+                echo' <form action="index.php?act=hinhthucthanhtoan" method="post">
+                <input type="hidden" name="id_shipping" value="'.$id_shipping.'">
+                <button type="submit" name="hinhthucthanhtoan" value="hinhthucthanhtoan" class=""> Hình thức thanh toán</i></button>
+             </form>';
+            }else{
+              echo' <a href="index.php?act=hinhthucthanhtoan"></a> ' ;
+            }
+         
+            ?>
+        
+       
+            <!-- <a href="index.php?act=hinhthucthanhtoan"></a> -->
         </div>
 
     </div>

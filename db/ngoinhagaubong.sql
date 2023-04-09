@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2023 at 05:54 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.0.23
+-- Generation Time: Apr 09, 2023 at 06:52 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `categoryName` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL
+  `categoryName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
@@ -52,7 +52,7 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `description` varchar(255) NOT NULL,
   `time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
@@ -66,33 +66,14 @@ INSERT INTO `comment` (`id`, `product_id`, `user_id`, `description`, `time`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dathang`
---
-
-CREATE TABLE `dathang` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `fullname` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `phone` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `note` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 0 COMMENT '0.Đang xử lý\r\n1.Đã xử lý\r\n2.Đang giao hàng\r\n3.Đã giao hàng',
-  `total_money` float DEFAULT NULL,
-  `created` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `feedback`
 --
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `mood` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `note` longtext COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `mood` varchar(255) DEFAULT NULL,
+  `note` longtext DEFAULT NULL,
   `created` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
@@ -102,7 +83,8 @@ CREATE TABLE `feedback` (
 
 INSERT INTO `feedback` (`id`, `user_id`, `mood`, `note`, `created`) VALUES
 (22, 22, '😁', '4343', '2023-04-04 08:53:37'),
-(24, NULL, '😁', '123', '2023-04-04 22:44:52');
+(24, NULL, '😁', '123', '2023-04-04 22:44:52'),
+(25, 22, '😠', '1312', '2023-04-09 21:16:20');
 
 -- --------------------------------------------------------
 
@@ -113,24 +95,7 @@ INSERT INTO `feedback` (`id`, `user_id`, `mood`, `note`, `created`) VALUES
 CREATE TABLE `galery` (
   `id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
-  `Image` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_details`
---
-
-CREATE TABLE `order_details` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `images` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `price` int(11) DEFAULT NULL,
-  `num` int(11) DEFAULT NULL,
-  `total_money` int(11) DEFAULT NULL
+  `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -141,12 +106,12 @@ CREATE TABLE `order_details` (
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
-  `productName` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `productDesc` text COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `productImage` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `productDesc` text DEFAULT NULL,
+  `productImage` varchar(255) NOT NULL,
   `productPrice` int(11) NOT NULL,
-  `productSize` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `productPromotion` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `productSize` varchar(255) NOT NULL,
+  `productPromotion` varchar(255) NOT NULL,
   `productView` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
@@ -170,6 +135,85 @@ INSERT INTO `product` (`id`, `productName`, `productDesc`, `productImage`, `prod
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_cart`
+--
+
+CREATE TABLE `tbl_cart` (
+  `id_cart` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `code_cart` varchar(10) NOT NULL,
+  `cart_status` int(11) NOT NULL,
+  `cart_date` datetime DEFAULT current_timestamp(),
+  `cart_payment` varchar(11) DEFAULT NULL,
+  `id_shipping` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`id_cart`, `id_user`, `code_cart`, `cart_status`, `cart_date`, `cart_payment`, `id_shipping`) VALUES
+(98, 22, '7832', 4, '2023-04-09 20:26:30', 'transfer', 39),
+(99, 22, '1734', 2, '2023-04-09 21:08:02', 'cash', 40),
+(100, 22, '5890', 3, '2023-04-09 23:22:17', 'transfer', 41);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_cart_details`
+--
+
+CREATE TABLE `tbl_cart_details` (
+  `id_cart_details` int(11) NOT NULL,
+  `id_cart` int(11) DEFAULT NULL,
+  `code_cart` varchar(10) DEFAULT NULL,
+  `id_product` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `soluongmua` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_cart_details`
+--
+
+INSERT INTO `tbl_cart_details` (`id_cart_details`, `id_cart`, `code_cart`, `id_product`, `id_user`, `soluongmua`) VALUES
+(14, 98, '7832', 20, 22, 1),
+(15, 98, '7832', 18, 22, 1),
+(16, 98, '7832', 18, 22, 7),
+(17, 99, '1734', 24, 22, 1),
+(18, 99, '1734', 24, 22, 1),
+(19, 99, '1734', 24, 22, 4),
+(20, 100, '5890', 17, 22, 3),
+(21, 100, '5890', 20, 22, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_shipping`
+--
+
+CREATE TABLE `tbl_shipping` (
+  `id_shipping` int(11) NOT NULL,
+  `fname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `phone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `addres` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `note` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_shipping`
+--
+
+INSERT INTO `tbl_shipping` (`id_shipping`, `fname`, `phone`, `addres`, `email`, `note`, `id_user`) VALUES
+(39, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', '123', 22),
+(40, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', '123', 22),
+(41, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', '3234', 22);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -183,7 +227,7 @@ CREATE TABLE `users` (
   `adress` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `role` tinyint(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -210,13 +254,6 @@ ALTER TABLE `comment`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `dathang`
---
-ALTER TABLE `dathang`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
@@ -231,20 +268,35 @@ ALTER TABLE `galery`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `order_details`
---
-ALTER TABLE `order_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  ADD PRIMARY KEY (`id_cart`),
+  ADD KEY `id_shipping` (`id_shipping`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `tbl_cart_details`
+--
+ALTER TABLE `tbl_cart_details`
+  ADD PRIMARY KEY (`id_cart_details`),
+  ADD KEY `id_product` (`id_product`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_cart` (`id_cart`);
+
+--
+-- Indexes for table `tbl_shipping`
+--
+ALTER TABLE `tbl_shipping`
+  ADD PRIMARY KEY (`id_shipping`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `users`
@@ -263,16 +315,10 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `dathang`
---
-ALTER TABLE `dathang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `galery`
@@ -281,22 +327,34 @@ ALTER TABLE `galery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `order_details`
---
-ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
+-- AUTO_INCREMENT for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT for table `tbl_cart_details`
+--
+ALTER TABLE `tbl_cart_details`
+  MODIFY `id_cart_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `tbl_shipping`
+--
+ALTER TABLE `tbl_shipping`
+  MODIFY `id_shipping` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -308,12 +366,6 @@ ALTER TABLE `users`
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `dathang`
---
-ALTER TABLE `dathang`
-  ADD CONSTRAINT `dathang_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `feedback`
@@ -328,18 +380,31 @@ ALTER TABLE `galery`
   ADD CONSTRAINT `galery_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `order_details`
---
-ALTER TABLE `order_details`
-  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `dathang` (`id`),
-  ADD CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+
+--
+-- Constraints for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  ADD CONSTRAINT `tbl_cart_ibfk_1` FOREIGN KEY (`id_shipping`) REFERENCES `tbl_shipping` (`id_shipping`),
+  ADD CONSTRAINT `tbl_cart_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `tbl_cart_details`
+--
+ALTER TABLE `tbl_cart_details`
+  ADD CONSTRAINT `tbl_cart_details_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`),
+  ADD CONSTRAINT `tbl_cart_details_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `tbl_cart_details_ibfk_3` FOREIGN KEY (`id_cart`) REFERENCES `tbl_cart` (`id_cart`);
+
+--
+-- Constraints for table `tbl_shipping`
+--
+ALTER TABLE `tbl_shipping`
+  ADD CONSTRAINT `tbl_shipping_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

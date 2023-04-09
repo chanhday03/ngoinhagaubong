@@ -91,15 +91,16 @@
                     ?>
                 </span>
             </li>
+        
             <li>
-                <a href="index.php?act=dskh"><i class='bx bxs-group'></i></a>
+                <a href="index.php?act=order"><i class='bx bxs-cart'></i></a>
                 <span class="text">
                     <?php
-                    foreach ($listdsuser as $dsuser) {
-                        extract($dsuser);
+                    foreach ($listdscart as $dscart) {
+                        extract($dscart);
                         echo '
                         <h3>' . $count . '</h3>
-                        <p>User</p>';
+                        <p>Order</p>';
                     }
 
                     ?>

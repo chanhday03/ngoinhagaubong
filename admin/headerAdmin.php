@@ -784,8 +784,15 @@
         </a>
       </li>
       <li>
+        <a href="index.php?act=shipping">
+        
+          <i class='bx bxs-car'></i>
+          <span class="text">Shipping</span>
+        </a>
+      </li>
+      <li>
         <a href="index.php?act=order">
-          <i class='bx bx-cart'></i>
+          <i class='bx bxs-cart'></i>
           <span class="text">Order</span>
         </a>
       </li>

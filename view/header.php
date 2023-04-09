@@ -114,7 +114,9 @@ $user = getUserById($_SESSION['id'], $conn);
                 </div>
             </div>
             <a href="#">Liên Hệ</a>
+
             <a href="index.php?act=feedback">Góp Ý</a>
+            <a href="index.php?act=lichsudonhang">Lịch sử đơn hàng</a>
         </div>
         <form action="index.php?act=sanpham" method="post" class="search-bar">
             <input type="text" name="kyw" placeholder="Sản phẩm bạn muốn.." />

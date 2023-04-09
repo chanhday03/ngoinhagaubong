@@ -7,6 +7,8 @@ include "../model/comment.php";
 include "../model/dashboard.php";
 include "../model/thongke.php";
 include "headerAdmin.php";
+include "../model/cart/cart.php";
+
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -156,10 +158,30 @@ if (isset($_GET['act'])) {
             $listFeedBack = loadall_feedback();
             include "user/feedback.php";
             break;
-            // order
+            //shipping
+        case 'shipping':
+                $listshipping = loadall_shipping(); 
+                include "order/shipping.php";
+                break;
+                //xóa shipping
+           // order
+        //    case 'xoashipping':
+        //     if (isset($_GET['id_shipping']) && ($_GET['id_shipping'] > 0)) {
+        //         delete_shipping($_GET['id_shipping']);
+        //     }
+        //     $listshipping = loadall_shipping(); 
+        //     include "order/shipping.php";
+        //     break;
         case 'order':
+          
             include "order/order.php";
             break;
+        //    Cập nhật trang thái
+        case 'updatestatus':
+            
+                include "order/updatestatus.php";
+                include "order/order.php";
+                break;   
             // thongke
         case 'thongke':
             $listthongke = loadall_thongke();
@@ -172,10 +194,11 @@ if (isset($_GET['act'])) {
             break;
         case 'danhsach':
             $listdsdm = loadall_danhsach_dm();
-            $listdssp = loadall_danhsach_sp();
-            $listdsuser=loadall_danhsach_user();
-            $listdscomment =loadall_danhsach_comment();
-            $listdsfeedback=loadall_danhsach_feedback();
+            $listdssp = Count_sp();
+            $listdsuser=Count_user();
+            $listdscomment =Count_comment();
+            $listdsfeedback=Count_feedback();
+            $listdscart=Count_Cart();
             include "home.php";
             break;
         default:
@@ -184,4 +207,5 @@ if (isset($_GET['act'])) {
     }
 } else {
     include "home.php";
+    // header("location:index.php?act=danhsach");
 }
