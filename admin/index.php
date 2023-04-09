@@ -3,6 +3,9 @@ include "../model/pdo.php";
 include "../model/category.php";
 include "../model/product.php";
 include "../model/user.php";
+include "../model/comment.php";
+include "../model/dashboard.php";
+include "../model/thongke.php";
 include "headerAdmin.php";
 
 if (isset($_GET['act'])) {
@@ -48,10 +51,9 @@ if (isset($_GET['act'])) {
                 $iddm = $_POST['iddm'];
                 $tensp = $_POST['tensp'];
                 $motasp = $_POST['motasp'];
-                
+                $khuyenmai = $_POST['khuyenmai'];
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
-                $khuyenmai = $_POST['khuyenmai'];
                 $hinh = $_FILES['hinh']['name'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
@@ -60,7 +62,7 @@ if (isset($_GET['act'])) {
                 } else {
                     // echo "Sorry, there was an error uploading your file.";
                 }
-                insert_product($tensp, $motasp, $hinh,  $giasp, $sizesp,$khuyenmai, $iddm);
+                insert_product($tensp, $motasp, $hinh,  $giasp, $sizesp, $khuyenmai, $iddm);
                 $thongbao = 'Thêm thành công';
             }
             $listcategory = loadall_category();
@@ -106,14 +108,14 @@ if (isset($_GET['act'])) {
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
                 $hinh = $_FILES['hinh']['name'];
-                if($hinh) {
+                if ($hinh) {
                     $target_dir = "../upload/";
-                $target_file = $target_dir . $_FILES["hinh"]["name"];
-                move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file);
-                }else {
+                    $target_file = $target_dir . $_FILES["hinh"]["name"];
+                    move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file);
+                } else {
                     $hinh = $_POST['oldImage'];
                 }
-                update_product($id, $iddm, $tensp, $motasp,  $giasp, $sizesp,$khuyenmai, $hinh);
+                update_product($id, $iddm, $tensp, $motasp,  $giasp, $sizesp, $khuyenmai, $hinh);
                 $thongbao = 'Thêm thành công';
             }
             $listcategory = loadall_category();
@@ -125,14 +127,53 @@ if (isset($_GET['act'])) {
             $listuser = loadall_user();
             include "user/listUser.php";
             break;
+
         case 'xoatk':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                 delete_user($_GET['id']);
+                delete_user($_GET['id']);
             }
             $listuser = loadall_user();
             include "user/listUser.php";
             break;
             // default
+        case 'dsbl':
+            $comment_list = loadall_comments();
+            include "comment/list_comment.php";
+            break;
+        case 'delcommnet':
+            delete_comment($_GET["idcm"]);
+            $comment_list = loadall_comments();
+            include "comment/list_comment.php";
+            break;
+        case 'feedback':
+            $listFeedBack = loadall_feedback();
+            include "user/feedback.php";
+            break;
+        case 'xoafb':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_feedback($_GET['id']);
+            }
+            $listFeedBack = loadall_feedback();
+            include "user/feedback.php";
+            break;
+            // order
+        case 'order':
+            include "order/order.php";
+            break;
+            // thongke
+        case 'thongke':
+            $listthongke = loadall_thongke();
+            include "thongke/list.php";
+            break;
+            // bieudo
+        case 'bieudo':
+            $listthongke = loadall_thongke();
+            include "thongke/bieudo.php";
+            break;
+        case 'home':
+            $listdsdm = loadall_danhsach_dm();
+            include "home.php";
+            break;
         default:
             include "home.php";
             break;
