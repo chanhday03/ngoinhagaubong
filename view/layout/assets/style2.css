@@ -808,20 +808,20 @@ footer {
 }
 .table tbody tr.active {
   font-weight: bold;
-  color: #4ad489;
+  color: #a68567;
 }
 .table tbody tr:last-of-type {
-  border-bottom: 2px solid #4ad489;
+  border-bottom: 2px solid #a68567;
 }
 .table button {
   padding: 6px 20px;
   border-radius: 10px;
   cursor: pointer;
   background: transparent;
-  border: 1px solid #4ad489;
+  border: 1px solid #a68567;
 }
 .table button:hover {
-  background: #4ad489;
+  background: #a68567;
   color: #fff;
   transition: 0.5rem;
 }
@@ -849,7 +849,7 @@ footer {
 }
 table thead tr {
   color: #fff;
-  background: #34af6d;
+  background: #a68567;
   text-align: left;
   font-weight: bold;
 }
@@ -865,20 +865,20 @@ table thead tr {
 }
 .table tbody tr.active {
   font-weight: bold;
-  color: #4ad489;
+  color: #a68567;
 }
 .table tbody tr:last-of-type {
-  border-bottom: 2px solid #4ad489;
+  border-bottom: 2px solid #a68567;
 }
 .table button {
   padding: 6px 20px;
   border-radius: 10px;
   cursor: pointer;
   background: transparent;
-  border: 1px solid #4ad489;
+  border: 1px solid #a68567;
 }
 .table button:hover {
-  background: #4ad489;
+  background: #a68567;
   color: #fff;
   transition: 0.5rem;
 }

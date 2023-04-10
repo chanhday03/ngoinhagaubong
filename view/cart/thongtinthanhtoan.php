@@ -20,14 +20,65 @@
   } 
   ?>
     <style>
-    .k1 {
-        display: grid;
-        grid-template-columns: 70% 1fr;
-        grid-gap: 30px;
-    }
+        .thongtinthanhtoan {
+            width: 1248px;
+            gap: 50px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+
+        .mt-2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        h4 {
+            font-weight: bold;
+            color: brown;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            cursor: pointer;
+            padding: 7px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #a68567;
+            border: 1px solid #a68567;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #a68567;
+            transition: 1s;
+        }
+
+        .row th {
+            background-color: #a68567;
+        }
+
+        .row table tbody tr:last-of-type {
+            border-bottom: 2px solid #a68567;
+        }
+
+        span {
+            font-weight: bold;
+            color: brown;
+            font-size: 18px;
+        }
+
+        button .fa-cart-shopping {
+            margin: 0 auto;
+        }
+
+        .hinhthucthanhtoan {
+            padding-left: 10px;
+        }
     </style>
     <div class="thongtinthanhtoan ">
-
         <div class="row k1 pl-8">
             <div class="col-md-8 pl-4">
 
@@ -61,31 +112,41 @@
 		            	}else{
 			         	echo "";
 		            	}?>
-                    <li>Họ và tên vận chuyển : <b><?php echo $name ?></b></li>
-                    <li>Số điện thoại : <b><?php echo $phone ?></b></li>
-                    <li>Email : <b><?php echo $email ?></b></li>
-                    <li>Địa chỉ : <b><?php echo $address ?></b></li>
-                    <li>Ghi chú : <b><?php echo $note ?></b></li>
+                    <li>Họ và tên vận chuyển : <b>
+                            <?php echo $name ?>
+                        </b></li>
+                    <li>Số điện thoại : <b>
+                            <?php echo $phone ?>
+                        </b></li>
+                    <li>Email : <b>
+                            <?php echo $email ?>
+                        </b></li>
+                    <li>Địa chỉ : <b>
+                            <?php echo $address ?>
+                        </b></li>
+                    <li>Ghi chú : <b>
+                            <?php echo $note ?>
+                        </b></li>
                 </ul>
 
-                <h5 class="text-[red]">Giỏ hàng của bạn</h5>
+                <h4>Giỏ hàng của bạn</h4>
                 <table class="table table-hover table-bordered">
-                <thead class="bg-light">
-                    <tr>
-                        <th>Sản Phẩm</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giảm giá</th>
-                        <th>Số lượng</th>
-                        <th>Giá</th>
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Sản Phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giảm giá</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
 
-                        <th>Thành tiền</th>
+                            <th>Thành tiền</th>
 
 
-                    </tr>
+                        </tr>
 
-                </thead>
-                <tbody>
-                    <?php 
+                    </thead>
+                    <tbody>
+                        <?php 
                 // echo '<pre>';
                 // var_dump($_SESSION['mycart']);
                 $tong=0;
@@ -122,7 +183,7 @@
                     $ship=0; 
                 }
                 echo '
-                <th>Tổng Tiền </span></th>
+                <td><span>Tổng Tiền </span></td>
                 <td><span class="text-[red]">(Đã tính cả phí ship '.$ship.' VNĐ)</td>
                 <td></td>
                 <td></td>
@@ -133,31 +194,31 @@
                  </td>
                 ';?>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
 
             </div>
-            <div class="col-md-4 hinhthucthanhtoan">
-            <form action="index.php?act=xulythanhtoan" method="post">
-                <h4>Phương thức thanh toán</h4>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="cash"
-                        checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Tiền mặt
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="payment" id="exampleRadios2"
-                        value="transfer">
-                    <label class="form-check-label" for="exampleRadios2">
-                        Chuyển khoản
-                    </label>
-                </div>
-                <input type="hidden" name="tongTien" value="<?=$tongTien?>">
+            <div class="hinhthucthanhtoan">
+                <form action="index.php?act=xulythanhtoan" method="post">
+                    <h4>Phương thức thanh toán</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="cash"
+                            checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Tiền mặt
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="payment" id="exampleRadios2"
+                            value="transfer">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Chuyển khoản
+                        </label>
+                    </div>
+                    <input type="hidden" name="tongTien" value="<?=$tongTien?>">
                     <input type="hidden" name="id_shipping" value="<?=$id_shipping?>">
-                    <button type="submit" name="xulythanhtoan" value="xulythanhtoan"
-                        class="btn border-[red] border btn-danger"> <i class="fa-solid fa-cart-shopping"></i></button>
+                    <button type="submit" name="xulythanhtoan" value="xulythanhtoan" class="btn"><i
+                            class="fa-solid fa-cart-shopping"></i></button>
 
 
 

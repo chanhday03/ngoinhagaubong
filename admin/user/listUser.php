@@ -24,6 +24,11 @@
                     <?php 
                            foreach ($listuser as $user) {
                             extract($user);
+                            if($role==0){
+                                $role="Người Dùng";
+                            }elseif($role==1){
+                                $role = "ADMIN";
+                            }
                             $suatk = "index.php?act=suatk&id=" . $id;
                             $xoatk = "index.php?act=xoatk&id=". $id;
                             echo '<tr>

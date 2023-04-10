@@ -44,9 +44,11 @@
     align-items: center;
     background-color: #fff;
 }
-.cart-top-item:nth-child(1){
+
+.cart-top-item:nth-child(1) {
     border: 1px solid red;
 }
+
 .cart-top-item i {
     color: #dddddd;
 }
@@ -331,8 +333,12 @@
                     </div>
                     <div class="cart-content-right-button">
                         <a href="index.php"><button>TIẾP TỤC MUA SẮM</button></a>
-                        <a href="index.php?act=bill
-                        "><button>VẬN CHUYỂN</button></a>
+                        <?php if(isset($user["id"])){
+                         echo '  <a href="index.php?act=bill "><button>VẬN CHUYỂN</button></a>';
+                          }else{
+                            echo ' <a href="index.php?act=dangnhap"><button>Vui lòng <span class="text-[aqua] font-black">Đăng Nhập</span> để tiếp tục</button></a>';
+                           }?>
+
                     </div>
                     <div class="cart-content-right-dangnhap">
                         <p>Tài khoản TeddyShop</p> <br>

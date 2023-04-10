@@ -62,7 +62,7 @@
                         width="100%" class="small-img">';
                     ?>
                 </div>
-                
+
             </div>
         </div>
         <div class="single-pro-details">
@@ -76,7 +76,7 @@
           <h2 class="price"> Price : 
                 ' . $productPrice . '  <ins>đ</ins> <span class="size">/ Size :  ' . $productSize . ' cm</span>
           </h2>
-          <h2>Số Lương:<input onkeyup="checksoluong()" type="text" value="" min=1 class="border-2 soluong " name="" placeholder=">=1"></h2>
+          <h2>Số Lương:<input onkeyup="checksoluong()" type="text" value="" min="1" class="border-2 soluong " name="" ></h2>
             <form action="index.php?act=addtocart" method="post">
                 <input type="hidden" name="id" value="' . $id . '">
                 <input type="hidden" name="name" value="' . $productName . '">
@@ -114,13 +114,13 @@
 
         ';
             ?>
-           <script>
-        function checksoluong(){
-        const soluong = document.querySelector('.soluong').value;
-        document.getElementById('soluong2').value=soluong;
-    }
-       
-      </script> 
+            <script>
+                function checksoluong() {
+                    const soluong = document.querySelector('.soluong').value;
+                    document.getElementById('soluong2').value = soluong;
+                }
+
+            </script>
     </section>
     <section class="comment">
         <div class="heading">

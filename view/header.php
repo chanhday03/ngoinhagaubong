@@ -10,49 +10,49 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 <style>
-    .danhmuc {
-        padding-top: 20px;
-        max-width: 1248px;
-        margin: 0 auto;
-    }
+.danhmuc {
+    padding-top: 20px;
+    max-width: 1248px;
+    margin: 0 auto;
+}
 
-    .search-bar {
-        background-color: burlywood;
-        display: flex;
-        align-items: center;
-        border-radius: 60px;
-        padding: 8px 25px;
-        backdrop-filter: blur(4px) saturate(180%);
-    }
+.search-bar {
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 8px 25px;
+    backdrop-filter: blur(4px) saturate(180%);
+}
 
-    .search-bar input {
-        background-color: transparent;
-        flex: 1;
-        border: none;
-        outline: none;
-        padding: 5px 15px;
-        font-size: 10px;
-        margin-right: 10px;
-    }
+.search-bar input {
+    background-color: transparent;
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    font-size: 10px;
+    margin-right: 10px;
+}
 
-    ::placeholder {
-        color: white;
-        font-size: 14px;
-    }
+::placeholder {
+    color: white;
+    font-size: 14px;
+}
 
-    .search-bar button img {
-        width: 40px;
-        border-radius: 50%;
-    }
+.search-bar button img {
+    width: 40px;
+    border-radius: 50%;
+}
 
-    .search-bar button {
-        border: 0;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        background-color: #a68567;
-        cursor: pointer;
-    }
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #a68567;
+    cursor: pointer;
+}
 </style>
 <?php 
 
@@ -103,7 +103,7 @@ $user = getUserById($_SESSION['id'], $conn);
         <div class="fa-solid fa-bars" id="menu-icon"></div>
         <div class="navbar">
             <a href="index.php" class="home-active">Trang Chủ</a>
-            <a href="#">Giới thiệu</a>
+            <a href="index.php?act=gioithieu">Giới thiệu</a>
             <div class="dropdown">
                 <button class="dropbtn">Sản phẩm
                     <i class="fa fa-caret-down"></i>
@@ -113,7 +113,7 @@ $user = getUserById($_SESSION['id'], $conn);
                     <a href="#">Phụ Kiện</a>
                 </div>
             </div>
-            <a href="#">Liên Hệ</a>
+            <a href="index.php?act=lienhe">Liên Hệ</a>
 
             <a href="index.php?act=feedback">Góp Ý</a>
             <a href="index.php?act=lichsudonhang">Lịch sử đơn hàng</a>
@@ -148,6 +148,11 @@ $user = getUserById($_SESSION['id'], $conn);
                     <a href="view/taikhoan/logout.php" class="btn btn-warning">
                         Logout
                     </a>
+                    <?php if($user['role']==1){
+                echo ' <a href="admin/index.php?act=danhsach" class="btn btn-primary">
+                ADMin
+                  </a>';
+               }?>
                 </div>
             </div>
     </header>

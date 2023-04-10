@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2023 at 06:52 PM
+-- Generation Time: Apr 10, 2023 at 11:24 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -121,16 +121,16 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `productName`, `productDesc`, `productImage`, `productPrice`, `productSize`, `productPromotion`, `productView`, `category_id`) VALUES
-(15, 'đồng hồ 1', '', '1028.jpg', 290001, '11', '26', NULL, 4),
-(17, 'iphone 14 promax', 'không có mô tả', '1083.jpg', 27012313, '1', '22', NULL, 5),
-(18, 'iphone 15 promax', 'không có', '1071.jpg', 230000, '23', '11', NULL, 9),
-(19, 'đồng hồ 1', '', '1027.jpg', 290001, '11', '32', NULL, 4),
-(20, 'đồng hồ 2', '', '1027.jpg', 23321200, '11', '12', NULL, 9),
-(21, 'đồng hồ 3', '', '1030.jpg', 290001, '11', '43', NULL, 4),
-(22, 'đồng hồ 4', '', '1037.jpg', 290001, '11', '42', NULL, 4),
-(23, 'đồng hồ 5', '', '1036.jpg', 290001, '11', '11', NULL, 4),
-(24, 'đồng hồ 6', '', '1038.jpg', 290001, '11', '14', NULL, 4),
-(25, 'đồng hồ 7', '', '1030.jpg', 290001, '11', '61', NULL, 4);
+(15, 'Gấu bông 2', '', 'phukien_banhsn.jpg', 290001, '11', '26', NULL, 4),
+(17, 'Gấu bông 9', '', 'phukien_tui.jpg', 686868, '12', '45', NULL, 5),
+(18, 'Gấu bông 8', '', 'phukien_chauhoa.jpg', 230000, '23', '11', NULL, 9),
+(19, 'Gấu bông 7', '', 'product_sutu.jpg', 88888, '11', '32', NULL, 4),
+(20, 'Gấu bông 10', '', 'product_pikachu.jpg', 222222, '9', '12', NULL, 9),
+(21, 'Gấu bông 6', '', 'phukien_chauhoa.jpg', 555555, '15', '43', NULL, 4),
+(22, 'Gấu bông 5', '', 'phukien_tui.jpg', 44444, '11', '23', NULL, 4),
+(23, 'Gấu bông 4', '', 'phukien_hopnhan.jpg', 377777, '16', '11', NULL, 4),
+(24, 'Gấu teddy', '', 'product_kilan.jpg', 28888, '12', '14', NULL, 4),
+(25, 'Gấu bông 3', '', 'product_heonam.jpg', 29999, '18', '33', NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -153,9 +153,8 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`id_cart`, `id_user`, `code_cart`, `cart_status`, `cart_date`, `cart_payment`, `id_shipping`) VALUES
-(98, 22, '7832', 4, '2023-04-09 20:26:30', 'transfer', 39),
-(99, 22, '1734', 2, '2023-04-09 21:08:02', 'cash', 40),
-(100, 22, '5890', 3, '2023-04-09 23:22:17', 'transfer', 41);
+(102, 22, '1809', 2, '2023-04-10 13:57:58', 'transfer', 43),
+(104, 22, '9926', 2, '2023-04-10 15:45:28', 'transfer', 52);
 
 -- --------------------------------------------------------
 
@@ -177,14 +176,10 @@ CREATE TABLE `tbl_cart_details` (
 --
 
 INSERT INTO `tbl_cart_details` (`id_cart_details`, `id_cart`, `code_cart`, `id_product`, `id_user`, `soluongmua`) VALUES
-(14, 98, '7832', 20, 22, 1),
-(15, 98, '7832', 18, 22, 1),
-(16, 98, '7832', 18, 22, 7),
-(17, 99, '1734', 24, 22, 1),
-(18, 99, '1734', 24, 22, 1),
-(19, 99, '1734', 24, 22, 4),
-(20, 100, '5890', 17, 22, 3),
-(21, 100, '5890', 20, 22, 2);
+(24, 102, '1809', 21, 22, 5),
+(25, 102, '1809', 18, 22, 1),
+(29, 104, '9926', 18, 22, 1),
+(30, 104, '9926', 24, 22, 2);
 
 -- --------------------------------------------------------
 
@@ -199,7 +194,7 @@ CREATE TABLE `tbl_shipping` (
   `addres` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `note` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -207,9 +202,8 @@ CREATE TABLE `tbl_shipping` (
 --
 
 INSERT INTO `tbl_shipping` (`id_shipping`, `fname`, `phone`, `addres`, `email`, `note`, `id_user`) VALUES
-(39, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', '123', 22),
-(40, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', '123', 22),
-(41, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', '3234', 22);
+(43, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', 'không có ghi chú', 22),
+(52, 'kien', '01929332', 'Chưa có', 'ntrkien001@gmail.com', 'chưa có ghi chú', 22);
 
 -- --------------------------------------------------------
 
@@ -234,7 +228,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `username`, `password`, `pp`, `email`, `adress`, `phone`, `role`) VALUES
-(22, 'kien', 'ntrkien', '$2y$10$oRBtiw07dXqDrhm1H6l5LeqLdhrhMmzF9jFHitZ7iNiBLnTAVPh4K', 'ntrkien6423bd00aec611.49525871.jpg', 'ntrkien001@gmail.com', 'Chưa có', '01929332', 0);
+(22, 'kien', 'ntrkien', '$2y$10$oRBtiw07dXqDrhm1H6l5LeqLdhrhMmzF9jFHitZ7iNiBLnTAVPh4K', 'ntrkien6433d0cb5ff510.62014550.png', 'ntrkien001@gmail.com', 'Chưa có', '01929332', 0);
 
 --
 -- Indexes for dumped tables
@@ -336,25 +330,25 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `tbl_cart_details`
 --
 ALTER TABLE `tbl_cart_details`
-  MODIFY `id_cart_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_cart_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_shipping`
 --
 ALTER TABLE `tbl_shipping`
-  MODIFY `id_shipping` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_shipping` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables

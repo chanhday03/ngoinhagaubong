@@ -119,27 +119,50 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
              include "view/cart/vanchuyen.php";
              
          break;     
-         case 'themvanchuyen':
-            
-           if(isset($_POST['themvanchuyen'])) {
-            $fullname = $_POST['fname'];
-            $phone = $_POST['phone'];
-            $address = $_POST['adress'];
-            $note = $_POST['note'];
-            $email = $_POST["email"];
-            $user_id = $user["id"];
-            $id_shipping=  insert_shipping($fullname,$phone,$address,$email,$note,$user_id);
-          
-               header("location:index.php?act=bill&&id_shipping=$id_shipping");
-           }
+         case 'dangnhap':{ 
+            header("location:view/taikhoan/login.php");        
         break;
+    }
+     case 'themvanchuyen':
+        
+       if(isset($_POST['themvanchuyen'])) {
+        $fullname = $_POST['fname'];
+        $phone = $_POST['phone'];
+        $address = $_POST['adress'];
+        $note = $_POST['note'];
+        $email = $_POST["email"];
+        if(isset($user["id"])){
+            $user_id = $user["id"];
+        }else{
+            header("location:view/taikhoan/login.php");
+        }
+       
+        $id_shipping=  insert_shipping($fullname,$phone,$address,$email,$note,$user_id);
+      
+           header("location:index.php?act=bill&&id_shipping=$id_shipping");
+       }
+           break;
          case 'hinhthucthanhtoan':{
             include "view/cart/thongtinthanhtoan.php";
         break; 
          }
          case 'xulythanhtoan':
             include "model/cart/xulythanhtoan.php";
-            break;    
+            break;  
+        case 'xemdonhang':
+         include "view/cart/xemdonhang.php";
+          break; 
+        case 'deleteDonHang':
+            if(isset($_GET["code_cart"]) && $_GET["id_shipping"]){
+                $id_shipping = $_GET["id_shipping"];
+                $code_cart=$_GET["code_cart"];
+                delete_Cart_Details ($code_cart);
+                delete_Cart ($code_cart);
+                delete_shipping($id_shipping);
+                echo '<script>alert("Đã Hủy Đơn Hàng")</script>';
+            }
+            include "view/cart/lichsudonhang.php";
+             break;   
         case 'feedback':
             include "view/feedback.php";
             break;
@@ -152,6 +175,9 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                     break;
         case 'lienhe':
             include "view/lienhe.php";
+            break;
+        case 'gioithieu':
+            include "view/gioithieu.php";
             break;
         default:
             include "view/home.php";

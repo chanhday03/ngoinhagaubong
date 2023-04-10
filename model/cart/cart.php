@@ -1,4 +1,22 @@
 <?php
+function delete_Cart_Details ($code_cart){
+    $sql = "DELETE FROM `tbl_cart_details` WHERE `tbl_cart_details`.`code_cart` = '$code_cart'";
+    pdo_execute($sql);
+}
+function delete_Cart ($code_cart){
+    $sql = "DELETE FROM `tbl_cart` WHERE `tbl_cart`.`code_cart` = '$code_cart'";
+    pdo_execute($sql);
+}
+function loadall_donhang($code_cart){
+    $sql ="SELECT * FROM tbl_cart,tbl_cart_details,product
+     WHERE tbl_cart.id_cart = tbl_cart_details.id_cart 
+     AND  tbl_cart_details.id_product=product.id
+     AND tbl_cart_details.code_cart='$code_cart'
+     ORDER BY tbl_cart_details.id_cart_details
+      DESC;";
+          $listDonHang= pdo_query($sql);
+          return $listDonHang;
+}
 function delete_shipping($id)
 {
     $sql = "delete from tbl_shipping where id_shipping=" . $id;

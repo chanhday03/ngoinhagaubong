@@ -61,7 +61,7 @@
                     <form action="index.php?act=updatestatus" method="POST" >
                         <div class="mb-3">
                             <label class="form-label">Điền Code Cart muốn cập nhật trạng thái</label>
-                            <input class="codecart form-control" type="text"  name="code_cart" value="" required="" onkeyup="codeCart()" placeholder="Code Cart">
+                            <input class="codecart form-control" type="text"  name="code_cart" value="" required="" autocomplete="off" onkeyup="codeCart()" placeholder="Code Cart">
                         </div>
                         <div>
                             <div class="mb-3">

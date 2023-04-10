@@ -1,6 +1,73 @@
 <?php
   if(isset($user ['id'])){
   ?>
+<style>
+    .form-group {
+        width: 70%;
+    }
+
+    .justify-center {
+        width: 1248px;
+        gap: 50px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+    .form-group input {
+        width: 100%;
+        background-color: #dddddd;
+        color: #000;
+        margin-top: 2px;
+        margin-bottom: 10px;
+    }
+
+    label {
+        margin-top: 20px;
+    }
+
+    .mt-2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    h4 {
+        font-weight: bold;
+        color: brown;
+        font-size: 20px;
+    }
+
+    .btn {
+        cursor: pointer;
+        padding: 7px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #a68567;
+        border: 1px solid #a68567;
+    }
+
+    .btn:hover {
+        background: white;
+        color: #a68567;
+        transition: 1s;
+    }
+
+    .row th {
+        background-color: #a68567;
+    }
+
+    .row table tbody tr:last-of-type {
+        border-bottom: 2px solid #a68567;
+    }
+
+    span {
+        font-weight: bold;
+        color: brown;
+        font-size: 18px;
+    }
+</style>
+
 <!-- Responsive Arrow Progress Bar -->
 <div class="cart-top-wrap">
     <div class="cart-top">
@@ -36,17 +103,17 @@
         $phone ="";
        }
        ?>
-       
-       <form action=" index.php?act=themvanchuyen" autocomplete="off" method="post">
-            <h4 class="text-[red]">Thông tin vận chuyển</h4>
+
+        <form action=" index.php?act=themvanchuyen" autocomplete="off" method="post">
+            <h4>Thông tin vận chuyển</h4>
             <?php
                  if(isset($id)&&$id!=""){
                     echo '<div class="form-group">
                     <label>Mã Khách Hàng </label>
                     <input type="text" class="form-control border border" name="fname" required value="'.$id .'">
-                    </div>';
-                 }?>
-
+                </div>
+            
+    ';    }?>
             <div class="form-group">
                 <label>Họ tên <code>*</code></label>
                 <input type="text" class="form-control border border" name="fname" required="" value="<?=$name?>">
@@ -55,15 +122,15 @@
                 <label>Điện thoại <code>*</code></label>
                 <input type="text" class="form-control border" name="phone" required="" value="<?=$phone?>">
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group">
                 <label>Địa chỉ <code>*</code></label>
                 <input type="text" class="form-control border" name="adress" required="" value="<?=$adress?>">
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group">
                 <label>Email <code>*</code></label>
                 <input type="text" class="form-control border" name="email" required="" value="<?=$email ?>">
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group">
                 <label>Ghi Chú </label>
                 <input type="text" class="form-control border" name="note">
             </div>
@@ -72,19 +139,18 @@
                 <a href="index.php?act=viewcart" class="text-decoration-none
                                         col-md-6" style="color: orange;">
                     << Quay lại giỏ hàng</a>
-                        <button type="submit" class="btn-light
-                                        col-md-6 border font-weight-bold" name="themvanchuyen" value="themvanchuyen"
+                        <button type="submit" class="btn" name="themvanchuyen" value="themvanchuyen"
                             onclick="vanchuyen()"> THÊM VẬN CHUYỂN</button>
             </div>
             <script>
-            function vanchuyen() {
-                alert("Cập nhật vận chuyển thành công");
-            }
-            </script>;
+                function vanchuyen() {
+                    alert("Cập nhật vận chuyển thành công");
+                }
+            </script>
         </form>
 
         <div class="row">
-
+            <h4>Thông tin đơn hàng</h4>
             <table class="table table-hover table-bordered">
                 <thead class="bg-light">
                     <tr>
@@ -93,12 +159,8 @@
                         <th>Giảm giá</th>
                         <th>Số lượng</th>
                         <th>Giá</th>
-
                         <th>Thành tiền</th>
-
-
                     </tr>
-
                 </thead>
                 <tbody>
                     <?php 
@@ -138,7 +200,7 @@
                     $ship=0; 
                 }
                 echo '
-                <th>Tổng Tiền </span></th>
+                <td><span>Tổng Tiền </span></td>
                 <td><span class="text-[red]">(Đã tính cả phí ship '.$ship.' VNĐ)</td>
                 <td></td>
                 <td></td>
@@ -156,15 +218,15 @@
                 $id_shipping=$_GET["id_shipping"];
                 echo' <form action="index.php?act=hinhthucthanhtoan" method="post">
                 <input type="hidden" name="id_shipping" value="'.$id_shipping.'">
-                <button type="submit" name="hinhthucthanhtoan" value="hinhthucthanhtoan" class=""> Hình thức thanh toán</i></button>
+                <button type="submit" name="hinhthucthanhtoan" value="hinhthucthanhtoan" class="btn"> Hình thức thanh toán</i></button>
              </form>';
             }else{
               echo' <a href="index.php?act=hinhthucthanhtoan"></a> ' ;
             }
          
             ?>
-        
-       
+
+
             <!-- <a href="index.php?act=hinhthucthanhtoan"></a> -->
         </div>
 
