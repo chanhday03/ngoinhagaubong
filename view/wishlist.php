@@ -49,5 +49,5 @@
         ?>
     </div>
     <!-- index.php?act=addtocart -->
-    </div>
+    </div> 
 </section>
