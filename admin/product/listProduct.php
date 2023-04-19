@@ -5,11 +5,11 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>List Product</h1>
+                    <h1>Danh Sách Sản Phẩm</h1>
                 </div>
                 <div class="head-header">
                     <form action="index.php?act=listsp" method="post">
-                        <input type="text" name="kyw" value="">
+                        <input type="hidden" name="kyw" value="">
                         <select name="iddm">
                             <option value="0" selected>Tất cả</option>
                             <?php 
@@ -19,28 +19,30 @@
                             }
                             ?>
                         </select>
-                        <input type="submit" name="listok" value="Go" class="go">
+                        <input type="submit" name="listok" value="Đi" class="go">
 
                     </form>
                     <div class="">
                         <a href="index.php?act=addsp">
-                            <input type="button" value="Add New" class="btn">
+                            <input type="button" value="Thêm Mới" class="btn">
                         </a>
+                        
                     </div>
                 </div>
 
                 <table>
                     <tr>
                         <th></th>
-                        <th>ID Product</th>
-                        <th>Name Product</th>
-                        <th>Desc Product</th>
-                        <th>Image Product</th>
-                        <th>Price Product</th>
-                        <th>Size Product</th>
-                        <th>Promotion Product</th>
-                        <th>View Product</th>
-                        <th>Action</th>
+                        <th>Mã Sản Phẩm</th>
+                        <th>Tên Sản Phẩm </th>
+                        <th>Mô Tả</th>
+                        <th>Hình Ảnh</th>
+                        <th>Giá</th>
+                        <th>Kích Thước</th>
+                        <th>Khuyến Mãi</th>
+                        <th>Lượt Xem</th>
+                        <th> Số Lượng Trong Kho</th>
+                        <th>Hoạt Động</th>
                     </tr>
                     <?php 
                 foreach ($listproduct as $product){
@@ -57,15 +59,16 @@
                     <td><input type="checkbox"></td>
                     <td>'.$id.'</td>
                     <td>'.$productName.'</td>
-                    <td>'.$productDesc.'</td>
+                    <td id="desc">'.$productDesc.'</td>
                     <td>'.$hinh.'</td>
-                    <td>'.$productPrice.'</td>
-                    <td>'.$productSize.'</td>
+                    <td>'.number_format($productPrice) .'<sup>đ</sup></td>
+                    <td>'.$productSize.' cm</td>
                     <td>'.$productPromotion.' %</td>
-                    <td>'.$productView.'</td>
+                    <td>'.$productView.' <i class="fa-solid fa-eye"></i></td>
+                    <td>'.$productNumber.'</td>
                     <td>
-                        <a href="'.$suasp.'"><i class="fa-solid fa-pen"></i></a>    
-                        <a href="'.$xoasp.'"><i class="fa-solid fa-trash"></i></a>               
+                        <a  href="'.$suasp.'"><i class="fa-solid fa-pen"></i></a>    
+                        <a  onclick="return confirmDesactiv()" href="'.$xoasp.'"><i class="fa-solid fa-trash"></i></a>               
                     </td>
                 </tr>';
                 }
@@ -74,6 +77,17 @@
             </div>
         </section>
     </main>
+    <style>
+        #desc{
+            max-width: 200px;
+            word-wrap: break-word;
+        }
+    </style>
     <!-- MAIN -->
 </section>
 <!-- CONTENT -->
+<script>
+    function confirmDesactiv() {
+    return confirm("Xóa sản phẩm?");
+}
+</script>

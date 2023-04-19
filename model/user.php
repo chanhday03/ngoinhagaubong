@@ -1,5 +1,9 @@
 <?php
-
+function update_role($role,$id){
+    $sql="UPDATE `users` SET `role`='$role' WHERE users.id='$id'";
+    pdo_execute($sql);
+    
+}
 function loadall_feedback(){
     $sql="SELECT * FROM feedback ORDER BY id DESC";
     $listFeedback=pdo_query($sql);

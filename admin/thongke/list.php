@@ -5,16 +5,16 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>List Statistical</h1>
+                    <h1>Danh Sách Thống Kê</h1>
                 </div>
                 <table>
                     <tr>
-                        <th>ID Category</th>
-                        <th>Name Category</th>
-                        <th>Quantity</th>
-                        <th>Max Price</th>
-                        <th>Min Price</th>
-                        <th>Average price</th>
+                        <th>Mã Danh Mục</th>
+                        <th>Tên Danh Mục</th>
+                        <th>Số Lượng</th>
+                        <th>Giá Cao Nhất</th>
+                        <th>Giá Thấp Nhất</th>
+                        <th>Giá Trung Bình</th>
                     </tr>
                     <?php
                     foreach ($listthongke as $thongke) {
@@ -23,9 +23,9 @@
                     <td>' . $madm . '</td>
                     <td>' . $tendm . '</td>
                     <td>' . $countsp . '</td>
-                    <td>' . $maxprice . '</td>
-                    <td>' . $minprice . '</td>
-                    <td>' . $avgprice . '</td>
+                    <td>' . number_format($maxprice)  . '<sup>đ</sup></td>
+                    <td>' . number_format( $minprice) . '<sup>đ</sup></td>
+                    <td>' . number_format( $avgprice) . '<sup>đ</sup></td>
                 </tr>';
                     }
 

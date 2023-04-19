@@ -12,17 +12,17 @@
                         <tr>
                             <th></th>
                             <th>ID</th>
-                            <th>Code Cart</th>
+                            <th>Mã đơn hàng</th>
                             <th>Tên khách hàng</th>
-                
-                            <th>ID Product</th>
-                            <th>ID_Ship</th>
-                            <th>Số Lượng Mua</th>
-                            <th>Cart Status</th>
 
-                            <th>Cart Payment</th>
-                            <th>Note</th>
-                            <th>Cart Date</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Mã vận chuyển</th>
+                            <th>Số Lượng Mua</th>
+                            <th>Trạng thái</th>
+
+                            <th>Thanh toán</th>
+                            <th>ghi chú</th>
+                            <th>Ngày đặt</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,33 +58,39 @@
                     </tbody>
                 </table>
                 <div class="">
-                    <form action="index.php?act=updatestatus" method="POST" >
+                    <form action="index.php?act=updatestatus" method="POST" onsubmit="return confirmDesactiv()">
                         <div class="mb-3">
                             <label class="form-label">Điền Code Cart muốn cập nhật trạng thái</label>
-                            <input class="codecart form-control" type="text"  name="code_cart" value="" required="" autocomplete="off" onkeyup="codeCart()" placeholder="Code Cart">
+                            <input class="codecart form-control" type="text" name="code_cart" value="" required=""
+                                autocomplete="off" onkeyup="codeCart()" placeholder="Code Cart">
                         </div>
                         <div>
                             <div class="mb-3">
                                 <label class="form-label">Đang xử lý</label>
-                                <input type="radio" class=" form-control cart_status" name="cart_status" value=""  required="" onclick="setInputValue_1()">
+                                <input type="radio" class=" form-control cart_status" name="cart_status" value=""
+                                    required="" onclick="setInputValue_1()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Đã xử lý</label>
-                                <input type="radio" class=" form-control cart_status" name="cart_status" value="" onclick="setInputValue_2() ">
+                                <input type="radio" class=" form-control cart_status" name="cart_status" value=""
+                                    onclick="setInputValue_2() ">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Đang Giao Hàng</label>
-                                <input type="radio" class=" form-control cart_status" name="cart_status" value=""  onclick="setInputValue_3()">
+                                <input type="radio" class=" form-control cart_status" name="cart_status" value=""
+                                    onclick="setInputValue_3()">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Đã Hoàn Thành</label>
-                                <input type="radio" class=" form-control cart_status" name="cart_status" value=""  onclick="setInputValue_4()">
+                                <input type="radio" class=" form-control cart_status" name="cart_status" value=""
+                                    onclick="setInputValue_4()">
                             </div>
                         </div>
                         <input id="code_cart2" type="hidden" name="code_cart" value="">
-                        <input class="cart_status2"  type="hidden" name="cart_status" value="">
-                        <button type="submit" name="capNhatTrangThaiDonHang" value="capNhatTrangThaiDonHang" class="btn">Cập nhật trạng thái đơn hàng</button>
-                       
+                        <input class="cart_status2" type="hidden" name="cart_status" value="">
+                        <button type="submit" name="capNhatTrangThaiDonHang" value="capNhatTrangThaiDonHang"
+                            class="btn">Cập nhật trạng thái đơn hàng</button>
+
                     </form>
 
                 </div>
@@ -95,10 +101,14 @@
 </section>
 <!-- CONTENT -->
 <script>
-    const form = document.querySelector('.formbtn');
-    const cart_status = document.querySelector('.cart_status');
-    const hidden = document.querySelector('.cart_status2');
-    function setInputValue_1() {
+function confirmDesactiv() {
+    return confirm("Bạn có muốn cập nhật trạng thái đơn hàng không?");
+}
+const form = document.querySelector('.formbtn');
+const cart_status = document.querySelector('.cart_status');
+const hidden = document.querySelector('.cart_status2');
+
+function setInputValue_1() {
     hidden.setAttribute("value", "0");
     alert('Đã chọn trạng thái "Đang Xử Lý"');
 }
@@ -117,8 +127,13 @@ function setInputValue_4() {
     hidden.setAttribute("value", "3");
     alert('Đã chọn trạng thái "Đã Hoàn Thành"');
 }
-function codeCart(){
-        const codecart = document.querySelector('.codecart').value;
-        document.getElementById('code_cart2').value = codecart;
-        }
+
+function alert1() {
+    alert("Đã cập nhật trạng thái thành công");
+}
+
+function codeCart() {
+    const codecart = document.querySelector('.codecart').value;
+    document.getElementById('code_cart2').value = codecart;
+}
 </script>

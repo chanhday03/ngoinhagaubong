@@ -71,10 +71,26 @@ header form i {
   align-items: center;
   column-gap: 5px;
   cursor: pointer;
+  position: relative;
 }
 .profile2 {
   display: grid;
   grid-template-columns: 50px 1fr;
+}
+.profile-content {
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: all 0.5s ease-out;
+}
+.profile:hover .profile-content {
+  display: block;
+}
+
+.header-admin {
+  margin-bottom: 16px;
 }
 .profile img {
   width: 40px;

@@ -32,14 +32,19 @@ function update_Cart_Status($cart_status,$code_cart){
     pdo_execute($sql);
 }
 function select_Cart_Details(){
-    $sql ="SELECT * FROM tbl_shipping,tbl_cart,tbl_cart_details WHERE tbl_cart.id_cart=tbl_cart_details.id_cart
-     AND tbl_cart.id_shipping = tbl_shipping.id_shipping ORDER BY tbl_cart.id_cart DESC ";
+    $sql ="SELECT * FROM tbl_shipping,tbl_cart,tbl_cart_details
+     WHERE tbl_cart.id_cart=tbl_cart_details.id_cart
+     AND tbl_cart.id_shipping = tbl_shipping.id_shipping
+      ORDER BY tbl_cart.id_cart DESC ";
       $select_Cart_Details= pdo_query($sql);
       return $select_Cart_Details;
 }
 function select_Cart($id_user){
-    $sql = "SELECT * FROM tbl_cart,users WHERE tbl_cart.id_user =users.id AND
-     tbl_cart.id_user='$id_user' ORDER BY tbl_cart.id_cart DESC LIMIT 0,15";
+    $sql = "SELECT * FROM tbl_cart,users,tbl_shipping
+     WHERE tbl_shipping.id_shipping =tbl_cart.id_shipping
+      AND tbl_cart.id_user =users.id 
+      AND tbl_cart.id_user='$id_user'
+       ORDER BY tbl_cart.id_cart DESC LIMIT 0,15";
     $select_Cart= pdo_query($sql);
    return $select_Cart;
 }

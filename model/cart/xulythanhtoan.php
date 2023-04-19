@@ -10,16 +10,29 @@
 	$cart_status=0;
 	// var_dump($_SESSION['mycart'] );
 		
-
-
+ 
+	
 	if($cart_payment == 'transfer' || $cart_payment == 'cash'){
 	//insert vào đơn hàng
 	 $id_cart=insert_cart($id_user,$code_cart,$cart_status,$cart_payment,$id_shipping);
+
+
 		foreach($_SESSION['mycart'] as $value){
+			    $soLuong=0;
+			    $soLuongsp=0;
 			    $id_product = $value['id'];
-				$soluongmua = $value['soluong'];
+				$soluongmua = intval($value['soluong']);
+				$listNumber=get_Number_Product($id_product);
 				insert_order_details($id_cart,$code_cart,$id_product,$id_user,$soluongmua);
+				foreach($listNumber as $row){
+					$soLuongsp=$row["productNumber"];
+				}
+			
+				$soLuong = $soLuongsp - $soluongmua;
+				update_Number_Product($id_product,$soLuong);
 		}
+	
 		}
+	    
 		header('Location:index.php?act=camon');
 ?>

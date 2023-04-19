@@ -5,17 +5,17 @@
     <section class="table-data">
       <div class="table-box">
         <div class="head">
-          <h1>List Comment</h1>
+          <h1>Danh sách bình luận</h1>
         </div>
         <table class="table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>ID product</th>
-              <th>ID user</th>
-              <th>description</th>
-              <th>Time</th>
-              <th>Action</th>
+              <th>Mã sản phẩm</th>
+              <th>Mã người dùng</th>
+              <th>Nội dung</th>
+              <th>Thời gian</th>
+              <th>Hoạt động</th>
             </tr>
           </thead>
           <tbody>
@@ -36,7 +36,7 @@
               <td>
                 <?php echo $comment_list["time"] ?>
               </td>
-              <td><a href="index.php?act=delcommnet&idcm=<?php echo $comment_list['id']?>"><i
+              <td><a  onclick="return confirmDesactiv()" href="index.php?act=delcommnet&idcm=<?php echo $comment_list['id']?>"><i
                     class="fa-solid fa-trash"></i></a></td>
             </tr>
             <?php endforeach?>
@@ -53,3 +53,8 @@
   <!-- MAIN -->
 </section>
 <!-- CONTENT -->
+<script>
+  function confirmDesactiv() {
+    return confirm("Xóa Bình Luận?");
+}
+</script>

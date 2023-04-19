@@ -20,22 +20,22 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>Update Category</h1>
+                    <h1>Cập Nhật Danh Mục</h1>
                 </div>
                 <form action="index.php?act=updatedm" method="post" onsubmit="return checkUpdate()">
                     <div class="">ID<br>
                         <input type="text" name="maloai" disabled>
                     </div>
-                    <div class="">Name Category<br>
+                    <div class="">Tên Danh Mục<br>
                         <input type="text" name="tenloai" id="ten-loai"
                             value="<?php if(isset($categoryName) && ($categoryName != "")) echo $categoryName ; ?>">
                     </div>
                     <div class="">
                         <input type="hidden" name="id" value="<?php if(isset($id) && ($id > 0)) echo $id ; ?>">
-                        <input type="submit" name="capnhat" value="Update" class="btn">
+                        <input type="submit" name="capnhat" value="Cập Nhật" class="btn">
                         <input type="reset" value="Reset" class="btn">
                         <a href="index.php?act=listdm">
-                            <input type="button" value="List Category" class="btn">
+                            <input type="button" value="Danh Sách Danh Mục" class="btn">
                         </a>
                     </div>
                     <?php

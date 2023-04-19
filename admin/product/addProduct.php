@@ -33,9 +33,10 @@
         const c = checkIsNotEmpty(productPrice, 'Giá sản phẩm không được để trống');
         const d = checkIsNotEmpty(productSize, 'Kích thước sản phẩm không được để trống');
         const e = checkIsNotEmpty(productImage, 'Ảnh sản phẩm không được để trống');
-        const f = checkIsNumber(productPrice, 'Giá sản phẩm phải là số')
+        const f = checkIsNumber(productPrice, 'Giá sản phẩm phải là số');
         return a && b && c && d && e && f
     }
+
 </script>
 <!-- CONTENT -->
 <section id="content">
@@ -44,12 +45,12 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>Add New Products</h1>
+                    <h1>Thêm mới Sản Phẩm</h1>
                 </div>
                 <form action="index.php?act=addsp" method="post" enctype="multipart/form-data"
                     onsubmit="return check()">
-                    <div class="">Category<br>
-                        <select name="iddm">
+                    <div class="input-label">Danh Mục<br>
+                        <select class="input-base" name="iddm">
                             <?php 
                         foreach ( $listcategory as $category) {
                             extract($category);
@@ -58,31 +59,40 @@
                         ?>
                         </select>
                     </div>
-                    <div class="row mb10">Name Product<br>
-                        <input type="text" name="tensp" id="product-name">
+                    <div class="input-label" class="row mb10">Tên Sản Phẩm<br>
+                        <input class="input-base" type="text" name="tensp" id="product-name">
                     </div>
-                    <div class="row mb10">Desc Product<br>
-                        <textarea rows="10" cols="30" name="motasp" id="product-description"></textarea>
+                    <div class="input-label" class="row mb10">Mô Tả Sản Phẩm<br>
+                        <textarea class="input-base" rows="5" cols="30" name="motasp"
+                            id="product-description"></textarea>
                     </div>
 
-                    <div class="row mb10">Price Product<br>
-                        <input type="text" name="giasp" id="product-price">
+                    <div class="input-label" class="row mb10">GIá Sản Phẩm<br>
+                        <input class="input-base" type="text" name="giasp" id="product-price">
                     </div>
-                    <div class="row mb10">Size Product<br>
-                        <input type="text" name="sizesp" id="product-size">
+                    <div class="input-label" class="row mb10">Kích Thước Sản Phẩm<br>
+                        <input class="input-base" type="text" name="sizesp" id="product-size">
                     </div>
-                    <div class="row mb10"> Promotion Product<br>
-                        <input type="text" name="khuyenmai" id="khuyenmai">
+                    <div class="input-label" class="row mb10"> Khuyến Mãi<br>
+                        <input class="input-base" type="text" name="khuyenmai" id="khuyenmai">
                     </div>
-                    <div class="row mb10">Image<br>
+                    <div class="input-label" class="row mb10">Lượt Xem<br>
+                        <input class="input-base" type="text" name="viewsp" id="viewsp">
+                    </div>
+                    <div class="input-label" class="row mb10"> Số Lượng <br>
+                        <input class="input-base" type="text" name="soluongsp" id="soluong">
+                    </div>
+                    <div class="input-label" class="row mb10">Hình Ảnh<br>
                         <input type="file" name="hinh">
                     </div>
+
                     <div class="nut">
-                        <input type="submit" name="themmoi" value="Add New" class="btn">
-                        <input type="reset" value="Reset" class="btn">
+                        <input type="submit" name="themmoi" value="Thêm Mới" class="btn">
+                        <input type="reset" value="Làm Mới" class="btn">
                         <a href="index.php?act=listsp">
-                            <input type="button" value="List Product" class="btn">
+                            <input type="button" value="Danh Sách Sản Phẩm" class="btn">
                         </a>
+
                     </div>
                     <?php
                      if(isset($thongbao) && ($thongbao!= "" )) 

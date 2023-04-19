@@ -13,7 +13,7 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>List Statistical</h1>
+                    <h1>Danh Sách Thống Kê</h1>
                 </div>
                 <div id="piechart"></div>
             </div>
@@ -56,7 +56,7 @@ window.onload = async () => {
 
         // Optional; add a title and set the width and height of the chart
         var options = {
-            'title': 'Statistics by category',
+            'title': 'Thống Kê Danh Mục',
             'width': 750,
             'height': 400
         };

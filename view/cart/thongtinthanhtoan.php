@@ -20,69 +20,70 @@
   } 
   ?>
     <style>
-        .thongtinthanhtoan {
-            width: 1248px;
-            gap: 50px;
-            margin: 0 auto;
-            margin-bottom: 50px;
-        }
+    .thongtinthanhtoan {
+        width: 1248px;
+        gap: 50px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
 
-        .mt-2 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
-        }
+    .mt-2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+    }
 
-        h4 {
-            font-weight: bold;
-            color: brown;
-            font-size: 20px;
-            margin-top: 10px;
-        }
+    h4 {
+        font-weight: bold;
+        color: brown;
+        font-size: 20px;
+        margin-top: 10px;
+    }
 
-        .btn {
-            cursor: pointer;
-            padding: 7px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            background: #a68567;
-            border: 1px solid #a68567;
-        }
+    .btn {
+        cursor: pointer;
+        padding: 7px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #a68567;
+        border: 1px solid #a68567;
+    }
 
-        .btn:hover {
-            background: white;
-            color: #a68567;
-            transition: 1s;
-        }
+    .btn:hover {
+        background: white;
+        color: #a68567;
+        transition: 1s;
+    }
 
-        .row th {
-            background-color: #a68567;
-        }
+    .row th {
+        background-color: #a68567;
+    }
 
-        .row table tbody tr:last-of-type {
-            border-bottom: 2px solid #a68567;
-        }
+    .row table tbody tr:last-of-type {
+        border-bottom: 2px solid #a68567;
+    }
 
-        span {
-            font-weight: bold;
-            color: brown;
-            font-size: 18px;
-        }
+    span {
+        font-weight: bold;
+        color: brown;
+        font-size: 18px;
+    }
 
-        button .fa-cart-shopping {
-            margin: 0 auto;
-        }
+    button .fa-cart-shopping {
+        margin: 0 auto;
+    }
 
-        .hinhthucthanhtoan {
-            padding-left: 10px;
-        }
+    .hinhthucthanhtoan {
+        padding-left: 10px;
+    }
     </style>
     <div class="thongtinthanhtoan ">
         <div class="row k1 pl-8">
             <div class="col-md-8 pl-4">
 
                 <?php
+               
  	            $id_user = $user["id"];
 	            $id_shipping=$_POST["id_shipping"];
  	            $sql_get_vanchuyen =  loadone_shipping($id_user,$id_shipping);
@@ -164,12 +165,12 @@
                        <td>'.$cart['khuyenmai'].'%</td>
                        <td>'.$cart['soluong'].'</td>
                        <td>
-                        <p>'.$cart['price'].'<sup>đ</sup></p>
+                        <p>'.number_format($cart['price']).'<sup>đ</sup></p>
                       </td>
                      
                       <td>
                       
-                      <p>'. $gia.'<sup>đ</sup></p>
+                      <p>'. number_format($gia).'<sup>đ</sup></p>
                        </td>
                       
                       </tr>';
@@ -184,22 +185,23 @@
                 }
                 echo '
                 <td><span>Tổng Tiền </span></td>
-                <td><span class="text-[red]">(Đã tính cả phí ship '.$ship.' VNĐ)</td>
+                <td><span class="text-[red]">(Đã tính cả phí ship '.number_format($ship).' VNĐ)</td>
                 <td></td>
                 <td></td>
                 <td></td>
               
                  <td>
-                 <p class="text-[red]">'.$tongTien.'<sup>đ</sup></p>
+                 <p class="text-[red]">'.number_format($tongTien).'<sup>đ</sup></p>
                  </td>
-                ';?>
+                ';
+                ?>
 
                     </tbody>
                 </table>
 
             </div>
             <div class="hinhthucthanhtoan">
-                <form action="index.php?act=xulythanhtoan" method="post">
+                <form action="index.php?act=xulythanhtoan" method="post" onsubmit="return confirmDesactiv()">
                     <h4>Phương thức thanh toán</h4>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="cash"
@@ -208,13 +210,13 @@
                             Tiền mặt
                         </label>
                     </div>
-                    <div class="form-check">
+                    <!-- <div class="form-check">
                         <input class="form-check-input" type="radio" name="payment" id="exampleRadios2"
                             value="transfer">
                         <label class="form-check-label" for="exampleRadios2">
                             Chuyển khoản
                         </label>
-                    </div>
+                    </div> -->
                     <input type="hidden" name="tongTien" value="<?=$tongTien?>">
                     <input type="hidden" name="id_shipping" value="<?=$id_shipping?>">
                     <button type="submit" name="xulythanhtoan" value="xulythanhtoan" class="btn"><i
@@ -225,3 +227,12 @@
                 </form>
             </div>
         </div>
+        <script>
+        function dathang() {
+            alert("Đặt hàng thành công");
+        }
+
+        function confirmDesactiv() {
+            return confirm("Xác Nhận Đặt Hàng!");
+        }
+        </script>

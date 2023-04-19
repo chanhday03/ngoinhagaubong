@@ -5,17 +5,17 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>List Feedback</h1>
+                    <h1>Danh sách góp ý</h1>
                 </div>
                 <table>
                     <tr>
                         <th></th>
-                        <th>ID Feedback</th>
-                        <th>ID User</th>
-                        <th>Mood</th>
-                        <th>Note</th>
-                        <th>Date</th>
-                        <th>Action</th>
+                        <th>Mã góp ý</th>
+                        <th>Mã người dùng</th>
+                        <th>Cảm xúc</th>
+                        <th>Ghi chú</th>
+                        <th>Thời gian</th>
+                        <th>Hoạt động</th>
                     </tr>
 
                     <?php 
@@ -32,7 +32,7 @@
                             <td id="note">' . $note . '</td>
                             <td>' . $created . '</td>
                             <td>
-                               <a href="'.$xoafb.'"><i class="fa-solid fa-trash"></i></a>
+                               <a  onclick="return confirmDesactiv()" href="'.$xoafb.'"><i class="fa-solid fa-trash"></i></a>
                             </td>
                             </tr>';
                             }
@@ -63,3 +63,8 @@
         }
     </style>
 </body>
+<script>
+    function confirmDesactiv() {
+    return confirm("Xóa Góp Ý?");
+}
+</script>

@@ -1,17 +1,26 @@
 <!-- CONTENT -->
+<style>
+/* #danhmuc{
+    
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-wrap: wrap;
+    display:flex;
+} */
+</style>
 <section id="content">
     <!-- MAIN -->
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Dashboard</h1>
+                <h1>Điều Khiển</h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="index.php?act=danhsach">Điều Khiển</a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
-                        <a class="active" href="#">Home</a>
+                        <a class="active" target="_blank" href="../index.php">Trang Chủ</a>
                     </li>
                 </ul>
             </div>
@@ -20,7 +29,7 @@
         <ul class="box-info">
             <li>
                 <a href="index.php?act=listdm"> <i class='bx bxs-add-to-queue'></i></a>
-                <span class="text">
+                <span class="text " id="danhmuc">
                     <?php
                     foreach ($listdsdm as $dsdm) {
                         extract($dsdm);
@@ -40,7 +49,7 @@
                         extract($dssp);
                         echo '
                         <h3>' . $count . '</h3>
-                        <p>Product</p>';
+                        <p>Sản Phẩm</p>';
                     }
 
                     ?>
@@ -54,7 +63,7 @@
                         extract($dsuser);
                         echo '
                         <h3>' . $count . '</h3>
-                        <p>User</p>';
+                        <p>Tài Khoản</p>';
                     }
 
                     ?>
@@ -71,7 +80,7 @@
                         extract($dscmt);
                         echo '
                         <h3>' . $count . '</h3>
-                        <p>Comment</p>';
+                        <p>Bình Luận</p>';
                     }
 
                     ?>
@@ -85,7 +94,7 @@
                         extract($dsfeedback);
                         echo '
                         <h3>' . $count . '</h3>
-                        <p>Feedback</p>';
+                        <p>Góp Ý</p>';
                     }
 
                     ?>
@@ -100,7 +109,7 @@
                         extract($dscart);
                         echo '
                         <h3>' . $count . '</h3>
-                        <p>Order</p>';
+                        <p>Đơn Hàng</p>';
                     }
 
                     ?>

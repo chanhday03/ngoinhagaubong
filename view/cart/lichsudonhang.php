@@ -64,7 +64,7 @@ th:last-of-type {
                     <?php echo $row['fname'] ?>
                 </td>
                 <td>
-                    <?php echo $row['adress'] ?>
+                    <?php echo $row['addres'] ?>
                 </td>
                 <td>
                     <?php echo $row['email'] ?>
@@ -89,7 +89,7 @@ th:last-of-type {
                 </td>
                 <td class="text-[green] font-bold hover:text-[red]">
                     <a
-                        href="index.php?act=xemdonhang&code=<?php echo $row['code_cart'] ?>&id_shipping=<?php echo $row['id_shipping'] ?>">Xem
+                        href="index.php?act=xemdonhang&code_cart=<?php echo $row['code_cart'] ?>&id_shipping=<?php echo $row['id_shipping'] ?>">Xem
                         đơn hàng</a>
                 </td>
 

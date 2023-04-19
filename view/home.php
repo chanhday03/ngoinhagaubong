@@ -1,14 +1,93 @@
 <style>
-/* .danhmuc {
-        max-width: 1248px;
-        transform: translate(50px, 300px);
+    #viewsp i {
+        border: none;
+        margin: 2px;
+        color: rgb(135, 132, 129);
+    }
 
-    } */
+
+
+    .products {
+        max-width: 1248px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    .products-container .box {
+        padding: 20px;
+        box-shadow: 1px 2px 11px 4px rgba(237, 175, 94, 0.15);
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .products-container .box:hover {
+        box-shadow: 0 0 0 2px rgb(224, 178, 121);
+        transform: rotate(6deg);
+        transition: 0.3s;
+    }
+
+    .products-container .box img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 20px;
+    }
+
+    .products-container .box h2 {
+        color: #905219;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .products-container .box .price {
+        /* display: flex;
+        justify-content: space-between;
+        align-items: center; */
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 5px;
+        color: var(--orange-color);
+    }
+
+    .products-container .box .price ins {
+        text-decoration: underline;
+        color: red;
+        font-size: 18px;
+    }
+
+    .size ul li {
+        font-weight: bold;
+        width: 50px;
+        padding: 3px 5px;
+        font-size: 13px;
+        border-radius: 5px;
+        margin-top: 10px;
+        border: 1px solid #905219;
+        color: #905219;
+    }
+
+    .size ul li a {
+        margin-left: 5px;
+    }
+
+    .size ul li:hover {
+        color: white;
+        background-color: #905219;
+    }
 </style>
 <link rel="stylesheet" href="layout/assets/style.css" />
 <div class="danhmuc">
     <div class="heading">
-        <h1>Danh mục</h1>
+        <h1>Category</h1>
     </div>
     <div class="menu_dm">
         <ul>
@@ -27,19 +106,8 @@
 <!-- categories -->
 <section class="products" id="products">
     <div class="heading">
-        <h1>Tất cả sản phẩm nội bật <br /><span>Teddyshop</span></h1>
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Chọn size</button>
-            <div id="myDropdown" class="dropdown-content">
-                <?php
-                foreach ($listsize as $size) {
-                    extract($size);
-                    $linksize = "index.php?act=sanpham&size=" . $productSize;
-                    echo '<a href="' . $linksize . '">' . $productSize . '</a>';
-                }
-                ?>
-            </div>
-        </div>
+        <h1>Top 10 sản phẩm yêu thích<br /><span>Teddyshop</span></h1>
+        <a href="#" class="btn">Đặt hàng ngay<i class="fa-solid fa-circle-right"></i></a>
     </div>
     <div class="categories-container">
         <?php
@@ -61,8 +129,19 @@
 <!-- product -->
 <section class="products" id="products">
     <div class="heading">
-        <h1>Tất cả sản phẩm nội bật <br /><span>Teddyshop</span></h1>
-        <a href="#" class="btn">Shop now<i class="fa-solid fa-circle-right"></i></a>
+        <h1>Tất cả sản phẩm <br /><span>Teddyshop</span></h1>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Chọn size</button>
+            <div id="myDropdown" class="dropdown-content">
+                <?php
+                foreach ($listsize as $size) {
+                    extract($size);
+                    $linksize = "index.php?act=sanpham&size=" . $productSize;
+                    echo '<a href="' . $linksize . '">' . $productSize . '</a>';
+                }
+                ?>
+            </div>
+        </div>
     </div>
     <div class="products-container">
         <?php
@@ -73,11 +152,17 @@
             echo '<div class="box">
                 <img src="' . $hinh . '"
                     alt="">
-                <h2 class="name"><a href="' . $linksp . '">Name : ' . $productName . '</a></h2>
-                <h3 class="price"> Price : 
-                ' . $productPrice . '  <ins>đ</ins> <span class="size">/ Size :  ' . $productSize . '</span>
-                </h3>
-                <span class="discount">- ' . $productPromotion . '%</span>
+                <h2 class="name"><a href="' . $linksp . '">' . $productName . '</a></h2>
+                <div class="price">
+                    ' . number_format($productPrice) . '<ins> đ</ins>
+                    <!-- '.$productNumber .'  -->
+                </div>
+                <div class="size">
+                    <ul>
+                        <li><a href="">' . $productSize . 'cm</a></li>
+                    </ul>
+                </div>
+                <span class="discount">-' . $productPromotion . '%</span>
                 <form action="index.php?act=addtocart" method="post">
                 <input type="hidden" name="id" value="' . $id . '">
                 <input type="hidden" name="name" value="' . $productName . '">
@@ -85,9 +170,12 @@
                 <input type="hidden" name="images" value="' . $hinh . '">
                 <input type="hidden" name="size" value="' . $productSize . '">
                 <input type="hidden" name="khuyenmai" value="' . $productPromotion . '">
+                <input type="hidden" name="viewsp" value="' . $productView . '">
+                <input type="hidden" name="soluongsp" value="' . $productNumber. '">
                 <button type="submit" name="btn_addtocart" value="btn_addtocart">   <i class="fa-solid fa-cart-shopping"></i></button>
                  </form>
                 <i class="fa-solid fa-heart"></i>
+                <p id="viewsp">' . $productView . ' <i class="fa-solid fa-eye"></i></p>
                 
 
 

@@ -41,10 +41,12 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
             case 'sanphamct':
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
+                $allImage = loadall_Image_Product($id); 
                 $onesp = loadone_product($id);
                 $cmsp = loadall_comment_theosp($id);
                 extract($cmsp);
                 extract($onesp);
+                extract($allImage);
                 $sp_cung_loai = load_product_cungloai($id, $category_id);
                 include 'view/sanphamct.php';
             } else {
@@ -95,8 +97,19 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 $price = $_POST['price'];
                 $khuyenmai = $_POST["khuyenmai"];
                 $soLuong=1;
-                if(isset($_POST["soluong"]))$soLuong = intval($_POST["soluong"]);
+                $soluongsp = $_POST["soluongsp"];
+               
+                if(isset($_POST["soluong"])){
+                    $soLuong = intval($_POST["soluong"]);
+                   if($soLuong <=0){
+                    $soLuong =1;
+                }
                 
+                }
+                if($soLuong >$soluongsp){
+                    header("location:index.php?act=sanphamct&idsp=$id");
+                    exit;
+                }
                 $soTien = $soLuong * $price;
                 $spadd = ['id'=>$id,'name'=>$name,'image'=>$images,'size'=>$size,'soluong'=>$soLuong,'price'=>$price,'khuyenmai'=>$khuyenmai,'sotien'=>$soTien];
                 array_push($_SESSION['mycart'],$spadd);     
@@ -121,8 +134,14 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
          break;     
          case 'dangnhap':{ 
             header("location:view/taikhoan/login.php");        
+        break;}
+        case 'logout':{ 
+            session_start();
+            session_unset();
+            session_destroy();
+           header("location:index.php");      
         break;
-    }
+             } 
      case 'themvanchuyen':
         
        if(isset($_POST['themvanchuyen'])) {
@@ -159,7 +178,8 @@ if((isset($_GET['act'])) && ($_GET['act']!="")){
                 delete_Cart_Details ($code_cart);
                 delete_Cart ($code_cart);
                 delete_shipping($id_shipping);
-                echo '<script>alert("Đã Hủy Đơn Hàng")</script>';
+               
+                header("location:index.php?act=lichsudonhang");
             }
             include "view/cart/lichsudonhang.php";
              break;   

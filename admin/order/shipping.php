@@ -5,12 +5,12 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>List Shipping</h1>
+                    <h1>Danh sách vận chuyển</h1>
                 </div>
                 <table>
                     <tr>
                         <th></th>
-                        <th>ID Shipping</th>
+                        <th>Mã vận chuyển</th>
                         <th>Họ Và Tên Của Khách Hàng</th>
                         <th>Số Điện Thoại</th>
                         <th>Địa Chỉ</th>

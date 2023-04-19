@@ -10,49 +10,49 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 <style>
-.danhmuc {
-    padding-top: 20px;
-    max-width: 1248px;
-    margin: 0 auto;
-}
+    .danhmuc {
+        padding-top: 20px;
+        max-width: 1248px;
+        margin: 0 auto;
+    }
 
-.search-bar {
-    background-color: burlywood;
-    display: flex;
-    align-items: center;
-    border-radius: 60px;
-    padding: 8px 25px;
-    backdrop-filter: blur(4px) saturate(180%);
-}
+    .search-bar {
+        background-color: burlywood;
+        display: flex;
+        align-items: center;
+        border-radius: 60px;
+        padding: 8px 25px;
+        backdrop-filter: blur(4px) saturate(180%);
+    }
 
-.search-bar input {
-    background-color: transparent;
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 5px 15px;
-    font-size: 10px;
-    margin-right: 10px;
-}
+    .search-bar input {
+        background-color: transparent;
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 5px 15px;
+        font-size: 10px;
+        margin-right: 10px;
+    }
 
-::placeholder {
-    color: white;
-    font-size: 14px;
-}
+    ::placeholder {
+        color: white;
+        font-size: 14px;
+    }
 
-.search-bar button img {
-    width: 40px;
-    border-radius: 50%;
-}
+    .search-bar button img {
+        width: 40px;
+        border-radius: 50%;
+    }
 
-.search-bar button {
-    border: 0;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: #a68567;
-    cursor: pointer;
-}
+    .search-bar button {
+        border: 0;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: #a68567;
+        cursor: pointer;
+    }
 </style>
 <?php 
 
@@ -104,19 +104,12 @@ $user = getUserById($_SESSION['id'], $conn);
         <div class="navbar">
             <a href="index.php" class="home-active">Trang Chủ</a>
             <a href="index.php?act=gioithieu">Giới thiệu</a>
-            <div class="dropdown">
-                <button class="dropbtn">Sản phẩm
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Gấu bông</a>
-                    <a href="#">Phụ Kiện</a>
-                </div>
-            </div>
             <a href="index.php?act=lienhe">Liên Hệ</a>
-
             <a href="index.php?act=feedback">Góp Ý</a>
-            <a href="index.php?act=lichsudonhang">Lịch sử đơn hàng</a>
+            <?php if(isset($user["id"])){
+                echo '<a href="index.php?act=lichsudonhang">Lịch sử đơn hàng</a>';
+            }?>
+
         </div>
         <form action="index.php?act=sanpham" method="post" class="search-bar">
             <input type="text" name="kyw" placeholder="Sản phẩm bạn muốn.." />
@@ -142,17 +135,23 @@ $user = getUserById($_SESSION['id'], $conn);
                             <?=$user['fname']?>
                         </h3>
                     </div>
-                    <a href="view/taikhoan/edit.php" class="btn btn-primary">
-                        Edit Profile
-                    </a>
-                    <a href="view/taikhoan/logout.php" class="btn btn-warning">
-                        Logout
-                    </a>
-                    <?php if($user['role']==1){
-                echo ' <a href="admin/index.php?act=danhsach" class="btn btn-primary">
-                ADMin
-                  </a>';
-               }?>
+                    <div class="profile-content shadow">
+                        <a href="view/taikhoan/edit.php" class="btn btn-primary">
+                            Sửa
+                        </a>
+                        <a href="view/taikhoan/logout.php" class="btn btn-warning">
+                            Thoát
+                        </a>
+
+                        <?php if($user['role']==1){
+                        $image = $user['pp']; 
+                        echo '
+                        <form class="header-admin" action="admin/index.php?act=danhsach" target="_blank" method="post">
+                        <input type="hidden" name="img" value="'.$image.'">
+                        <button type="submit btn " name="btn_admin" value="btn_admin"><p class="btn btn-warning">Admin</p></button>
+                         </form>';
+                        }?>
+                    </div>
                 </div>
             </div>
     </header>
@@ -188,7 +187,7 @@ $user = getUserById($_SESSION['id'], $conn);
                                 cấp, đường chỉ may & độ hoàn thiện các chi tiết đạt mức tinh xảo, giúp Gấu Bông Kuromi
                                 nỗi bật, rất dễ thương & đáng yêu
                             </p>
-                            <a href="#" class="btn">Order now</a>
+                            <a href="#" class="btn">Đặt hàng ngay</a>
                         </div>
                         <div class="image">
                             <img src="https://i.pinimg.com/564x/63/2d/e8/632de8fd243b344b00afe88c8a77e312.jpg" alt="" />
@@ -206,7 +205,7 @@ $user = getUserById($_SESSION['id'], $conn);
                                 đảo giới trẻ yêu thích nhất.
                                 Đặc biệt Gấu Bông Teddy của gaubongcaocap.com đều được nhập khẩu 100% các bạn nhé.
                             </p>
-                            <a href="#" class="btn">Order now</a>
+                            <a href="#" class="btn">Đặt hàng ngay</a>
                         </div>
                         <div class="image">
                             <img src="https://i.pinimg.com/736x/07/25/0c/07250c6d8abf9c2abdf1b09006ae6806.jpg" alt="" />
@@ -222,7 +221,7 @@ $user = getUserById($_SESSION['id'], $conn);
                                 dễ đến thế! Hãy đến với Shop Gấu bông Teddy có cho mình các
                                 sản phẩm to, nhỏ, dễ thương.
                             </p>
-                            <a href="#" class="btn">Order now</a>
+                            <a href="#" class="btn">Đặt hàng ngay</a>
                         </div>
                         <div class="image">
                             <img src="https://i.pinimg.com/564x/89/32/b5/8932b55b60900afab9230d89e7e12958.jpg" alt="" />
@@ -239,7 +238,7 @@ $user = getUserById($_SESSION['id'], $conn);
                                 Gấu Teddy được gia công tại Thái Lan & Quảng Châu. Là loại Gấu Teddy cao cấp, được xuất
                                 khẩu sang thị trường Đông Nam Á, Úc, Malaysia & Việt Nam.
                             </p>
-                            <a href="#" class="btn">Order now</a>
+                            <a href="#" class="btn">Đặt hàng ngay</a>
                         </div>
                         <div class="image">
                             <img src="https://i.pinimg.com/564x/ad/46/da/ad46da0f690fdd823ef3bbea803e7347.jpg" alt="" />

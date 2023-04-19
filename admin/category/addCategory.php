@@ -15,20 +15,20 @@
         <section class="table-data">
             <div class="table-box">
                 <div class="head">
-                    <h1>Add New Category</h1>
+                    <h1>Thêm mới Danh Mục</h1>
                 </div>
                 <form action="index.php?act=adddm" method="post" onsubmit="return check()">
-                    <div class="">ID<br>
-                        <input type="text" name="maloai" disabled>
+                    <div class="input-label">ID<br>
+                        <input class="input-base" type="text" name="maloai" disabled>
                     </div>
-                    <div class=""> Name Category<br>
-                        <input type="text" name="tenloai" id="ten-loai">
+                    <div class="input-label"> Tên Danh Mục<br>
+                        <input class="input-base" type="text" name="tenloai" id="ten-loai">
                     </div>
                     <div class="nut">
-                        <input type="submit" name="themmoi" value="Add New" class="btn">
-                        <input type="reset" value="Reset" class="btn">
+                        <input type="submit" name="themmoi" value="Thêm Mới" class="btn">
+                        <input type="reset" value="Làm Mới" class="btn">
                         <a href=" index.php?act=listdm">
-                            <input type="button" value="List Category" class="btn">
+                            <input type="button" value="Danh Sách Danh Mục" class="btn">
                         </a>
                     </div>
                     <?php

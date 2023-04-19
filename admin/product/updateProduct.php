@@ -31,10 +31,13 @@
                     </div>
                     <div class="">Mô tả<br>
                         <textarea rows="10" cols="30" name="motasp" id=" product-description"
-                            value="<?= $productDesc ?>"></textarea>
+                            value=""><?= $productDesc ?></textarea>
                     </div>
                     <div class="">Hình ảnh<br>
                         <input type="file" name="hinh">
+                        <a href="index.php?act=updategalery&idsp=<?=$id?>">
+                        <input type="button" value="Cập Nhật Ảnh Phụ" class="btn">
+                    </a>
                     </div>
                     <input type="hidden" name="oldImage" value="<?= $productImage?>">
             </div>
@@ -47,13 +50,20 @@
             <div class="">Khuyến mãi<br>
                 <input type="text" name="khuyenmai" id="product-promotion" value="<?= $productPromotion?>">
             </div>
+            <div class="">View Product<br>
+                <input type="text" name="viewsp" id="product-view" value="<?= $productView?>">
+            </div>
+            <div class="">Số Lượng<br>
+                <input type="text" name="soluongsp" id="product-number" value="<?= $productNumber?>">
+            </div>
             <div class="">
                 <input type="hidden" name="id" value="<?=$id?>">
-                <input type="submit" name="capnhat" value="Update" class="btn">
-                <input type="reset" value="Reset" class="btn">
+                <input type="submit" name="capnhat" value="Cập Nhật Sản Phẩm" class="btn">
+               
                 <a href="index.php?act=listsp">
-                    <input type="button" value="List Product" class="btn">
+                    <input type="button" value="Danh sách Sản Phẩm" class="btn">
                 </a>
+               
             </div>
             <?php
                  if(isset($thongbao) && ($thongbao!= "" )) 

@@ -56,6 +56,8 @@ if (isset($_GET['act'])) {
                 $khuyenmai = $_POST['khuyenmai'];
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
+                $viewsp = $_POST['viewsp'];
+                $soluongsp = $_POST['soluongsp'];
                 $hinh = $_FILES['hinh']['name'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
@@ -64,7 +66,8 @@ if (isset($_GET['act'])) {
                 } else {
                     // echo "Sorry, there was an error uploading your file.";
                 }
-                insert_product($tensp, $motasp, $hinh,  $giasp, $sizesp, $khuyenmai, $iddm);
+                $id_product= insert_product($tensp, $motasp, $hinh,  $giasp, $sizesp, $khuyenmai,$viewsp, $iddm,$soluongsp );
+                insert_Galery( $id_product,$hinh,$hinh,$hinh,$hinh);
                 $thongbao = 'Thêm thành công';
             }
             $listcategory = loadall_category();
@@ -86,7 +89,9 @@ if (isset($_GET['act'])) {
             // xoasp
         case 'xoasp':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_Galery($_GET['id']) ;
                 delete_product($_GET['id']);
+            
             }
             $listproduct = loadall_product();
             include "product/listProduct.php";
@@ -99,7 +104,7 @@ if (isset($_GET['act'])) {
             $listcategory = loadall_category();
             include "product/updateProduct.php";
             break;
-            // updatesp
+              // updatesp
         case 'updatesp':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 $id = $_POST['id'];
@@ -110,6 +115,8 @@ if (isset($_GET['act'])) {
                 $giasp = $_POST['giasp'];
                 $sizesp = $_POST['sizesp'];
                 $hinh = $_FILES['hinh']['name'];
+                $viewsp = $_POST['viewsp'];
+                $soluongsp = $_POST['soluongsp'];
                 if ($hinh) {
                     $target_dir = "../upload/";
                     $target_file = $target_dir . $_FILES["hinh"]["name"];
@@ -117,13 +124,51 @@ if (isset($_GET['act'])) {
                 } else {
                     $hinh = $_POST['oldImage'];
                 }
-                update_product($id, $iddm, $tensp, $motasp,  $giasp, $sizesp, $khuyenmai, $hinh);
+                update_product($id, $iddm, $tensp, $motasp,  $giasp, $sizesp, $khuyenmai, $hinh,$viewsp,$soluongsp);
                 $thongbao = 'Thêm thành công';
             }
             $listcategory = loadall_category();
             $listproduct = loadall_product("", 0);
             include "product/listProduct.php";
-            break;
+            break;   
+         case 'updategalery':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id_product=$_POST["id_product"];
+                $target_dir = "../upload/";
+                if(isset($_FILES['hinh1']['name']) AND !empty($_FILES['hinh1']['name'])) {
+                    $hinh1 = basename($_FILES['hinh1']['name']);
+                    $target_file1 = $target_dir . $hinh1;
+                    move_uploaded_file($_FILES["hinh1"]["tmp_name"], $target_file1);
+                }else{
+                    $hinh1=$_POST["old-image1"];
+                }
+                if(isset($_FILES['hinh2']['name']) AND !empty($_FILES['hinh2']['name'])) {
+                    $hinh2 = basename($_FILES['hinh2']['name']);
+                    $target_file1 = $target_dir . $hinh2;
+                    move_uploaded_file($_FILES["hinh2"]["tmp_name"], $target_file1);
+                }else{
+                    $hinh2=$_POST["old-image2"];
+                }
+                if(isset($_FILES['hinh3']['name']) AND !empty($_FILES['hinh3']['name'])) {
+                    $hinh3 = basename($_FILES['hinh3']['name']);
+                    $target_file1 = $target_dir . $hinh3;
+                    move_uploaded_file($_FILES["hinh3"]["tmp_name"], $target_file1);
+                }else{
+                    $hinh3=$_POST["old-image3"];
+                }
+                if(isset($_FILES['hinh4']['name']) AND !empty($_FILES['hinh4']['name'])) {
+                    $hinh4 = basename($_FILES['hinh4']['name']);
+                    $target_file1 = $target_dir . $hinh4;
+                    move_uploaded_file($_FILES["hinh4"]["tmp_name"], $target_file1);
+                }else{
+                    $hinh4=$_POST["old-image4"];
+                }
+                update_Galery( $id_product,$hinh1,$hinh2,$hinh3,$hinh4);
+                $thongbao = 'Cập Nhật thành công';
+            }
+                include "product/updategalery.php";
+                break;    
+               
             //tài khoản
         case 'dskh':
             $listuser = loadall_user();
@@ -137,6 +182,7 @@ if (isset($_GET['act'])) {
             $listuser = loadall_user();
             include "user/listUser.php";
             break;
+        
             // default
         case 'dsbl':
             $comment_list = loadall_comments();
