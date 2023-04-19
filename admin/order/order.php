@@ -19,9 +19,10 @@
                             <th>Mã vận chuyển</th>
                             <th>Số Lượng Mua</th>
                             <th>Trạng thái</th>
+                            <th></th>
 
                             <th>Thanh toán</th>
-                            <th>ghi chú</th>
+                            <th>Ghi chú</th>
                             <th>Ngày đặt</th>
                         </tr>
                     </thead>
@@ -33,13 +34,26 @@
                            ?>
                         <tr>
                             <td><input type="checkbox"></td>
-                            <td><?php echo $i?></td>
-                            <td><?php echo $row['code_cart'] ?></td>
-                            <td><?php echo $row['fname'] ?></td>
-                            <td><?php echo $row['id_product'] ?></td>
-                            <td><?php echo $row['id_shipping'] ?></td>
-                            <td><?php echo $row['soluongmua'] ?></td>
-                            <td><span class="status completed"> <?php if($row['cart_status']==0){
+                            <td>
+                                <?php echo $i?>
+                            </td>
+                            <td>
+                                <?php echo $row['code_cart'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['fname'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['id_product'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['id_shipping'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['soluongmua'] ?>
+                            </td>
+                            <td><span class="status completed">
+                                    <?php if($row['cart_status']==0){
     		                   echo '<a href="">Đang xử lý</a>';
                               	}elseif($row['cart_status']==1){
     		                  echo 'Đã xử lý';
@@ -48,10 +62,18 @@
                              }else{
                                   echo 'Đã hoàn thành';
                                }
-                            	?></span></td>
-                            <td><?php echo $row['cart_payment'] ?></td>
-                            <td><?php echo $row['note'] ?></td>
-                            <td><?php echo $row['cart_date'] ?></td>
+                            	?>
+                                </span></td>
+                            <td></td>
+                            <td>
+                                <?php echo $row['cart_payment'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['note'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['cart_date'] ?>
+                            </td>
 
                         </tr>
                         <?php $i++; endforeach;?>
@@ -101,39 +123,39 @@
 </section>
 <!-- CONTENT -->
 <script>
-function confirmDesactiv() {
-    return confirm("Bạn có muốn cập nhật trạng thái đơn hàng không?");
-}
-const form = document.querySelector('.formbtn');
-const cart_status = document.querySelector('.cart_status');
-const hidden = document.querySelector('.cart_status2');
+    function confirmDesactiv() {
+        return confirm("Bạn có muốn cập nhật trạng thái đơn hàng không?");
+    }
+    const form = document.querySelector('.formbtn');
+    const cart_status = document.querySelector('.cart_status');
+    const hidden = document.querySelector('.cart_status2');
 
-function setInputValue_1() {
-    hidden.setAttribute("value", "0");
-    alert('Đã chọn trạng thái "Đang Xử Lý"');
-}
+    function setInputValue_1() {
+        hidden.setAttribute("value", "0");
+        alert('Đã chọn trạng thái "Đang Xử Lý"');
+    }
 
-function setInputValue_2() {
-    hidden.setAttribute("value", "1");
-    alert('Đã chọn trạng thái "Đã Xử Lý"');
-}
+    function setInputValue_2() {
+        hidden.setAttribute("value", "1");
+        alert('Đã chọn trạng thái "Đã Xử Lý"');
+    }
 
-function setInputValue_3() {
-    hidden.setAttribute("value", "2");
-    alert('Đã chọn trạng thái "Đang Giao Hàng"');
-}
+    function setInputValue_3() {
+        hidden.setAttribute("value", "2");
+        alert('Đã chọn trạng thái "Đang Giao Hàng"');
+    }
 
-function setInputValue_4() {
-    hidden.setAttribute("value", "3");
-    alert('Đã chọn trạng thái "Đã Hoàn Thành"');
-}
+    function setInputValue_4() {
+        hidden.setAttribute("value", "3");
+        alert('Đã chọn trạng thái "Đã Hoàn Thành"');
+    }
 
-function alert1() {
-    alert("Đã cập nhật trạng thái thành công");
-}
+    function alert1() {
+        alert("Đã cập nhật trạng thái thành công");
+    }
 
-function codeCart() {
-    const codecart = document.querySelector('.codecart').value;
-    document.getElementById('code_cart2').value = codecart;
-}
+    function codeCart() {
+        const codecart = document.querySelector('.codecart').value;
+        document.getElementById('code_cart2').value = codecart;
+    }
 </script>

@@ -44,7 +44,7 @@ function loadall_Image_Product($id_product){
 }
 function loadall_product_home()
 {
-    $sql = "SELECT * FROM product WHERE 1 ORDER BY id DESC LIMIT 0,15";
+    $sql = "SELECT * FROM product WHERE 1 ORDER BY id DESC LIMIT 0,24";
     $listproduct = pdo_query($sql);
     return $listproduct;
 }

@@ -1819,11 +1819,6 @@ if (
                 */
                 protected static function isShellSafe($string)
                 {
-                //It's not possible to use shell commands safely (which includes the mail() function) without
-                escapeshellarg,
-                //but some hosting providers disable it, creating a security problem that we don't want to have to deal
-                with,
-                //so we don't.
                 if (!function_exists('escapeshellarg') || !function_exists('escapeshellcmd')) {
                 return false;
                 }
@@ -1837,50 +1832,30 @@ if (
 
                 $length = strlen($string);
 
-                for ($i = 0; $i < $length; ++$i) { $c=$string[$i]; //All other characters have a special meaning in at
-                    least one common shell, including=and +. //Full stop (.) has a special meaning in cmd.exe, but its
-                    impact should be negligible here. //Note that this does permit non-Latin alphanumeric characters
-                    based on the current locale. if (!ctype_alnum($c) && strpos('@_-.', $c)===false) { return false; } }
-                    return true; } /** * Check whether a file path is of a permitted type. * Used to reject URLs and
-                    phar files from functions that access local file paths, * such as addAttachment. * * @param string
-                    $path A relative or absolute path to a file * * @return bool */ protected static function
-                    isPermittedPath($path) { //Matches scheme definition from
-                    https://tools.ietf.org/html/rfc3986#section-3.1 return !preg_match('#^[a-z][a-z\d+.-]*://#i',
-                    $path); } /** * Check whether a file path is safe, accessible, and readable. * * @param string $path
-                    A relative or absolute path to a file * * @return bool */ protected static function
-                    fileIsAccessible($path) { if (!static::isPermittedPath($path)) { return false; }
-                    $readable=is_file($path); //If not a UNC path (expected to start with \\), check read permission,
-                    see #2069 if (strpos($path, '\\\\' ) !==0) { $readable=$readable && is_readable($path); } return
-                    $readable; } /** * Send mail using the PHP mail() function. * * @see
-                    http://www.php.net/manual/en/book.mail.php * * @param string $header The message headers * @param
-                    string $body The message body * * @throws Exception * * @return bool */ protected function
-                    mailSend($header, $body) { $header=static::stripTrailingWSP($header) . static::$LE . static::$LE;
-                    $toArr=[]; foreach ($this->to as $toaddr) {
+                for ($i = 0; $i < $length; ++$i) { $c=$string[$i]; if (!ctype_alnum($c) && strpos('@_-.', $c)===false) {
+                    return false; } } return true; } /** * Check whether a file path is of a permitted type. * Used to
+                    reject URLs and phar files from functions that access local file paths, * such as addAttachment. *
+                    *@param string $path A relative or absolute path to a file * * @return bool */ protected static
+                    function isPermittedPath($path) { return !preg_match('#^[a-z][a-z\d+.-]*://#i', $path); } /** *
+                    @param string $path A relative or absolute path to a file * @return bool */ protected static
+                    function fileIsAccessible($path) { if (!static::isPermittedPath($path)) { return false; }
+                    $readable=is_file($path); if (strpos($path, '\\\\' ) !==0) { $readable=$readable &&
+                    is_readable($path); } return $readable; } /** * @see http://www.php.net/manual/en/book.mail.php *
+                    @param string $header The message headers * @param string $body The message body * @throws Exception
+                    * @return bool */ protected function mailSend($header, $body) {
+                    $header=static::stripTrailingWSP($header) . static::$LE . static::$LE; $toArr=[]; foreach ($this->to
+                    as $toaddr) {
                     $toArr[] = $this->addrFormat($toaddr);
                     }
                     $to = trim(implode(', ', $toArr));
-
-                    //If there are no To-addresses (e.g. when sending only to BCC-addresses)
-                    //the following should be added to get a correct DKIM-signature.
-                    //Compare with $this->preSend()
                     if ($to === '') {
                     $to = 'undisclosed-recipients:;';
                     }
 
                     $params = null;
-                    //This sets the SMTP envelope sender which gets turned into a return-path header by the receiver
-                    //A space after `-f` is optional, but there is a long history of its presence
-                    //causing problems, so we don't use one
-                    //Exim docs: http://www.exim.org/exim-html-current/doc/html/spec_html/ch-the_exim_command_line.html
-                    //Sendmail docs: http://www.sendmail.org/~ca/email/man/sendmail.html
-                    //Qmail docs: http://www.qmail.org/man/man8/qmail-inject.html
-                    //Example problem: https://www.drupal.org/node/1057954
-                    //CVE-2016-10033, CVE-2016-10045: Don't pass -f if characters will be escaped.
 
-                    //PHP 5.6 workaround
                     $sendmail_from_value = ini_get('sendmail_from');
                     if (empty($this->Sender) && !empty($sendmail_from_value)) {
-                    //PHP config has a sender address we can use
                     $this->Sender = ini_get('sendmail_from');
                     }
                     if (!empty($this->Sender) && static::validateAddress($this->Sender)) {

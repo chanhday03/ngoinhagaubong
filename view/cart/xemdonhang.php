@@ -1,31 +1,84 @@
-<p>Đơn hàng của bạn</p>
-<?php
+<style>
+    .donhang {
+        width: 1248px;
+        gap: 50px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+    h4 {
+        font-weight: bold;
+        color: brown;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .btn {
+        cursor: pointer;
+        padding: 7px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #a68567;
+        border: 1px solid #a68567;
+    }
+
+    .btn:hover {
+        background: white;
+        color: #a68567;
+        transition: 1s;
+    }
+
+    .row th {
+        background-color: #a68567;
+    }
+
+    .row table tbody tr:last-of-type {
+        border-bottom: 2px solid #a68567;
+    }
+
+    span {
+        font-weight: bold;
+        color: brown;
+        font-size: 18px;
+    }
+
+    button .fa-cart-shopping {
+        margin: 0 auto;
+    }
+
+    .donhang {
+        padding-left: 10px;
+    }
+</style>
+<div class="donhang">
+    <h4>Đơn hàng của bạn</h4>
+    <?php
 	$code_cart = $_GET['code_cart'];
     $listDonHang = loadall_donhang($code_cart);
     // echo'<pre>';
     // var_dump( $listDonHang);
     // die;
 ?>
-<table class="table table-hover table-bordered">
-    <thead class="bg-light">
-        <tr>
-            <th>Id</th>
+    <table class="table table-hover table-bordered">
+        <thead class="bg-light">
+            <tr>
+                <th>Id</th>
 
-            <th>Mã đơn hàng</th>
-            <th>Mã Sản Phẩm</th>
-            <th>Sản Phẩm</th>
-            <th>Tên Sản Phẩm</th>
-            <th>Số Lượng</th>
-            <th>Đơn Giá</th>
-            <th>SIZE</th>
-            <th>Khuyến Mãi</th>
-            <th>Thành Tiền</th>
+                <th>Mã đơn hàng</th>
+                <th>Mã Sản Phẩm</th>
+                <th>Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Số Lượng</th>
+                <th>Đơn Giá</th>
+                <th>SIZE</th>
+                <th>Khuyến Mãi</th>
+                <th>Thành Tiền</th>
 
-        </tr>
+            </tr>
 
-    </thead>
-    <tbody>
-        <?php 
+        </thead>
+        <tbody>
+            <?php 
                
                $i=0;
                $thanhTien=0;
@@ -39,26 +92,40 @@
                 //   array_push( $spnew,$spadd);  
                 //   var_dump( $spnew);
                     ?>
-        <tr>
-            <td><?php echo $i ?></td>
-            <td><?php echo $row['code_cart'] ?></td>
-            <td><?php echo $row['id_product'] ?></td>
-            <td><img class="w-[50px]" src="upload/<?php echo $row['productImage'] ?>" alt="Lỗi ảnh"></td>
-            <td><?php echo $row['productName'] ?></td>
-            <td><?php echo $row['soluongmua'] ?></td>
-            <td><?php echo $row['productPrice'] ?></td>
-            <td>
-                <?php echo $row['productSize'] ?>
-            </td>
-            <td> <?php echo $row['productPromotion'] ?></td>
-            <td>
-                <?php echo  number_format($thanhTien)?><sup>vnđ</sup>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <?php echo $i ?>
+                </td>
+                <td>
+                    <?php echo $row['code_cart'] ?>
+                </td>
+                <td>
+                    <?php echo $row['id_product'] ?>
+                </td>
+                <td><img class="w-[50px]" src="upload/<?php echo $row['productImage'] ?>" alt="Lỗi ảnh"></td>
+                <td>
+                    <?php echo $row['productName'] ?>
+                </td>
+                <td>
+                    <?php echo $row['soluongmua'] ?>
+                </td>
+                <td>
+                    <?php echo $row['productPrice'] ?>
+                </td>
+                <td>
+                    <?php echo $row['productSize'] ?>
+                </td>
+                <td>
+                    <?php echo $row['productPromotion'] ?>
+                </td>
+                <td>
+                    <?php echo  number_format($thanhTien)?><sup>vnđ</sup>
+                </td>
+            </tr>
 
-        <?php endforeach
+            <?php endforeach
         ?>
-        <?php
+            <?php
         $tongTienDonHang=0;
         $ship=0;
         if($tongTien<300000){
@@ -68,18 +135,20 @@
             $tongTienDonHang=$tongTien;
             $ship=0; 
         }?>
-        <tr>
-            <td>Tổng tiền Đơn Hàng</td>
-            <td><span class="text-[red]">(Đã tính cả phí ship <?=$ship?> VNĐ)</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td id="tongtien" colspan="2" class="text-[red] font-black flex justify-center">
-                <?php echo  number_format($tongTienDonHang)?><sup>vnđ</sup></td>
-            <?php
+            <tr>
+                <td>Tổng tiền Đơn Hàng</td>
+                <td><span class="text-[red]">(Đã tính cả phí ship
+                        <?=$ship?> VNĐ)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="tongtien" colspan="2" class="text-[red] font-black flex justify-center">
+                    <?php echo  number_format($tongTienDonHang)?><sup>vnđ</sup>
+                </td>
+                <?php
         $xoadh = '
         <form action="" method="post" onsubmit="return confirmDesactiv()">
         <input type="hidden" name="id_product" value="">
@@ -115,19 +184,20 @@
         }
    
         ?>
-        </tr>
-        <!-- index.php?act=deleteDonHang&code_cart='.$row['code_cart'].'&id_shipping='.$_GET['id_shipping'].' -->
-    </tbody>
-</table>
-<style>
+            </tr>
+            <!-- index.php?act=deleteDonHang&code_cart='.$row['code_cart'].'&id_shipping='.$_GET['id_shipping'].' -->
+        </tbody>
+    </table>
+    <style>
 
-</style>
-<script>
-function confirmDesactiv() {
-    return confirm("Bạn có muốn hủy đơn hàng?");
-}
+    </style>
+    <script>
+        function confirmDesactiv() {
+            return confirm("Bạn có muốn hủy đơn hàng?");
+        }
 
-function alert1() {
-    alert("Đã Hủy Đơn Hàng Thành Công");
-}
-</script>
+        function alert1() {
+            alert("Đã Hủy Đơn Hàng Thành Công");
+        }
+    </script>
+</div>

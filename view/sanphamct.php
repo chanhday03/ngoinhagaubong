@@ -185,6 +185,16 @@
         font-weight: bold;
     }
 
+    .comment .form-commnet input {
+        padding: 10px 25px;
+        margin-top: 20px;
+        margin-right: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        background: whitesmoke;
+        border: 1px solid #a68567;
+    }
+
     #soluong::placeholder {
         font-weight: bold;
         color: cyan;
@@ -215,6 +225,22 @@
         font-size: 18px;
         color: darkgoldenrod;
         font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    }
+
+    .btn-cmt {
+        padding: 10px 25px;
+        margin-top: 20px;
+        margin-right: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        background: transparent;
+        border: 1px solid #a68567;
+    }
+
+    .btn-cmt:hover {
+        background: #a68567;
+        color: white;
+        transition: 1s;
     }
 </style>
 <?php if($productNumber<=0){
@@ -367,7 +393,7 @@
                 echo '<form action="index.php?act=addcomment&idsp=' . $_GET["idsp"] . '" method="POST"  onsubmit="return confirmDesactiv()">
                     <input type="hidden" name="product_id" value="' . $_GET['idsp'] . '">
                     <input type="text" class="border" name="description" required>
-                    <button  type="submit" name="guibinhluan" value="guibinhluan" class="btn1">Gửi Bình Luận</button>
+                    <button  type="submit" name="guibinhluan" value="guibinhluan" class="btn-cmt">Gửi Bình Luận</button>
                     </form>';
             } else {
                 echo '<button><a class="login" href="view/taikhoan/login.php">Đăng nhập</a> để bình luận sản phẩm</button> <br>';
@@ -380,7 +406,7 @@
         <section class="main">
             <section class="attendance">
                 <div class="attendance-list">
-                    <h1>Danh Sách Bình Luận</h1>
+                    <h4>Danh Sách Bình Luận</h4>
                     <table class="table">
                         <thead>
                             <tr>
@@ -487,7 +513,7 @@
                     <input type="hidden" name="khuyenmai" value="' . $productPromotion . '">
                     <input type="hidden" name="viewsp" value="' . $productView . '">
                     <input type="hidden" name="soluongsp" value="' . $productNumber. '">
-                    <button type="submit" name="btn_addtocart" value="btn_addtocart">   <i class="fa-solid fa-cart-shopping"></i></button>
+                    <button type="submit" name="btn_addtocart" value="btn_addtocart"><i class="fa-solid fa-cart-shopping"></i></button>
                      </form>
                 <i class="fa-solid fa-heart"></i>
                 <p id="viewsp">' . $productView . ' <i class="fa-solid fa-eye"></i></p>

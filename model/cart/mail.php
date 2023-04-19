@@ -181,4 +181,32 @@ $info = "<div style='background-color:#ffffff'><div style='background-color:#fff
                     </tr>
                </tbody
             '</table></div></div></div></div>';
+            $id_user = $user["id"];
+            $code_cart = rand(0, 9999);
+            $cart_payment = $_POST['payment'];
+            $id_shipping = $_POST['id_shipping'];
+            $tongTien = $_POST['tongTien'];
+            $email = $_POST['email'];
+            $cart_status = 0;
+            var_dump($_POST);
+            // config mail
+            $id_user = $user["id"];
+            $id_shipping = $_POST["id_shipping"];
+            $sql_get_vanchuyen =  loadone_shipping($id_user, $id_shipping);
+            // var_dump($_SESSION['mycart'] );
+            if ($cart_payment == 'transfer' || $cart_payment == 'cash') {
+                //insert vào đơn hàng
+                $id_cart = insert_cart($id_user, $code_cart, $cart_status, $cart_payment, $id_shipping);
+                foreach ($_SESSION['mycart'] as $value) {
+                    $id_product = $value['id'];
+                    $soluongmua = $value['soluong'];
+                    insert_order_details($id_cart, $code_cart, $id_product, $id_user, $soluongmua);
+                }
+                $title = "[ChanhDay] Thông Tin Đơn Hàng Của Bạn !";
+                $content = $info;
+                $mailcustomer =$sql_get_vanchuyen['email'];;
+                $mail = new Mailer();
+                $mail->order($title, $content, $mailcustomer);
+            }
+            header('Location:index.php?act=');
 ?>
